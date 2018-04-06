@@ -43,6 +43,7 @@ class Player {
         return $this->jailStatus;
     }
 
-    
+
 
 }
+?>
