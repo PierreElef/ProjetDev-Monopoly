@@ -1,3 +1,3 @@
 <?php
-    include ('php/main.php');
+    header('Location: php/connexion.php');
 ?>

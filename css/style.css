@@ -1,0 +1,17 @@
+.header{
+    align-content: center;
+    border:black 1px solid;
+}
+.header-image{
+    /*max-height: 200px;
+    max-width:1024px;*/
+}
+
+.footer{
+    align-content: center;
+    border:black 1px solid;
+}
+.footer-image{
+    max-height: 200px;
+    max-width:1024px;
+}

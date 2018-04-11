@@ -10,18 +10,14 @@ class Player {
     private $positionY;
     private $jailStatus;
 
-    function __construct($id, $name, $color){
-        $this->id = $id;
+    function __construct($name, $color){
+        
         $this->name = $name;
         $this->color = $color;
         $this->money = 15000000;
         $this->positionID = 1;
         $this->jailStatus = 0;
-        setDBName($this->name);
-        setDBColor($this->color);
-        setDBMoney($this->money);
-        setDBPositionID($this->positionID);
-        setDBJailStatus($this->jailStatus):
+        $this->id = $this->getIDonDB($name);
     }
 
     //fonctions get
@@ -53,40 +49,26 @@ class Player {
     //functions set
     function setName($name){
         $this->name = $name;
-        setDBName($this->name);
     }
     function setColor($color){
         $this->color = $color;
-        setDBColor($this->color);
     }
     function setMoney($money){
         $this->money = $money;
-        setDBMoney($this->money);
     }
     function setPostion($position){
         $this->position = $position;
-        setDBPostion($this->position);
     }
     function setJailStatus($jailStatus){
         $this->jailStatus = $jailStatus;
-        setDBJailStatus($this->jailStatus);
     }
 
     //fonctions qui maj la base de données monopoly/player
-    function setDBName($name){
-        requetSql('UPDATE `player` SET `name`='.$name.' WHERE `ID`='.$this->id);
-    }
-    function setDBColor($color){
-        requetSql('UPDATE `player` SET `color`='.$color.' WHERE `ID`='.$this->id);
-    }
-    function setDBMoney($money){
-        requetSql('UPDATE `player` SET `money`='.$money.' WHERE `ID`='.$this->id);
-    }
-    function setDBPositionID($positionID){
-        requetSql('UPDATE `player` SET `position`='.$positionID.' WHERE `ID`='.$this->id);
-    }
-    function setDBJailStatus($jailStatus){
-        requetSql('UPDATE `player` SET `jailStatus`='.$jailStatus.' WHERE `ID`='.$this->id);
+
+    function getIDonDB($name){
+        $request='SELECT `ID` FROM `player` WHERE `username`="'.$name.'"';
+        $id=getSql($request);
+        return $id;
     }
 
 }

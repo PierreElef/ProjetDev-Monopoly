@@ -1,4 +1,15 @@
 <?php
+/*
+//Connexion joueur
+    //si pas compte
+        //Création compte
+            //id, nom, password
+        //retour connexion joueur
+    //si compte
+        //chercher partie disponible
+            //Aller Chercher partie
+        //créer une partie
+            //Aller Création de partie
 
 //Création de la partie
 
@@ -92,5 +103,5 @@
                         //DoubleCheck=0
             
 
-
+*/
 ?>
