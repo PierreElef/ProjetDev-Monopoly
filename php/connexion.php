@@ -1,4 +1,6 @@
-
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,20 +16,20 @@
 <html>
 <body>
     <div class="container text-center">
-    <?php include("../html/header.html")?>
+        <?php include("../html/header.html")?>
         <h1>Connexion</h1>
         <?php
             if (isset($_POST['username'])){
                 $username = $_POST['username'];
             }
         ?>
-        <div class="text-center p-2">
+        <div class="text-center p-2 m-2">
             <form method="post" action="#" class="text-center">
             <label class="m-2">Username</label>
             <input type="text" name="username"  value="<?php $username ?>" required><br/>
             <label class="m-2">Password</label>
             <input type="password" name="password" required><br/>
-            <input type="submit" class="btn-lg" value="Confirmer" />
+            <input type="submit" class="btn-lg m-1" value="Confirmer" />
             <p class="m-2">Nouvel utilisateur ? <a href="creationPlayer.php">S'enregistrer</a></p>
             <?php
                 //Vérification du password   
@@ -50,6 +52,7 @@
             ?>
             </form>
         </div>
+        <?php include("../html/footer.html")?>
     </div>
        
     </body>

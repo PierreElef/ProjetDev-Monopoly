@@ -16,14 +16,14 @@
     <div class="container text-center">
         <?php include("../html/header.html")?>
         <h1>Création de compte</h1>
-        <div class="p-2">
+        <div class="m-2 p-2">
             <form name="addBook" method="post" action="#">
                 <div>
                     <label class="m-2">Nom</label>
                     <input type="text" name="username"></br>
                     <label class="m-2">Password</label>
                     <input type="password" name="password"></br>
-                    <input type="submit" class="btn-lg" value="Add Joueur">
+                    <input type="submit" class="btn-lg m-1" value="Add Joueur">
                 </div>
             </form>
         </div>
@@ -53,7 +53,7 @@
                 }
             } 
         ?>
-        
+        <?php include("../html/footer.html")?>    
        
     </body>
 </html>
