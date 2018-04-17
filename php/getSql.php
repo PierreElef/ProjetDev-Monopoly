@@ -1,5 +1,5 @@
 <?php
-function getSql($sql) {
+function getSql($sql){
 	$user = 'root';
 	$password = '';
 	$db = 'monopoly';
