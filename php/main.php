@@ -1,22 +1,6 @@
 <?php
 /*
-//Connexion joueur
-    //si pas compte
-        //Création compte
-            //id, nom, password
-        //retour connexion joueur
-    //si compte
-        //chercher partie disponible
-            //Aller Chercher partie
-        //créer une partie
-            //Aller Création de partie
-
 //Création de la partie
-
-    //Choisir du nombre de joueurs réels
-    //Création joueur propre
-    //partage infos avec autres joueurs 
-    //Création joueurs IA
 
     //Création du plateau
         //Création des cases
