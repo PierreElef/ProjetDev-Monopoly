@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include('../commun/getSQL.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,14 +11,14 @@
     <title>Jouer une partie</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
 </head>
 <html>
 <body>
     <div class="container">
         <header class="header">
-            <?php include("../html/header.html")?>
+            <?php include("../../html/header.html")?>
             <div class="row justify-content-end">
                 <div class="col-8">
                     <h1 class="text-center">Jouer au Monopoly</h1>
@@ -53,7 +54,6 @@
             </div>
         </div>
         <?php
-            include('getSQL.php');
             $idPlayer=$_SESSION["id"];
             //créer une nouvelle partie
             if (isset($_POST['create'])){
@@ -83,7 +83,7 @@
                 include('GameInProgress.php');
             ?>
         </div>
-        <?php include("../html/footer.html")?>
+        <?php include("../../html/footer.html")?>
     </div>
 </body>
 </html>

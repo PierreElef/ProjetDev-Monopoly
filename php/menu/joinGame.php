@@ -58,6 +58,7 @@ function joinGame($idPlayer, $gameID){
                     }
                 }
             }
+            $_SESSION["idGame"]=$gameID;
         }
         header('Location: waitGame.php');
     }

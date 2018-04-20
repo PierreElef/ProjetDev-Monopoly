@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include('../commun/getSQL.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,13 +11,13 @@
     <title>Connexion</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
 </head>
 <html>
 <body>
     <div class="container text-center">
-        <?php include("../html/header.html")?>
+        <?php include("../../html/header.html")?>
         <h1>Connexion</h1>
         <?php
             if (isset($_POST['username'])){
@@ -33,15 +34,15 @@
             <p class="m-2">Nouvel utilisateur ? <a href="creationPlayer.php">S'enregistrer</a></p>
             <?php
                 //Vérification du password   
-                include('getSql.php');
+                
                 //si la valeur postée de username n'est pas vide
                 if (isset($_POST['username'])){
                     //récupération du password dans la base de données pour username
-                    $passwordDB = getSql('SELECT `password` FROM `player` WHERE `username`="'.$_POST['username'].'"');
+                    $passwordDB = getSql('SELECT `password` FROM `user` WHERE `name`="'.$_POST['username'].'"');
                     //si le password correspond
                     if ($_POST['password'] == $passwordDB){
                         //récupération de ID de l'utilisateur de la session
-                        $_SESSION["id"]=getSql('SELECT `ID` FROM `player` WHERE `username`="'.$_POST['username'].'"');
+                        $_SESSION["id"]=getSql('SELECT `ID` FROM `user` WHERE `name`="'.$_POST['username'].'"');
                         //aller à la page myBibliotheque
                         header('Location: PlayGame.php');
                     }else{
@@ -52,7 +53,7 @@
             ?>
             </form>
         </div>
-        <?php include("../html/footer.html")?>
+        <?php include("../../html/footer.html")?>
     </div>
        
     </body>

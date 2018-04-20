@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include('../commun/getSQL.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,14 +11,14 @@
     <title>Création d'une partie</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
 </head>
 <html>
 <body>
     <div class="container">
         <header class="header">
-            <?php include("../html/header.html")?>
+            <?php include("../../html/header.html")?>
             <div>
                 <h1 class="text-center">Création d'une partie</h1>
             <div>
@@ -33,7 +34,6 @@
             </form>
         </div>
         <?php
-            include('getSQL.php');
             if (isset($_POST['create'])){
                 $nbrRealPlayer=$_POST['nbrRealPlayer'];
                 $nbrIAPlayer=$_POST['nbrIAPlayer'];
@@ -44,13 +44,14 @@
                 }elseif ($nbrTTPlayer==1){
                     echo '<p class="text-center" style="color:red">Il faut au minimum 2 joueurs pour jouer.</p>';
                 }else{
-                    $sql='INSERT INTO `game`(`IDplayer1`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`) VALUES ('.$idPlayer.','.$nbrTTPlayer.',1,'.$nbrRealPlayer.')';
-                    requetSql($sql);
+                    requetSql('INSERT INTO `game`(`IDplayer1`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`) VALUES ('.$idPlayer.','.$nbrTTPlayer.',1,'.$nbrRealPlayer.')');
+                    $sql='SELECT MAX(`ID`) FROM `game`';
+                    $_SESSION["idGame"]=getSql($sql);
                     header('Location: waitGame.php');
                 }
             }
         ?>
-        <?php include("../html/footer.html")?>
+        <?php include("../../html/footer.html")?>
     </div>
 </body>
 </html>

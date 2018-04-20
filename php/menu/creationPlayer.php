@@ -33,7 +33,7 @@
             if (isset($_POST['username'])){
                 /*Engistrement du nouvel utilisateur*/
                 /*Vérification que la valeur username n'existe pas dans la base de données player*/
-                $allusername = getSqlArray('SELECT `username` FROM `player`', 1);
+                $allusername = getSqlArray('SELECT `name` FROM `user`', 1);
                 /*Pour chaque utilisateur verification avec POSTusername et DBusername*/
                 foreach ($allusername as $username_DB){
                     if ($username_DB == $_POST['username']){
@@ -46,7 +46,7 @@
                 /*Si la valeur de password n'est pas vide*/
                 if (isset($_POST['password'])){
                     /*Si OK alors rajout de l'utilisateur dans la base de données player*/
-                    $insert_sql_new_user = 'INSERT INTO `player`(`username`, `password`) VALUES ("'.$_POST['username'].'","'.$_POST['password'].'")';
+                    $insert_sql_new_user = 'INSERT INTO `user`(`name`, `password`) VALUES ("'.$_POST['username'].'","'.$_POST['password'].'")';
                     requetSql($insert_sql_new_user);
                     /*Aller sur la page index.php*/                            
                     /*header('Location: ../index.php');*/

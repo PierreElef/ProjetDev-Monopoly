@@ -1,5 +1,5 @@
 <?php
-include('getSql.php');
+0
 class Player {
     private $id;
     private $name;
