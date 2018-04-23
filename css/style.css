@@ -1,0 +1,25 @@
+.header{
+    border-bottom: black, 1px, solid;
+}
+.header-image{
+    max-width: 1024px;
+}
+
+.footer{
+
+}
+.footer-image{
+    width: 100%;
+    max-height: 200px
+}
+
+@media screen and (max-width: 1024px) {
+    .header-image {
+        width: 100%;
+    }
+  }
+
+.fakeButton{
+    background-color: gray;
+    border: 1px, solid, black;
+}

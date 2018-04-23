@@ -1,11 +1,6 @@
 <?php
-
+/*
 //Création de la partie
-
-    //Choisir du nombre de joueurs réels
-    //Création joueur propre
-    //partage infos avec autres joueurs 
-    //Création joueurs IA
 
     //Création du plateau
         //Création des cases
@@ -92,5 +87,5 @@
                         //DoubleCheck=0
             
 
-
+*/
 ?>
