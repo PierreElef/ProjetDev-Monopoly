@@ -65,7 +65,8 @@ class Player {
 
     //fonctions qui maj la base de données monopoly/player
 
-    function getIDonDB($name){
+    function getIDonDB($name)
+    {
         $request='SELECT `ID` FROM `player` WHERE `username`="'.$name.'"';
         $id=getSql($request);
         return $id;
