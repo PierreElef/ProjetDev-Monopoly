@@ -1,29 +1,33 @@
 <?php
 include ('Player.php');
 class Card{
-private $ID;
-private $message;
-private $type;
-takeMoneyfromPlayer()
-{
+	private $ID;
+	private $message='';
+	private $type;
+	function getID(){
+        $this->''=$ID;
+    }
+    
+	function takeMoneyfromPlayer()
+	{
 
-}
-giveMoneyfromPlayer()
-{
+	}
+	function giveMoneyfromPlayer()
+	{
 
-}
-sendPlayertoJail()
-{
+	}
+	function sendPlayertoJail()
+	{
 
-}
-changePositionPlayer()
-{
-	
-}
-leaveJail()
-{
-	$jailStatus = 1;
-}
+	}
+	function changePositionPlayer()
+	{
+
+	}
+	function leaveJail()
+	{
+		$jailStatus = 1;
+	}
 
 }
 
