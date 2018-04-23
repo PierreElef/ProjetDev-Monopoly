@@ -3,11 +3,11 @@ include ('Player.php');
 class Card
 {
 	private $ID;
-	private $message='';
+	private $message;
 	private $type;
 	private $owner=false;
-	private $jail=false;
-	function setOwner($player)
+	
+	function setOwner(Player $player)
 	{
 		$this->owner=$player;
 
@@ -27,19 +27,21 @@ class Card
 		$this->message='Vous gagnez'.$gain.'euros';
 	}
 	
-	function sendPlayertoJail()
+	function sendPlayertoJail(Player $player)
 	{
-		$jail=true;
-	}
-	
-	function changePositionPlayer()
-	{
+		$player->setJailStatus(true);
 
+		
 	}
 	
-	function leaveJail()
+	function changePositionPlayer(Player $player, $position)
 	{
-		$jail=false;
+		$player->setPostion($position);
+	}
+	
+	function leaveJail(Player $player)
+	{
+		$player->setJailStatus(false);	
 	}
 
 }
