@@ -10,19 +10,19 @@ class Card{
     
 	function takeMoneyfromPlayer()
 	{
-
+		
 	}
 	function giveMoneyfromPlayer()
 	{
-
+		
 	}
 	function sendPlayertoJail()
 	{
-
+		
 	}
 	function changePositionPlayer()
 	{
-
+		
 	}
 	function leaveJail()
 	{
