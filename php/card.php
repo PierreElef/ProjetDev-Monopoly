@@ -9,10 +9,12 @@ class Card
 	function setOwner($player)
 	{
 		$this->owner=$player;
+
 	}
 	
 	function takeMoneyfromPlayer()
 	{
+		
 
 	}
 	
@@ -21,9 +23,9 @@ class Card
 
 	}
 	
-	function sendPlayertoJail()
+	function sendPlayertoJail($jail)
 	{
-
+		$jail=true;
 	}
 	
 	function changePositionPlayer()
