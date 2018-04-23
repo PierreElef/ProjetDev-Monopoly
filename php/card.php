@@ -6,6 +6,7 @@ class Card
 	private $message='';
 	private $type;
 	private $owner=false;
+	private $jail=false;
 	function setOwner($player)
 	{
 		$this->owner=$player;
@@ -26,7 +27,7 @@ class Card
 		$this->message='Vous gagnez'.$gain.'euros';
 	}
 	
-	function sendPlayertoJail($jail)
+	function sendPlayertoJail()
 	{
 		$jail=true;
 	}
@@ -38,7 +39,7 @@ class Card
 	
 	function leaveJail()
 	{
-		
+		$jail=false;
 	}
 
 }
