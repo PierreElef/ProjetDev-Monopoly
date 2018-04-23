@@ -8,13 +8,13 @@
     <title>Créer un compte</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
 </head>
 <html>
 <body>
     <div class="container text-center">
-        <?php include("../html/header.html")?>
+        <?php include("../../html/header.html")?>
         <h1>Création de compte</h1>
         <div class="m-2 p-2">
             <form name="addBook" method="post" action="#">
@@ -28,7 +28,7 @@
             </form>
         </div>
         <?php
-            include('getSQL.php');
+            include('../commun/getSQL.php');
             $username_ok=0;
             if (isset($_POST['username'])){
                 /*Engistrement du nouvel utilisateur*/
@@ -49,11 +49,11 @@
                     $insert_sql_new_user = 'INSERT INTO `user`(`name`, `password`) VALUES ("'.$_POST['username'].'","'.$_POST['password'].'")';
                     requetSql($insert_sql_new_user);
                     /*Aller sur la page index.php*/                            
-                    /*header('Location: ../index.php');*/
+                    header('Location: connexion.php');
                 }
             } 
         ?>
-        <?php include("../html/footer.html")?>    
+        <?php include("../../html/footer.html")?>    
        
     </body>
 </html>

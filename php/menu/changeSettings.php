@@ -8,7 +8,7 @@
     <meta lan="fr">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Jouer une partie</title>
+    <title>Changer les paramètres</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../../css/style.css">
@@ -16,7 +16,7 @@
 </head>
 <html>
 <body>
-<div class="container">
+    <div class="container">
         <header class="header">
             <?php include("../../html/header.html")?>
             <div class="row justify-content-end">
@@ -27,11 +27,11 @@
                     <div class="row m-2">
                         <form name="changeSettings" method="post" action="#" class="p-1">
                             <input type="hidden" name="change" value=1>
-                            <input type="image" src="../images/settings.png" alt="Submit" width="32" height="32">
+                            <input type="image" src="../../images/settings.png" alt="Submit" width="32" height="32">
                         </form>
                         <form name="quitSession" method="post" action="#" class="p-1">
                             <input type="hidden" name="quit" value=1>
-                            <input type="image" src="../images/quit.png" alt="Submit" width="32" height="32">
+                            <input type="image" src="../../images/quit.png" alt="Submit" width="32" height="32">
                         </form>
                     </div>
                 </div>

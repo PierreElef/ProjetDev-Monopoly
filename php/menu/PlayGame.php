@@ -27,11 +27,11 @@
                     <div class="row m-2">
                         <form name="changeSettings" method="post" action="#" class="p-1">
                             <input type="hidden" name="change" value=1>
-                            <input type="image" src="../images/settings.png" alt="Submit" width="32" height="32">
+                            <input type="image" src="../../images/settings.png" alt="Submit" width="32" height="32">
                         </form>
                         <form name="quitSession" method="post" action="#" class="p-1">
                             <input type="hidden" name="quit" value=1>
-                            <input type="image" src="../images/quit.png" alt="Submit" width="32" height="32">
+                            <input type="image" src="../../images/quit.png" alt="Submit" width="32" height="32">
                         </form>
                     </div>
                 </div>

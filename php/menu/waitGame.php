@@ -1,6 +1,8 @@
 <?php
     session_start();
     include('../commun/getSQL.php');
+    $ID=$_SESSION["id"];
+    $IDgame=$_SESSION["idGame"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,11 +38,11 @@
             </div>
         </div>
         <?php
-            $IDgame=$_SESSION["idGame"];
+            
             $nbrPlayerNeed = getSql('SELECT `nbrNeeded` FROM `game` WHERE `ID`='.$IDgame.'');
             $nbrOnLine = getSql('SELECT `nbrOnLine` FROM `game` WHERE `ID`='.$IDgame.'');
             if($nbrPlayerNeed==$nbrOnLine){
-                header('Location: Game.php');
+                header('Location: ../game/GameIF.php');
             }
         ?>
         
