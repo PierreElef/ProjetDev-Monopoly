@@ -1,5 +1,6 @@
 <?php
 include ('Player.php');
+include('getSql.php');
 class Card
 {
 	private $ID;
@@ -10,7 +11,7 @@ class Card
 	function setOwner(Player $player)
 	{
 		$this->owner=$player;
-
+		$owner->requetSql();
 	}
 	
 	function takeMoneyfromPlayer($ammende)
@@ -18,7 +19,7 @@ class Card
 
 		$owner->setMoney();
 		$this->message='La banque vous prends'.$ammende.'euros';
-
+		
 	}
 	
 	function giveMoneyfromPlayer($gain)
