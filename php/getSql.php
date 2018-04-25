@@ -79,14 +79,7 @@ function requetSql($sql)
     $port = 3306;   
     // Connexion à la BDD
     $link = mysqli_init();
-    $success = mysqli_real_connect(
-       $link, 
-       $host, 
-       $user, 
-       $password, 
-       $db,
-       $port
-    );
+    $success = mysqli_real_connect($link,$host,$user,$password,$db,$port);
     // Execution de la requete ET renvoi d'erreur si echec d'execution
     mysqli_query($link, $sql) or die ('Erreur SQL. Detail : '.mysqli_error($link));
     // Fermeture de la connexion
