@@ -44,21 +44,8 @@
                             echo '<td>'.$positionPlayer.'</td>';
                             echo '</tr>';
                         }
-<<<<<<< HEAD
 
-                        $connection = mysql_connect("localhost", "root","")
-                        $sql = "SELECT money FROM player";
-                        $result = mysql_query($connection, $sql)
-                        $playerarray = array();
-                        while($row = mssql_fetch_assoc($result))
-                        {
-                            $playerarray[] = $row;
-                        }
-                        $jsonfile = open('playerdata.json', 'w');
-                        fwrite($jsonfile, json_encode($playerarray));
-                        fclose($jsonfile);
-=======
->>>>>>> 7dfe9a94787351c1036fd8e3653f6a8da07d25fe
+
                     ?>
                 </table>
             </div>
