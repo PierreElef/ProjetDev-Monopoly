@@ -46,7 +46,7 @@
                         }
 
                         $connection = mysql_connect("localhost", "root","")
-                        $sql = "select money from player";
+                        $sql = "SELECT money FROM player";
                         $result = mysql_query($connection, $sql)
                         $playerarray = array();
                         while($row = mssql_fetch_assoc($result))
