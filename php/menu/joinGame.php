@@ -21,7 +21,7 @@ function joinGame($idPlayer, $gameID){
                             $sql='UPDATE `game` SET `IDplayer2`='.$idPlayer.',`nbrOnLine`='.$nbrOnLine.' WHERE `ID`='.$gameID.'';
                             requetSql($sql);
                             $playerOnGame=true;
-                            echo "Ajouté en player2";
+                            requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$idPlayer.','.$gameID.',15000000,1,0,"#003AFF")');
                             break;
                         }
                     case 3:
@@ -29,7 +29,7 @@ function joinGame($idPlayer, $gameID){
                             $sql='UPDATE `game` SET `IDplayer3`='.$idPlayer.',`nbrOnLine`='.$nbrOnLine.' WHERE `ID`='.$gameID.'';
                             requetSql($sql);
                             $playerOnGame=true;
-                            echo "Ajouté en player3";
+                            requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$idPlayer.','.$gameID.',15000000,1,0,"#4FAB5B")');
                             break;
                         }
                     case 4:
@@ -37,7 +37,7 @@ function joinGame($idPlayer, $gameID){
                             $sql='UPDATE `game` SET `IDplayer4`='.$idPlayer.',`nbrOnLine`='.$nbrOnLine.' WHERE `ID`='.$gameID.'';
                             requetSql($sql);
                             $playerOnGame=true;
-                            echo "Ajouté en player4";
+                            requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$idPlayer.','.$gameID.',15000000,1,0,"#ffac00")');
                             break;
                         }
                     case 5:
@@ -45,7 +45,7 @@ function joinGame($idPlayer, $gameID){
                             $sql='UPDATE `game` SET `IDplayer5`='.$idPlayer.',`nbrOnLine`='.$nbrOnLine.' WHERE `ID`='.$gameID.'';
                             requetSql($sql);
                             $playerOnGame=true;
-                            echo "Ajouté en player5";
+                            requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$idPlayer.','.$gameID.',15000000,1,0,"#d8789f")');
                             break;
                         }
                     case 6:
@@ -53,7 +53,7 @@ function joinGame($idPlayer, $gameID){
                             $sql='UPDATE `game` SET `IDplayer6`='.$idPlayer.',`nbrOnLine`='.$nbrOnLine.' WHERE `ID`='.$gameID.'';
                             requetSql($sql);
                             $playerOnGame=true;
-                            echo "Ajouté en player6";
+                            requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$idPlayer.','.$gameID.',15000000,1,0,"#00c8d8")');
                             break;
                     }
                 }
