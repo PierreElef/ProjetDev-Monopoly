@@ -38,7 +38,7 @@ class Card
 	
 	function leaveJail(Player $player)
 	{
-		$player->setJailStatus(false);	
+		$player->setJailStatus(false);
 	}
 	function requetSql($sql)
 	{
@@ -46,7 +46,7 @@ class Card
 		$password = '';
 		$db = 'cards';
 		$host = 'localhost';
-		$port = 3306;   
+		$port = 3306;
 		// Connexion à la BDD
 		$link = mysqli_init();
 		$success = mysqli_real_connect(	$link,$host,$user,$password,$db,$port);
@@ -54,11 +54,7 @@ class Card
 		mysqli_query($link, $sql) or die ('Erreur SQL. Detail : '.mysqli_error($link));
 		// Fermeture de la connexion
 		mysqli_close($link);
-	    
+
 	}
-
 }
-
-
-
 ?>
