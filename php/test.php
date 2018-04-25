@@ -8,7 +8,7 @@
 <body>
 <?php
 include ('getSql.php');
-$réponse;
+$réponse; 
  	for ((isset($_POST['$ID']))) 
  	{
  		$message=requetSql('SELECT `Message` FROM `caisse de communaut` WHERE `id`=$ID');
@@ -20,6 +20,5 @@ $réponse;
 <form method="post" action="#">
 	carte:<input type="number" name="$ID"/>
 	<input type="submit" value="test">
-
 </form>
 </body>
