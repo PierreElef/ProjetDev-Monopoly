@@ -44,6 +44,18 @@
             if($nbrPlayerNeed==$nbrOnLine){
                 header('Location: ../game/GameIF.php');
             }
+            
+        $connection = mysql_connect("localhost", "root","")
+        $sql = "SELECT money FROM player";
+        $result = mysql_query($connection, $sql)
+        $playerarray = array();
+        while($row = mssql_fetch_assoc($result))
+        {
+            $playerarray[] = $row;
+        }
+        $jsonfile = open('playerdata.json', 'w');
+        fwrite($jsonfile, json_encode($playerarray));
+        fclose($jsonfile);
         ?>
         
         <?php include("../../html/footer.html")?>

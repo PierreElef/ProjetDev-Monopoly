@@ -39,7 +39,7 @@
                 $nbrIAPlayer=$_POST['nbrIAPlayer'];
                 $nbrTTPlayer=$nbrRealPlayer+$nbrIAPlayer;
                 $idPlayer=$_SESSION["id"];
-                $colorArray=["#FF0000","#003AFF","#4FAB5B","#ffac00","#d8789f","#00c8d8"];
+                $colorArray=array("#FF0000","#003AFF","#4FAB5B","#ffac00","#d8789f","#00c8d8");
                 if($nbrTTPlayer>6){
                     echo '<p class="text-center" style="color:red">Trop de joueurs. Limite de 6 au total.</p>';
                 }elseif ($nbrTTPlayer==1){
@@ -48,13 +48,12 @@
                     requetSql('INSERT INTO `game`(`IDplayer1`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`) VALUES ('.$idPlayer.','.$nbrTTPlayer.',1,'.$nbrRealPlayer.')');
                     $sql='SELECT MAX(`ID`) FROM `game`';
                     $_SESSION["idGame"]=getSql($sql);
-                    $idGame=$_SESSION["idGame"];
-                    settype($idGame, "int");
-                    settype($idPlayer, "int");
-                    requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$idPlayer.','.$idGame.',15000000,0,0,'.$colorArray[0].')');
-                    /*for ($i=1; $i<=$nbrIAPlayer; $i++){
-                        requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$i.','.$_SESSION["idGame"].',15000000,0,0,'.$colorArray[$i].')');
-                    }*/
+                    requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$idPlayer.','.$_SESSION["idGame"].',15000000,1,0,"'.$colorArray[0].'")');
+                $IDplayerIA=1;
+                for ($i=$nbrRealPlayer+1; $i<=$nbrTTPlayer; $i++){
+                    requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$IDplayerIA.','.$_SESSION["idGame"].',15000000,1,0,"'.$colorArray[$i].'")');
+                    $IDplayerIA=$IDplayerIA+1;
+                }
                     header('Location: waitGame.php');
                 }
             }
