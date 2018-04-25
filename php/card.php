@@ -54,7 +54,6 @@ class Card
 		mysqli_query($link, $sql) or die ('Erreur SQL. Detail : '.mysqli_error($link));
 		// Fermeture de la connexion
 		mysqli_close($link);
-
 	}
 }
 ?>
