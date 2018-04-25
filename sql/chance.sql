@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 23 avr. 2018 à 11:08
+-- Généré le :  mer. 25 avr. 2018 à 09:00
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `cards`
+-- Base de données :  `monopoly`
 --
 
 -- --------------------------------------------------------
