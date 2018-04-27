@@ -8,6 +8,7 @@
 <body>
 <?php
 include ('getSql.php');
+include ('card.php');
 $réponse; 
  	for ((isset($_POST['$ID']))) 
  	{
@@ -18,7 +19,7 @@ $réponse;
 	}
 ?>	
 <form method="post" action="#">
-	carte:<input type="number" name="$ID" value="<?php echo $message $type ?>" />
-	<input type="submit" value="test">
+	carte:<input type="number" name="$ID"/>
+	<input type="submit" value="test"/>
 </form>
 </body>
