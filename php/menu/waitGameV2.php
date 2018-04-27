@@ -37,47 +37,16 @@
                 <img src="../../images/wait2.gif" width=50%>
             </div>
         </div>
+        <?php 
+        $nbrPlayerNeed = getSql('SELECT `nbrNeeded` FROM `game` WHERE `ID`='.$IDgame.'');
+        $nbrOnLine = getSql('SELECT `nbrOnLine` FROM `game` WHERE `ID`='.$IDgame.'');
+        if($nbrPlayerNeed==$nbrOnLine){
+    header('Location: ../game/GameIF.php');
+}?>
         <?php include("../../html/footer.html")?>
     </div>
-    <?php
-        session_start();
-        include('../commun/getSQL.php');
-        $IDgame=$_SESSION["idGame"];
-        settype($IDgame, "int");
-        $onlinePlayers=array()
 
-        $IDplayers= getSqlArray('SELECT `nbrOnLine` FROM `game` WHERE `IDgame`='.$IDgame, 1);
-        foreach($IDplayers as $IDplayer){
-            $onlinePlayer=getSql('SELECT `nbrNeeded` FROM `game` WHERE `IDgame`='.$IDgame.'');
-            array_push($onlinePlayers, $onlinePlayer);
-        }
+                        
 
-        json_encode($onlinePlayers);
-
-    ?>
-     <script src="jquery.js"></script>
-        <script>
-            $.ajax({
-                url: '/getPlayer',
-                setInterval(ajax,3000);  //3 second boucle
-                }).done(function(){
-                    if
-                }
-
-                //do something
-
-                }).fail(function(jqXHR, textStatus){
-                    if(textStatus === 'timeout')
-                {     
-                    alert('Failed from timeout'); 
-                //do something. Try again
-                }
-            });​
-        
-        </script>
-        $nbrPlayerNeed = getSql('SELECT `nbrNeeded` FROM `game` WHERE `ID`='.$IDgame.'');
-            $nbrOnLine = getSql('SELECT `nbrOnLine` FROM `game` WHERE `ID`='.$IDgame.'');
-            if($nbrPlayerNeed==$nbrOnLine){
-        header('Location: ../game/GameIF.php');
 </body>
 </html>

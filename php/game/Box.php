@@ -15,14 +15,13 @@ class Box{
         $this->block = $block;
         $this->price = $price;
         $this->initialRent= $initalRent;
-        echo "box créé";
     }
 
     function getID(){
         return $this->id;
     }
 
-    function getname(){
+    function getName(){
         return $this->name;
     }
 
@@ -38,7 +37,7 @@ class Box{
         return $this->price;
     }
 
-    function getinitalPrice(){
+    function getInitalPrice(){
         return $this->initialRent;
     }
 
