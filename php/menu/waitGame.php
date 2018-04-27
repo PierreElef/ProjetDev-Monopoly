@@ -43,7 +43,7 @@
         <script>
             $.ajax({
                 url: '/getPlayer',
-                timeout:3000 //3 second timeout
+                setInterval(ajax,3000);  //3 second boucle
                 }).done(function(){
                         $nbrPlayerNeed = getSql('SELECT `nbrNeeded` FROM `game` WHERE `ID`='.$IDgame.'');
                         $nbrOnLine = getSql('SELECT `nbrOnLine` FROM `game` WHERE `ID`='.$IDgame.'');
