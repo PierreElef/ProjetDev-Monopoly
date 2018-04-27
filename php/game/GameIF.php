@@ -24,7 +24,6 @@
             <div id="board" class="col-lg-7 col-md-12">
                 <?php include("../../html/monopoly_canvas.html")?>
             </div>
-<<<<<<< HEAD
             <div class="col-lg-5 row">
                 <div class="col-lg-12 col-md-6">
                     <div id="playerStats">
@@ -77,32 +76,6 @@
                         </div>
                     </div>
                 </div>
-=======
-            <div id="playerStats" class="col-lg-5 col-md-6">
-                <table class="table table-bordered">
-                    <tr style="font-weight: bold;">
-                        <td>Joueur</td>
-                        <td>Argent</td>
-                        <td>Position</td>
-                    </tr>
-                    <?php
-                        $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$IDgame, 1);
-                        foreach($IDplayers as $IDplayer){
-                            $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$IDgame.' AND `IDuser`='.$IDplayer.'');
-                            $positionPlayer=getSql('SELECT `position` FROM `player` WHERE `IDgame`='.$IDgame.' AND `IDuser`='.$IDplayer.'');
-                            $namePlayer=getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer.'');
-                            $colorPlayer=getSql('SELECT `color` FROM `player` WHERE `IDgame`='.$IDgame.' AND `IDuser`='.$IDplayer.'');
-                            echo '<tr>';
-                            echo '<td style="color:'.$colorPlayer.'"><b>'.$namePlayer.'</b></td>';
-                            echo '<td>'.$moneyPlayer.'</td>';
-                            echo '<td>'.$positionPlayer.'</td>';
-                            echo '</tr>';
-                        }
-
-
-                    ?>
-                </table>
->>>>>>> dbf45f6af1e93cf2e2253c2242f13769ba9c2ca9
             </div>
         </div>
     </div>
