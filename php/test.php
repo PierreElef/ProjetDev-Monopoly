@@ -23,3 +23,4 @@ $réponse;
 	<input type="submit" value="test"/>
 </form>
 </body>
+</html>
