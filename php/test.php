@@ -18,7 +18,7 @@ $réponse;
 	}
 ?>	
 <form method="post" action="#">
-	carte:<input type="number" name="$ID"/>
+	carte:<input type="number" name="$ID" value="<?php echo $message $type ?>" />
 	<input type="submit" value="test">
 </form>
 </body>
