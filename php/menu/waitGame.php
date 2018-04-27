@@ -37,16 +37,30 @@
                 <img src="../../images/wait2.gif" width=50%>
             </div>
         </div>
-        <?php
-            
-            $nbrPlayerNeed = getSql('SELECT `nbrNeeded` FROM `game` WHERE `ID`='.$IDgame.'');
-            $nbrOnLine = getSql('SELECT `nbrOnLine` FROM `game` WHERE `ID`='.$IDgame.'');
-            if($nbrPlayerNeed==$nbrOnLine){
-                header('Location: ../game/GameIF.php');
-            }
-        ?>
-        
         <?php include("../../html/footer.html")?>
     </div>
+     <script src="jquery.js"></script>
+        <script>
+            $.ajax({
+                url: '/getPlayer',
+                timeout:3000 //3 second timeout
+                }).done(function(){
+                        $nbrPlayerNeed = getSql('SELECT `nbrNeeded` FROM `game` WHERE `ID`='.$IDgame.'');
+                        $nbrOnLine = getSql('SELECT `nbrOnLine` FROM `game` WHERE `ID`='.$IDgame.'');
+                        if($nbrPlayerNeed==$nbrOnLine){
+                    header('Location: ../game/GameIF.php');
+            }
+
+                //do something
+
+                }).fail(function(jqXHR, textStatus){
+                    if(textStatus === 'timeout')
+                {     
+                    alert('Failed from timeout'); 
+                //do something. Try again
+                }
+            });​
+        
+        </script>
 </body>
 </html>
