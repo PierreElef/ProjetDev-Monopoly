@@ -23,3 +23,8 @@
     background-color: gray;
     border: 1px, solid, black;
 }
+
+.buttonGame{
+    width: 110px;
+    height:30px;
+}
