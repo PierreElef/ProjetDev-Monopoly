@@ -1,95 +1,107 @@
 <?php
+session_start();
+$IDgame=$_SESSION["idGame"];
+settype($IDgame, "int");
+include('../commun/getSQL.php');
 
-class Player
-{
-//////////////////////////////////////////////////////////////////////////////////////////////////// PROPRIETES
-//////////////////////////////////////////////////////////// CONSTANTE
+class Player{
+////////////////////////////////////////////// PROPRIETES
+////////////////////////////////////////////// CONSTANTE
     private $id;
     private $name;
     private $color;
-//////////////////////////////////////////////////////////// EVOLUTIVE
-    private $pos = 0;
-    private $cash = 500;
-    public $isJail = false;
-    public $isTurn = true;
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////// CONSTRUCTEUR
-    function __construct($name)
-    {
-        $this->name = $name;
-        echo $this->getName()." a rejoint la partie<br><br>";
+////////////////////////////////////////////// EVOLUTIVE
+    private $pos;
+    private $cash;
+    private $isJail;
+    private $isTurn = true;
+    private $cardJail = false;
+    private $nbrHouse;
+    private $nbrHotel;
+
+////////////////////////////////////////////// CONSTRUCTEUR
+    function __construct(){
+        $this->id = $_SESSION["id"];
+        $this->name = getSql('SELECT `name` FROM `user` WHERE `ID`='.$this->id);
+        $this->color = getSql('SELECT `color` FROM `player` WHERE `IDuser`='.$this->id.'AND `IDgame`='.$IDgame);
+        $this->cash = getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$this->id.'AND `IDgame`='.$IDgame);
+        $this->isJail = getSql('SELECT `jailStatus` FROM `player` WHERE `IDuser`='.$this->id.'AND `IDgame`='.$IDgame);
+        //$this->nbrHouse;
+        //$this->nbrHotel;
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////// MUTATEURS
-//////////////////////////////////////////////////////////// GETTEURS
-    function getId()
-    {
+
+////////////////////////////////////////////// MUTATEURS
+////////////////////////////////////////////// GETTEURS
+    function getId(){
         return $this->id;
     }
 
-    function getName()
-    {
+    function getName(){
         return $this->name;
     }
 
-    function getColor()
-    {
+    function getColor(){
         return $this->color;
     }
 
-    function getPos()
-    {
+    function getPos(){
         return $this->pos;
     }
 
-    function getCash()
-    {
+    function getCash(){
         return $this->cash;
     }
 
-    function getJailStatu()
-    {
+    function getJailStatu(){
         return $this->isJail;
     }
 
-    function getTurnStatu()
-    {
+    function getTurnStatu(){
         return $this->isTurn;
     }
-//////////////////////////////////////////////////////////// SETTEURS
-    function setPos($pos)
-    {
+
+    function getCardJail(){
+        return $this->cardJail;
+    }
+
+    function getNbrHouse(){
+        return $this->nbrHouse;
+    }
+
+    function getNbrHotel(){
+        return $this->nbrHotel;
+    }
+
+////////////////////////////////////////////// SETTEURS
+    function setPos($pos){
         $this->pos = $pos;
+        requetSql('UPDATE `player` SET `position`='.$this->pos.' WHERE `IDuser`='.$this->id);
     }
 
-    function setCash($newCash)
-    {
-        $this->cash = $newCash;
+    function setCash($newCash){
+        $this->cash =+ $newCash;
+        requetSql('UPDATE `player` SET `money`='.$this->cash.' WHERE `IDuser`='.$this->id);
     }
 
-    function jailOn()
-    {
-        $this->isJail = True;
+    function jailOn(){
+        $this->isJail = 1;
+        requetSql('UPDATE `player` SET `jailStatus`='.1.' WHERE `IDuser`='.$this->id);
     }
 
-    function jailOff()
-    {
-        $this->isJail = False;
+    function jailOff(){
+        $this->isJail = 0;
+        requetSql('UPDATE `player` SET `jailStatus`='.0.' WHERE `IDuser`='.$this->id);
     }
 
-    function turnOn()
-    {
+    function turnOn(){
         $this->isTurn = True;
     }
 
-    function turnOff()
-    {
+    function turnOff(){
         $this->isTurn = False;
     } 
-////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////// FONCTIONS COMPLEXES
-//////////////////////////////////////////////////////////// DEPLACEMENT
+////////////////////////////////////////////// FONCTIONS COMPLEXES
+////////////////////////////////////////////// DEPLACEMENT
     function move(Dice $de)
     {
         echo "DEPLACEMENT :<br>";
@@ -112,7 +124,7 @@ class Player
         echo $this->getName()." se déplace jusqu'à la case ".$this->getPos().".<br><br>";
     }
 
-    //////////////////////////////////////////////////////////// ACTIONS
+////////////////////////////////////////////// ACTIONS
 
     /* 
     1 rue 
@@ -131,8 +143,16 @@ class Player
         {
             case 1:
                 echo "Le joueur est sur une case propriété.<br>";
+                if($box->getOwner($this->pos)==NULL){
+                    $box->buy($this->id);
+                    setCash(-1500000);
+                }elseif ($box->getOwner($this->pos)==$this->id){
+                    //construire
+                }else{
+                    //si assez argent
+                    //si pas assez argent
+                }
                 break;
-            
             case 2:
                 echo "Le joueur est sur une case gare.<br>";
                 break;
@@ -143,10 +163,12 @@ class Player
                 echo "Le joueur est sur une case départ ou prison.<br>";
                 break;
             case 5: 
-                echo "Le joueur est sur une case ou il pioche une carte.<br>";
+                echo "Le joueur est sur une case où il pioche une carte.<br>";
                 break;
             case 6:
-                echo "Le joueur est sur une case ou il va payer. <br>";
+                echo "Le joueur est sur une case oùs
+                
+                il va payer. <br>";
                 break;
             case 7:
                 echo "Le joueur est sur le park gratuit.<br>";
@@ -158,12 +180,18 @@ class Player
 
         }
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////// FONCTIONS SECONDAIRES
-    function goInJail()
-    {
+////////////////////////////////////////////// FONCTIONS SECONDAIRES
+    function goInJail(){
         $this->setPos(11);
         $this->jailOn();
+    }
+
+    function changeCardJail(){
+        if ($this->cardJail == false){
+            $this->cardJail == true;
+        }else{
+            $this->cardJail == false;
+        }
     }
 
 }

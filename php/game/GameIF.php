@@ -54,26 +54,36 @@
                     <div class="row">
                         <div class="col-6">
                             <form>
-                                <input class="btn-md m-1 buttonGame" type="submit" value="Lancer le dé">
+                                <input class="m-1 buttonGame" type="submit" value="Lancer le dé">
+                                <input class="hidden" name="diceButton" value="1">
                             </form>
                             <form>
-                                <input class="btn-md m-1 buttonGame" type="submit" value="Acheter">
+                                <input class="m-1 buttonGame" type="submit" value="Acheter">
+                                <input class="hidden" name="buyButton" value="1">
                             </form>
                             <form>
-                                <input class="btn-md m-1 buttonGame" type="submit" value="Payer">
+                                <input class="m-1 buttonGame" type="submit" value="Passer">
+                                <input class="hidden" name="passButton" value="1">
                             </form>
                         </div>
                         <div class="col-6">
                             <form>
-                                <input class="btn-md m-1 buttonGame" type="submit" value="Négocier">
+                                <input class="m-1 buttonGame" type="submit" value="Négocier">
+                                <input class="hidden" name="negotiateButton" value="1">
                             </form>
                             <form>
-                                <input class="btn-md m-1 buttonGame" type="submit" value="Construire">
+                                <input class="m-1 buttonGame" type="submit" value="Construire">
+                                <input class="hidden" name="buildButton" value="1">
                             </form>
                             <form>
-                                <input class="btn-md m-1 buttonGame" type="submit" value="Carte Prison">
+                                <input class="m-1 buttonGame" type="submit" value="Carte Prison">
+                                <input class="hidden" name="cardJailButton" value="1">
                             </form>
                         </div>
+                        <?php
+                        
+                        
+                        ?>
                     </div>
                 </div>
             </div>

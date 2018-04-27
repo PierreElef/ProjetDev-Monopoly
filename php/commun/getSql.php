@@ -70,8 +70,7 @@ function getSqlArray($sql, $rowNbr) {
 	mysqli_close($link);
 	return ($result);
 }
-function requetSql($sql)
-{
+function requetSql($sql){
     $user = 'root';
     $password = '';
     $db = 'monopoly';

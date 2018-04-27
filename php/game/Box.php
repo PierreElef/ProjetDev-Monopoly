@@ -1,4 +1,8 @@
 <?php
+session_start();
+$IDgame=$_SESSION["idGame"];
+settype($IDgame, "int");
+include('../commun/getSQL.php');
 
 class Box{
     private $id;
@@ -37,7 +41,26 @@ class Box{
         return $this->price;
     }
 
-    function getInitalPrice(){
+    function getInitalRent(){
+        return $this->initialRent;
+    }
+
+    function getOwner($id){
+        $sql='SELECT  `'.$id.'` FROM `owner` WHERE `IDgame`='.$IDgame;
+        return getSql($sql);
+    }
+
+    function buy($idPlayer){
+        $sql='UPDATE `owner` SET `'.$id.'`='.$idPlayer.' WHERE `IDgame`='.$IDgame;
+        requetSql($sql);
+    }
+
+    function build($idPlayer){
+        $sql='UPDATE `owner` SET `'.$id.'`='.$idPlayer.' WHERE `IDgame`='.$IDgame;
+        requetSql($sql);
+    }
+
+    function getPrice(){
         return $this->initialRent;
     }
 
