@@ -21,7 +21,7 @@ class Box{
         return $this->id;
     }
 
-    function getname(){
+    function getName(){
         return $this->name;
     }
 
@@ -37,7 +37,7 @@ class Box{
         return $this->price;
     }
 
-    function getinitalPrice(){
+    function getInitalPrice(){
         return $this->initialRent;
     }
 

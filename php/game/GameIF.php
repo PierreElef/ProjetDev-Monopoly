@@ -3,7 +3,7 @@
     include('../commun/getSQL.php');
     $ID=$_SESSION["id"];
     $IDgame=$_SESSION["idGame"];
-    settype($IDgame, "int")
+    settype($IDgame, "int");
 ?>
 <!DOCTYPE html>
 <html>
