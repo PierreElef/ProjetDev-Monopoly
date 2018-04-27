@@ -65,37 +65,37 @@ $game = new Game;
         $board->addCommunityChestCard(new CommunityChestCard(1, "Allez au départ"));
         $board->addCommunityChestCard(new CommunityChestCard(2, "Allez en prison"));
         $board->addCommunityChestCard(new CommunityChestCard(3, "Allez Grande Rue Saint-Michel"));
-        $board->addCommunityChestCard(new CommunityChestCard(4, "Amende pour ivresse</b>-2 000€"));
-        $board->addCommunityChestCard(new CommunityChestCard(5, "Vous avez gagné le concours de mot-croisés<br/>+10 000€"));
+        $board->addCommunityChestCard(new CommunityChestCard(4, "Amende pour ivresse<br/>-200 000 €"));
+        $board->addCommunityChestCard(new CommunityChestCard(5, "Vous avez gagné le concours de mot-croisés<br/>+1 000 000 €"));
         $board->addCommunityChestCard(new CommunityChestCard(6, "Allez aux Allées Jean-Jaurés"));
         $board->addCommunityChestCard(new CommunityChestCard(7, "Allez gare de St-Cyprien"));
-        $board->addCommunityChestCard(new CommunityChestCard(8, "Amende pour excès de vitesse<br/>-1 500€"));
-        $board->addCommunityChestCard(new CommunityChestCard(9, "Payer les frais de scolarité<br/>-15 000€"));
+        $board->addCommunityChestCard(new CommunityChestCard(8, "Amende pour excès de vitesse<br/>-150 000 €"));
+        $board->addCommunityChestCard(new CommunityChestCard(9, "Payer les frais de scolarité<br/>-1 500 000 €"));
         $board->addCommunityChestCard(new CommunityChestCard(10, "Reculez de trois cases"));
-        $board->addCommunityChestCard(new CommunityChestCard(11, "Réparation dans vos maisons<br/>-2 500€/maison -10 000€/hôtel"
-        $board->addCommunityChestCard(new CommunityChestCard(12, "Votre prêt rapporte<br/>+15 000€"));
+        $board->addCommunityChestCard(new CommunityChestCard(11, "Réparation dans vos maisons<br/>-250 000€/maison -1 000 000€/hôtel"
+        $board->addCommunityChestCard(new CommunityChestCard(12, "Votre prêt rapporte<br/>+1 500 000€"));
         $board->addCommunityChestCard(new CommunityChestCard(13, "Libéré de prison"));
         $board->addCommunityChestCard(new CommunityChestCard(14, "Rendez-vous Rue Croix Baragnon"));
-        $board->addCommunityChestCard(new CommunityChestCard(15, "Voirie <br/>-4 000€/maison -10 000€/hôtel"));
-        $board->addCommunityChestCard(new CommunityChestCard(16, "La banque vous verse<br/>+5 000€"));
+        $board->addCommunityChestCard(new CommunityChestCard(15, "Voirie <br/>-400 000€/maison -1 000 000€/hôtel"));
+        $board->addCommunityChestCard(new CommunityChestCard(16, "La banque vous verse<br/>+500 000€"));
         
         //Création cartes Chance
-        $board->addChanceCard(new ChanceCard(1, "Amende pour excès de vitesse<br/>-1 000€"));
-        $board->addChanceCard(new ChanceCard(2, "La banque vous verse un dividente<br/>+5 000€"));
-        $board->addChanceCard(new ChanceCard(3, "Voirie<br/>-4 000€/maison -11 500€/hôtel"));
+        $board->addChanceCard(new ChanceCard(1, "Amende pour excès de vitesse<br/>-100 000€"));
+        $board->addChanceCard(new ChanceCard(2, "La banque vous verse un dividente<br/>+500 000€"));
+        $board->addChanceCard(new ChanceCard(3, "Voirie<br/>-4 000€/maison -1 150 000€/hôtel"));
         $board->addChanceCard(new ChanceCard(4, "Allez au départ"));
-        $board->addChanceCard(new ChanceCard(5, "Payez frais de scolarité<br/>-15 000€"));
+        $board->addChanceCard(new ChanceCard(5, "Payez frais de scolarité<br/>-1 500 000€"));
         $board->addChanceCard(new ChanceCard(6, "Allez Rue Croix Baragnon"));
         $board->addChanceCard(new ChanceCard(7, "Libéré de prison"));
         $board->addChanceCard(new ChanceCard(8, "Allez aux Allées Jean-Jaurés"));
-        $board->addChanceCard(new ChanceCard(9, "Faites de réparations dans toutes vos maisons<br/>-2 500/maison -10 000/hôtel"));
+        $board->addChanceCard(new ChanceCard(9, "Faites de réparations dans toutes vos maisons<br/>-250 000/maison -1 000 000/hôtel"));
         $board->addChanceCard(new ChanceCard(10, "Allez Grande Rue Saint-Michel"));
         $board->addChanceCard(new ChanceCard(11, "Allez gare de St-Cyprien"));
-        $board->addChanceCard(new ChanceCard(12, "Votre immeuble et votre prêt rapportent<br/>+ 15 000€"));
+        $board->addChanceCard(new ChanceCard(12, "Votre immeuble et votre prêt rapportent<br/>+ 1 500 000€"));
         $board->addChanceCard(new ChanceCard(13, "Allez en prison"));
         $board->addChanceCard(new ChanceCard(14, "Reculez de trois cases"));
-        $board->addChanceCard(new ChanceCard(15, "Ammende pour ivresse<br/>- 2 000€"));
-        $board->addChanceCard(new ChanceCard(16, "Vous avez gagné le prix de mots croisés de 10 000€"));
+        $board->addChanceCard(new ChanceCard(15, "Ammende pour ivresse<br/>- 200 000€"));
+        $board->addChanceCard(new ChanceCard(16, "Vous avez gagné le prix de mots croisés de 1 000 000€"));
 
     //Choix de l'ordre de passage
     $game->getPlayingOrder();
