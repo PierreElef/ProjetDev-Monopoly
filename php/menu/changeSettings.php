@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include('getSQL.php');
+    include('../commun/getSQL.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,17 +8,17 @@
     <meta lan="fr">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Jouer une partie</title>
+    <title>Changer les paramètres</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
 </head>
 <html>
 <body>
-<div class="container">
+    <div class="container">
         <header class="header">
-            <?php include("../html/header.html")?>
+            <?php include("../../html/header.html")?>
             <div class="row justify-content-end">
                 <div class="col-8">
                     <h1 class="text-center">Changer les paramètres</h1>
@@ -27,11 +27,11 @@
                     <div class="row m-2">
                         <form name="changeSettings" method="post" action="#" class="p-1">
                             <input type="hidden" name="change" value=1>
-                            <input type="image" src="../images/settings.png" alt="Submit" width="32" height="32">
+                            <input type="image" src="../../images/settings.png" alt="Submit" width="32" height="32">
                         </form>
                         <form name="quitSession" method="post" action="#" class="p-1">
                             <input type="hidden" name="quit" value=1>
-                            <input type="image" src="../images/quit.png" alt="Submit" width="32" height="32">
+                            <input type="image" src="../../images/quit.png" alt="Submit" width="32" height="32">
                         </form>
                     </div>
                 </div>
@@ -67,23 +67,23 @@
             if (isset($_POST['newName'])){
                 $id=$_SESSION["id"];
                 $newName=$_POST['newName'];
-                $sql="UPDATE `player` SET `username`='".$newName."' WHERE `ID`=".$id;
+                $sql="UPDATE `user` SET `name`='".$newName."' WHERE `ID`=".$id;
                 requetSql($sql);
              }
             if (isset($_POST['newPWD'])){
                 $newPWD=$_POST['newPWD'];
-                $sql="UPDATE `player` SET `password`='".$newPWD."' WHERE `ID`=".$id;
+                $sql="UPDATE `user` SET `password`='".$newPWD."' WHERE `ID`=".$id;
                 requetSql($sql);
             } 
             if (isset($_POST['return'])){
                 header('Location: PlayGame.php');
             } 
             function returnName($id){
-                $name =  getSql('SELECT `username` FROM `player` WHERE `id`="'.$id.'"');
+                $name =  getSql('SELECT `name` FROM `user` WHERE `id`="'.$id.'"');
                 return $name;
             }
             function returnPWD($id){
-                $pwd = getSql('SELECT `password` FROM `player` WHERE `id`="'.$id.'"');
+                $pwd = getSql('SELECT `password` FROM `user` WHERE `id`="'.$id.'"');
                 return $pwd;
             }
             if (isset($_POST['change'])){
@@ -95,7 +95,7 @@
             }
         ?>
         
-        <?php include("../html/footer.html")?>
+        <?php include("../../html/footer.html")?>
     </div>
 </body>
 </html>

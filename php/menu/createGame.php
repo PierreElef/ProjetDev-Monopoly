@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include('../commun/getSQL.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,14 +11,14 @@
     <title>Création d'une partie</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
 </head>
 <html>
 <body>
     <div class="container">
         <header class="header">
-            <?php include("../html/header.html")?>
+            <?php include("../../html/header.html")?>
             <div>
                 <h1 class="text-center">Création d'une partie</h1>
             <div>
@@ -33,24 +34,31 @@
             </form>
         </div>
         <?php
-            include('getSQL.php');
             if (isset($_POST['create'])){
                 $nbrRealPlayer=$_POST['nbrRealPlayer'];
                 $nbrIAPlayer=$_POST['nbrIAPlayer'];
                 $nbrTTPlayer=$nbrRealPlayer+$nbrIAPlayer;
                 $idPlayer=$_SESSION["id"];
+                $colorArray=array("#FF0000","#003AFF","#4FAB5B","#ffac00","#d8789f","#00c8d8");
                 if($nbrTTPlayer>6){
                     echo '<p class="text-center" style="color:red">Trop de joueurs. Limite de 6 au total.</p>';
                 }elseif ($nbrTTPlayer==1){
                     echo '<p class="text-center" style="color:red">Il faut au minimum 2 joueurs pour jouer.</p>';
                 }else{
-                    $sql='INSERT INTO `game`(`IDplayer1`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`) VALUES ('.$idPlayer.','.$nbrTTPlayer.',1,'.$nbrRealPlayer.')';
-                    requetSql($sql);
+                    requetSql('INSERT INTO `game`(`IDplayer1`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`) VALUES ('.$idPlayer.','.$nbrTTPlayer.',1,'.$nbrRealPlayer.')');
+                    $sql='SELECT MAX(`ID`) FROM `game`';
+                    $_SESSION["idGame"]=getSql($sql);
+                    requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$idPlayer.','.$_SESSION["idGame"].',15000000,1,0,"'.$colorArray[0].'")');
+                $IDplayerIA=1;
+                for ($i=$nbrRealPlayer+1; $i<=$nbrTTPlayer; $i++){
+                    requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$IDplayerIA.','.$_SESSION["idGame"].',15000000,1,0,"'.$colorArray[$i].'")');
+                    $IDplayerIA=$IDplayerIA+1;
+                }
                     header('Location: waitGame.php');
                 }
             }
         ?>
-        <?php include("../html/footer.html")?>
+        <?php include("../../html/footer.html")?>
     </div>
 </body>
 </html>

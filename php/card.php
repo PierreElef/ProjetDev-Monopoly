@@ -1,43 +1,46 @@
 <?php
 include ('Player.php');
+include ('getSql.php');
 class Card
 {
 	private $ID;
-	private $message='';
+	private $message;
 	private $type;
-	private $owner =false;
-	function setOwner($player)
+	private $owner=false;
+	
+	function setOwner(Player $player)
 	{
 		$this->owner=$player;
+		$owner->requetSql();
 	}
 	
-	function takeMoneyfromPlayer()
+	function takeMoneyfromPlayer($ammende)
 	{
-
+		$owner->setMoney();
+		$this->message='La banque vous prends'.$ammende.'euros';	
 	}
 	
-	function giveMoneyfromPlayer()
+	function giveMoneyfromPlayer($gain)
 	{
-
+		$owner->setMoney();
+		$this->message='Vous gagnez'.$gain.'euros';
 	}
 	
-	function sendPlayertoJail()
+	function sendPlayertoJail(Player $player)
 	{
-
+		$player->setJailStatus(true);
 	}
 	
-	function changePositionPlayer()
+	function changePositionPlayer(Player $player, $position)
 	{
-
+		$player->setPostion($position);
 	}
 	
-	function leaveJail()
+	function leaveJail(Player $player)
 	{
-		
+		$player->setJailStatus(false);
 	}
-
+	
+	
 }
-
-
-
 ?>

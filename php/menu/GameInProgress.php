@@ -19,37 +19,37 @@
             //récupération des caractéristiques du livre
             $IDplayer1 = getSql('SELECT `IDplayer1` FROM `game` WHERE `ID`='.$IDgame.'');
             if (!($IDplayer1==NULL)){
-                $namePlayer1 = getSql('SELECT `username` FROM `player` WHERE `ID`='.$IDplayer1.'');
+                $namePlayer1 = getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer1.'');
             }else{
                 $namePlayer1 = "";
             }
             $IDplayer2 = getSql('SELECT `IDplayer2` FROM `game` WHERE `ID`='.$IDgame.'');
             if (!($IDplayer2==NULL)){
-                $namePlayer2 = getSql('SELECT `username` FROM `player` WHERE `ID`='.$IDplayer2.'');
+                $namePlayer2 = getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer2.'');
             }else{
                 $namePlayer2 = "";
             }
             $IDplayer3 = getSql('SELECT `IDplayer3` FROM `game` WHERE `ID`='.$IDgame.'');
             if (!($IDplayer3==NULL)){
-                $namePlayer3 = getSql('SELECT `username` FROM `player` WHERE `ID`='.$IDplayer3.'');
+                $namePlayer3 = getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer3.'');
             }else{
                 $namePlayer3 = "";
             }
             $IDplayer4 = getSql('SELECT `IDplayer4` FROM `game` WHERE `ID`='.$IDgame.'');
             if (!($IDplayer4==NULL)){
-                $namePlayer4 = getSql('SELECT `username` FROM `player` WHERE `ID`='.$IDplayer4.'');
+                $namePlayer4 = getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer4.'');
             }else{
                 $namePlayer4 = "";
             } 
             $IDplayer5 = getSql('SELECT `IDplayer5` FROM `game` WHERE `ID`='.$IDgame.'');
             if (!($IDplayer5==NULL)){
-                $namePlayer5 = getSql('SELECT `username` FROM `player` WHERE `ID`='.$IDplayer5.'');
+                $namePlayer5 = getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer5.'');
             }else{
                 $namePlayer5 = "";
             }  
             $IDplayer6 = getSql('SELECT `IDplayer6` FROM `game` WHERE `ID`='.$IDgame.'');
             if (!($IDplayer6==NULL)){
-                $namePlayer6 = getSql('SELECT `username` FROM `player` WHERE `ID`='.$IDplayer6.'');
+                $namePlayer6 = getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer6.'');
             }else{
                 $namePlayer6 = "";
             } 

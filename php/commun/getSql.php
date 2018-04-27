@@ -72,18 +72,25 @@ function getSqlArray($sql, $rowNbr) {
 }
 function requetSql($sql)
 {
-	$user = 'root';
-	$password = '';
-	$db = 'monopoly';
-	$host = 'localhost';
-	$port = 3306;
-	// Connexion à la BDD
-	$link = mysqli_init();
-	$success = mysqli_real_connect($link,$host,$user,$password,$db,$port);
-	// Execution de la requete ET renvoi d'erreur si echec d'execution
-	mysqli_query($link, $sql) or die ('Erreur SQL. Detail : '.mysqli_error($link));
-	// Fermeture de la connexion
-	mysqli_close($link);
-	//echo 'succes !';
+    $user = 'root';
+    $password = '';
+    $db = 'monopoly';
+    $host = 'localhost';
+    $port = 3306;   
+    // Connexion à la BDD
+    $link = mysqli_init();
+    $success = mysqli_real_connect(
+       $link, 
+       $host, 
+       $user, 
+       $password, 
+       $db,
+       $port
+    );
+    // Execution de la requete ET renvoi d'erreur si echec d'execution
+    mysqli_query($link, $sql) or die ('Erreur SQL. Detail : '.mysqli_error($link));
+    // Fermeture de la connexion
+    mysqli_close($link);
+    //echo 'succes !';
 }
 ?>

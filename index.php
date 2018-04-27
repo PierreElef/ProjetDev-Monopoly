@@ -1,3 +1,3 @@
 <?php
-    header('Location: php/connexion.php');
+    header('Location: php/menu/connexion.php');
 ?>
