@@ -1,7 +1,7 @@
 <?php
 session_start();
-$IDgame=$_SESSION["idGame"];
-settype($IDgame, "int");
+$gameID=$_SESSION["idGame"];
+settype($gameID, "int");
 include('../commun/getSQL.php');
 
 class Player{
@@ -23,9 +23,9 @@ class Player{
     function __construct(){
         $this->id = $_SESSION["id"];
         $this->name = getSql('SELECT `name` FROM `user` WHERE `ID`='.$this->id);
-        $this->color = getSql('SELECT `color` FROM `player` WHERE `IDuser`='.$this->id.'AND `IDgame`='.$IDgame);
-        $this->cash = getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$this->id.'AND `IDgame`='.$IDgame);
-        $this->isJail = getSql('SELECT `jailStatus` FROM `player` WHERE `IDuser`='.$this->id.'AND `IDgame`='.$IDgame);
+        $this->color = getSql('SELECT `color` FROM `player` WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
+        $this->cash = getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
+        $this->isJail = getSql('SELECT `jailStatus` FROM `player` WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
         //$this->nbrHouse;
         //$this->nbrHotel;
     }
@@ -75,22 +75,22 @@ class Player{
 ////////////////////////////////////////////// SETTEURS
     function setPos($pos){
         $this->pos = $pos;
-        requetSql('UPDATE `player` SET `position`='.$this->pos.' WHERE `IDuser`='.$this->id);
+        requetSql('UPDATE `player` SET `position`='.$this->pos.' WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
     }
 
     function setCash($newCash){
         $this->cash =+ $newCash;
-        requetSql('UPDATE `player` SET `money`='.$this->cash.' WHERE `IDuser`='.$this->id);
+        requetSql('UPDATE `player` SET `money`='.$this->cash.' WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
     }
 
     function jailOn(){
         $this->isJail = 1;
-        requetSql('UPDATE `player` SET `jailStatus`='.1.' WHERE `IDuser`='.$this->id);
+        requetSql('UPDATE `player` SET `jailStatus`='.1.' WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
     }
 
     function jailOff(){
         $this->isJail = 0;
-        requetSql('UPDATE `player` SET `jailStatus`='.0.' WHERE `IDuser`='.$this->id);
+        requetSql('UPDATE `player` SET `jailStatus`='.0.' WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
     }
 
     function turnOn(){
@@ -139,25 +139,76 @@ class Player{
     function action(Box $box)
     {
         $type = $box->getType($this->pos);
+        $ownerID= $box->getOwner();
         switch($type)
         {
             case 1:
                 echo "Le joueur est sur une case propriété.<br>";
-                if($box->getOwner($this->pos)==NULL){
+                if($ownerID==NULL){
                     $box->buy($this->id);
                     setCash(-1500000);
-                }elseif ($box->getOwner($this->pos)==$this->id){
-                    //construire
+                }elseif ($ownerID==$this->id){
+                    if($box->nbrHouse()>=4){
+                        $box->buildHouse();
+                        $this->nbrHouse =+ 1;
+                        $this->setCash(-1500000);
+                    }else{
+                        if($box->nbrHotel()!==1){
+                            $box->buildHotel();
+                            $this->nbrHouse =- 4;
+                            $this->nbrHotel =+ 1;
+                            $this->setCash(-1500000);
+                        }
+                    }
                 }else{
-                    //si assez argent
-                    //si pas assez argent
+                    if($cash>$box->getRentStreet()){
+                        //si assez argent
+                        $newCash = -$box->getRentStreet();
+                        $this->setCash($newCash);
+                        $cashOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$gameID);
+                        requetSql('UPDATE `player` SET `money`='.$cashOnwer + $box->getRentStreet().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$gameID);
+                    }else{
+                        //si pas assez argent
+                    }
                 }
                 break;
             case 2:
                 echo "Le joueur est sur une case gare.<br>";
+                if($ownerID==NULL){
+                    $box->buy($this->id);
+                    setCash(-1500000);
+                }elseif ($ownerID==$this->id){
+                    break;
+                }else{
+                    if($cash>$box->getRentStation()){
+                        //si assez argent
+                        $newCash = -$box->getRentStation();
+                        $this->setCash($newCash);
+                        $cashOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$gameID);
+                        requetSql('UPDATE `player` SET `money`='.$cashOnwer + $box->getRentStation().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$gameID);
+                    }else{
+                        //si pas assez argent
+                    }
+                }
                 break;
             case 3:
                 echo "Le joueur est sur une case compagnie.<br>";
+                if($ownerID==NULL){
+                    $box->buy($this->id);
+                    setCash(-1500000);
+                }elseif ($ownerID==$this->id){
+                    break;
+                }else{
+                    if($cash>$box->getRentEnergie()){
+                        //si assez argent
+                        $newCash = -$box->getRentEnergie();
+                        $this->setCash($newCash);
+                        $cashOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$gameID);
+                        requetSql('UPDATE `player` SET `money`='.$cashOnwer + $box->getRentEnergie().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$gameID);
+                    }else{
+                        //si pas assez argent
+                    }
+                }
                 break;
             case 4: 
                 echo "Le joueur est sur une case départ ou prison.<br>";
@@ -166,12 +217,17 @@ class Player{
                 echo "Le joueur est sur une case où il pioche une carte.<br>";
                 break;
             case 6:
-                echo "Le joueur est sur une case oùs
-                
-                il va payer. <br>";
+                echo "Le joueur est sur une case où il va payer.<br>";
+                $newCash = -2000000;
+                $this->setCash($newCash);
+                $jackpot = getSql('SELECT `jackpot` FROM `game` WHERE `ID`='.$gameID);
+                requetSql('UPDATE `game` SET `jackpot`='.$jackpot - $newCash.' WHERE `ID`='.$gameID);
                 break;
             case 7:
                 echo "Le joueur est sur le park gratuit.<br>";
+                $jackpot = getSql('SELECT `jackpot` FROM `game` WHERE `ID`='.$gameID);
+                $this->setCash($jackpot);
+                requetSql('UPDATE `game` SET `jackpot`= 0 WHERE `ID`='.$gameID);
                 break;
             case 8:
                 echo "Le joueur est sur la case aller en prison.<br>"

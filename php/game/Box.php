@@ -1,7 +1,7 @@
 <?php
 session_start();
-$IDgame=$_SESSION["idGame"];
-settype($IDgame, "int");
+$gameID=$_SESSION["idGame"];
+settype($gameID, "int");
 include('../commun/getSQL.php');
 
 class Box{
@@ -45,25 +45,48 @@ class Box{
         return $this->initialRent;
     }
 
-    function getOwner($id){
-        $sql='SELECT  `'.$id.'` FROM `owner` WHERE `IDgame`='.$IDgame;
-        return getSql($sql);
+    function getOwner(){
+        return getSql('SELECT  `'.$this->id.'` FROM `owner` WHERE `IDgame`='.$gameID);
     }
 
     function buy($idPlayer){
-        $sql='UPDATE `owner` SET `'.$id.'`='.$idPlayer.' WHERE `IDgame`='.$IDgame;
-        requetSql($sql);
+        requetSql('UPDATE `owner` SET `'.$this->id.'`='.$idPlayer.' WHERE `IDgame`='.$gameID);
     }
 
-    function build($idPlayer){
-        $sql='UPDATE `owner` SET `'.$id.'`='.$idPlayer.' WHERE `IDgame`='.$IDgame;
-        requetSql($sql);
+    ////////////////////////////////////////////// Street
+    function buildHouse(){
+        if(nbrHouse()=NULL){
+            requetSql('INSERT INTO `building`(`IDgame`, `IDbox`, `nbrHouse`, `nbrHotel`) VALUES ('.$gameID.','.$this->id.',1,0)';
+        }else{
+            requetSql('UPDATE `building` SET `nbrHotel`='.$this->nbrHotel()+1.'WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id;
+        }
     }
 
-    function getPrice(){
-        return $this->initialRent;
+    function buildHouse(){
+        requetSql('UPDATE `building` SET `nbrHouse`='.$this->nbrHouse()+1.' WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id;
     }
 
+    function nbrHouse(){
+        return getSql('SELECT  `nbrHouse` FROM `building` WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id)
+    }
+    function nbrHotel(){
+        return getSql('SELECT  `nbrHotel` FROM `building` WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id)
+    }
+
+    function getRentStreet(){
+       $rent=array(300000,1000000,3000000,7000000,10000000,12000000);
+       return $rent[$this->nbrHouse()+$this->nbrHotel()];
+    }
+
+    ////////////////////////////////////////////// Station
+    function getRentStation(){
+        return 500000;
+    }
+
+    ////////////////////////////////////////////// Energie
+    function getRentEnergie(){
+        return 500000;
+    }
 }
 
 ?>

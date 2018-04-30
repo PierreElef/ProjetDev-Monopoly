@@ -2,8 +2,8 @@
     session_start();
     include('../commun/getSQL.php');
     $ID=$_SESSION["id"];
-    $IDgame=$_SESSION["idGame"];
-    settype($IDgame, "int");
+    $gameID=$_SESSION["idGame"];
+    settype($gameID, "int");
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,12 +34,12 @@
                                 <td>Position</td>
                             </tr>
                             <?php
-                                $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$IDgame, 1);
+                                $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$gameID, 1);
                                 foreach($IDplayers as $IDplayer){
-                                    $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$IDgame.' AND `IDuser`='.$IDplayer.'');
-                                    $positionPlayer=getSql('SELECT `position` FROM `player` WHERE `IDgame`='.$IDgame.' AND `IDuser`='.$IDplayer.'');
+                                    $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$gameID.' AND `IDuser`='.$IDplayer.'');
+                                    $positionPlayer=getSql('SELECT `position` FROM `player` WHERE `IDgame`='.$gameID.' AND `IDuser`='.$IDplayer.'');
                                     $namePlayer=getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer.'');
-                                    $colorPlayer=getSql('SELECT `color` FROM `player` WHERE `IDgame`='.$IDgame.' AND `IDuser`='.$IDplayer.'');
+                                    $colorPlayer=getSql('SELECT `color` FROM `player` WHERE `IDgame`='.$gameID.' AND `IDuser`='.$IDplayer.'');
                                     echo '<tr>';
                                     echo '<td style="color:'.$colorPlayer.'"><b>'.$namePlayer.'</b></td>';
                                     echo '<td>'.$moneyPlayer.'</td>';
@@ -54,30 +54,31 @@
                     <div class="row">
                         <div class="col-6">
                             <form>
-                                <input class="m-1 buttonGame" type="submit" value="Lancer le dé">
-                                <input class="hidden" name="diceButton" value="1">
-                            </form>
+                                <input type="hidden" name="diceButton" value="1">
+                                <input class="buttonGame" type="submit" value="Lancer le dé">
+                            </form><br/><br/>
                             <form>
-                                <input class="m-1 buttonGame" type="submit" value="Acheter">
-                                <input class="hidden" name="buyButton" value="1">
-                            </form>
+                                <input type="hidden" name="buyButton" value="1">
+                                <input class="buttonGame" type="submit" value="Acheter">
+                            </form><br/><br/>
                             <form>
-                                <input class="m-1 buttonGame" type="submit" value="Passer">
-                                <input class="hidden" name="passButton" value="1">
+                                <input type="hidden" name="passButton" value="1">
+                                <input class="buttonGame" type="submit" value="Passer">
                             </form>
                         </div>
                         <div class="col-6">
                             <form>
-                                <input class="m-1 buttonGame" type="submit" value="Négocier">
-                                <input class="hidden" name="negotiateButton" value="1">
-                            </form>
-                            <form>
-                                <input class="m-1 buttonGame" type="submit" value="Construire">
-                                <input class="hidden" name="buildButton" value="1">
-                            </form>
-                            <form>
-                                <input class="m-1 buttonGame" type="submit" value="Carte Prison">
-                                <input class="hidden" name="cardJailButton" value="1">
+                                <input type="hidden" name="buildButton" value="1">
+                                <input class="buttonGame" type="submit" value="Construire">
+                            </form><br/>
+                                <form>
+                                    <input type="hidden" name="sellButton" value="1">
+                                    <input class="buttonGame" type="number" name="boxIDtoSell" min="1" max="40">
+                                    <input class="buttonGame" type="submit" value="Vendre">  
+                                </form>
+                            <form><br/><br/>
+                                <input type="hidden" name="cardJailButton" value="1">
+                                <input class="buttonGame" type="submit" value="Carte Prison">
                             </form>
                         </div>
                         <?php
