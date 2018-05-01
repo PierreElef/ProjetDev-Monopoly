@@ -5,7 +5,6 @@ class Board{
     private $box = [];
     private $communitychestCard = [];
     private $chanceCard= [];
-    private $box = [];
 
     function __construct(){
 
