@@ -21,11 +21,11 @@
 <body>
     <div class="container">
         <div class="row mt-4">
-            <div id="board" class="col-lg-7 col-md-12">
+            <div id="board" class="col-xl-7 col-lg-12">
                 <?php include("../../html/monopoly_canvas.html")?>
             </div>
-            <div class="col-lg-5 row">
-                <div class="col-lg-12 col-md-6">
+            <div class="col-xl-5 row">
+                <div class="col-xl-12 col-lg-6">
                     <div id="playerStats">
                         <table class="table table-bordered">
                             <tr style="font-weight: bold;">
@@ -50,7 +50,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6">
+                <div class="col-xl-12 col-lg-6">
                     <div class="row">
                         <div class="col-6">
                             <form>
