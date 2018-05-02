@@ -102,6 +102,8 @@ function initBoard(){
 
     $_SESSION['board']=serialize($board);
 
+    
+
 }
 
 ?>

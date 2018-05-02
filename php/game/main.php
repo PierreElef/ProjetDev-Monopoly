@@ -7,7 +7,9 @@ include 'Player.php';
 
 //initialisation des données sessions
 if (is_null($_SESSION['game'])){	
-	initGame();
+    initGame();
+    //Choix de l'ordre de passage
+    $game->getPlayingOrder(); 
 }
 $game = unserialize($_SESSION['game']);
 
@@ -21,8 +23,7 @@ if (is_null($_SESSION['board'])){
 }
 $board = unserialize($_SESSION['board']);
 
-//Choix de l'ordre de passage
-$game->getPlayingOrder(); //à faire Axelle
+
 
 //Début de la partie
 $game->start();
