@@ -52,9 +52,10 @@
                 $IDplayerIA=1;
                 for ($i=$nbrRealPlayer+1; $i<=$nbrTTPlayer; $i++){
                     requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$IDplayerIA.','.$_SESSION["idGame"].',15000000,1,0,"'.$colorArray[$i].'")');
+                    requetSql('UPDATE `game` SET `IDplayer'.$i.'`='.$IDplayerIA.' WHERE `ID`='.$_SESSION["idGame"]);
                     $IDplayerIA=$IDplayerIA+1;
                 }
-                    header('Location: waitGame.php');
+                    header('Location: waitGamev2.php');
                 }
             }
         ?>

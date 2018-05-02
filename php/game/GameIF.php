@@ -4,7 +4,14 @@
     $ID=$_SESSION["id"];
     $gameID=$_SESSION["idGame"];
     settype($gameID, "int");
-    $_SESSION["isTurn"]=false;
+    $_SESSION["isTurn"]=true;
+    $_SESSION["pulledDice"]=false;
+    $_SESSION["onStreet"]=true;
+    $_SESSION["onStation"]=false;
+    $_SESSION["onEnergie"]=false;
+    $_SESSION["isOwner"]=false;
+    $_SESSION["onJail"]=true;
+    $_SESSION["cardJail"]=true;
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,8 +65,8 @@
                             <form>
                                 <input type="hidden" name="diceButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true){
-                                        echo'<input class="buttonGame" type="submit" value="Lancer le dé">';
+                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==false){
+                                        echo'<input class="buttonGame" type="submit" value="Lancer les dés">';
                                     }else{
                                         echo'<input class="buttonGame" type="submit" value="Lancer le dé" disabled>';
                                     }
@@ -68,7 +75,7 @@
                             <form>
                                 <input type="hidden" name="buyButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true){
+                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND ($_SESSION["onStreet"]==true OR $_SESSION["onStation"]==true OR $_SESSION["onEnergie"]==true)){
                                         echo'<input class="buttonGame" type="submit" value="Acheter">';
                                     }else{
                                         echo'<input class="buttonGame" type="submit" value="Acheter" disabled>';
@@ -78,7 +85,7 @@
                             <form>
                                 <input type="hidden" name="passButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true){
+                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true){
                                         echo'<input class="buttonGame" type="submit" value="Passer">';
                                     }else{
                                         echo'<input class="buttonGame" type="submit" value="Passer" disabled>';
@@ -90,7 +97,7 @@
                             <form>
                                 <input type="hidden" name="buildButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true){
+                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND $_SESSION["onStreet"]==true){
                                         echo'<input class="buttonGame" type="submit" value="Construire">';
                                     }else{
                                         echo'<input class="buttonGame" type="submit" value="Construire" disabled>';
@@ -100,7 +107,7 @@
                                 <form>
                                     <input type="hidden" name="sellButton" value="1">
                                     <?php 
-                                        if ($_SESSION["isTurn"]==true){
+                                        if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND $_SESSION["onStreet"]==true){
                                             echo'<input class="buttonGame" type="number" name="boxIDtoSell" min="1" max="40">';
                                             echo'<input class="buttonGame" type="submit" value="Vendre">';
                                         }else{
@@ -112,7 +119,7 @@
                             <form><br/><br/>
                                 <input type="hidden" name="cardJailButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true){
+                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==false AND $_SESSION["onJail"]==true AND $_SESSION["cardJail"]==true){
                                         echo'<input class="buttonGame" type="submit" value="Carte Prison">';
                                     }else{
                                         echo'<input class="buttonGame" type="submit" value="Carte Prison" disabled>';

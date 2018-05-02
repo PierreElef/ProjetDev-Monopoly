@@ -246,9 +246,11 @@ class Player{
 
     function changeCardJail(){
         if ($this->cardJail == false){
-            $this->cardJail == true;
+            $this->cardJail = true;
+            $_SESSION["cardJail"]=true;
         }else{
-            $this->cardJail == false;
+            $this->cardJail = false;
+            $_SESSION["cardJail"]=false;
         }
     }
 
