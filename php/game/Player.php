@@ -95,10 +95,12 @@ class Player{
 
     function turnOn(){
         $this->isTurn = True;
+        $_SESSION["isTurn"]=True;
     }
 
     function turnOff(){
         $this->isTurn = False;
+        $_SESSION["isTurn"]=False;
     } 
 ////////////////////////////////////////////// FONCTIONS COMPLEXES
 ////////////////////////////////////////////// DEPLACEMENT
@@ -244,9 +246,11 @@ class Player{
 
     function changeCardJail(){
         if ($this->cardJail == false){
-            $this->cardJail == true;
+            $this->cardJail = true;
+            $_SESSION["cardJail"]=true;
         }else{
-            $this->cardJail == false;
+            $this->cardJail = false;
+            $_SESSION["cardJail"]=false;
         }
     }
 
