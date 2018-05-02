@@ -22,7 +22,7 @@ if (is_null($_SESSION['board'])){
 $board = unserialize($_SESSION['board']);
 
 //Choix de l'ordre de passage
-$game->getPlayingOrder();
+$game->getPlayingOrder(); //à faire Axelle
 
 //Début de la partie
 $game->start();

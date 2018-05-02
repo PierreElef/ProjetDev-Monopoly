@@ -17,7 +17,7 @@ class Board{
         $this->box[]= $box;
     }
     
-    function getBoxbyID($id){
+    function getBoxByID($id){
         foreach($this->box as $b){
             if($b->getID() == $id){
                 return $b;
