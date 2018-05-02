@@ -95,10 +95,12 @@ class Player{
 
     function turnOn(){
         $this->isTurn = True;
+        $_SESSION["isTurn"]=True;
     }
 
     function turnOff(){
         $this->isTurn = False;
+        $_SESSION["isTurn"]=False;
     } 
 ////////////////////////////////////////////// FONCTIONS COMPLEXES
 ////////////////////////////////////////////// DEPLACEMENT

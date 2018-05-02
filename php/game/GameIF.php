@@ -4,6 +4,7 @@
     $ID=$_SESSION["id"];
     $gameID=$_SESSION["idGame"];
     settype($gameID, "int");
+    $_SESSION["isTurn"]=false;
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,30 +57,67 @@
                         <div class="col-6">
                             <form>
                                 <input type="hidden" name="diceButton" value="1">
-                                <input class="buttonGame" type="submit" value="Lancer le dé">
+                                <?php 
+                                    if ($_SESSION["isTurn"]==true){
+                                        echo'<input class="buttonGame" type="submit" value="Lancer le dé">';
+                                    }else{
+                                        echo'<input class="buttonGame" type="submit" value="Lancer le dé" disabled>';
+                                    }
+                                ?>
                             </form><br/><br/>
                             <form>
                                 <input type="hidden" name="buyButton" value="1">
-                                <input class="buttonGame" type="submit" value="Acheter">
+                                <?php 
+                                    if ($_SESSION["isTurn"]==true){
+                                        echo'<input class="buttonGame" type="submit" value="Acheter">';
+                                    }else{
+                                        echo'<input class="buttonGame" type="submit" value="Acheter" disabled>';
+                                    }
+                                ?>
                             </form><br/><br/>
                             <form>
                                 <input type="hidden" name="passButton" value="1">
-                                <input class="buttonGame" type="submit" value="Passer">
+                                <?php 
+                                    if ($_SESSION["isTurn"]==true){
+                                        echo'<input class="buttonGame" type="submit" value="Passer">';
+                                    }else{
+                                        echo'<input class="buttonGame" type="submit" value="Passer" disabled>';
+                                    }
+                                ?>
                             </form>
                         </div>
                         <div class="col-6">
                             <form>
                                 <input type="hidden" name="buildButton" value="1">
-                                <input class="buttonGame" type="submit" value="Construire">
+                                <?php 
+                                    if ($_SESSION["isTurn"]==true){
+                                        echo'<input class="buttonGame" type="submit" value="Construire">';
+                                    }else{
+                                        echo'<input class="buttonGame" type="submit" value="Construire" disabled>';
+                                    }
+                                ?>
                             </form><br/>
                                 <form>
                                     <input type="hidden" name="sellButton" value="1">
-                                    <input class="buttonGame" type="number" name="boxIDtoSell" min="1" max="40">
-                                    <input class="buttonGame" type="submit" value="Vendre">  
+                                    <?php 
+                                        if ($_SESSION["isTurn"]==true){
+                                            echo'<input class="buttonGame" type="number" name="boxIDtoSell" min="1" max="40">';
+                                            echo'<input class="buttonGame" type="submit" value="Vendre">';
+                                        }else{
+                                            echo'<input class="buttonGame" type="number" name="boxIDtoSell" min="1" max="40" disabled>';
+                                            echo'<input class="buttonGame" type="submit" value="Vendre" disabled>';
+                                        }
+                                    ?>
                                 </form>
                             <form><br/><br/>
                                 <input type="hidden" name="cardJailButton" value="1">
-                                <input class="buttonGame" type="submit" value="Carte Prison">
+                                <?php 
+                                    if ($_SESSION["isTurn"]==true){
+                                        echo'<input class="buttonGame" type="submit" value="Carte Prison">';
+                                    }else{
+                                        echo'<input class="buttonGame" type="submit" value="Carte Prison" disabled>';
+                                    }
+                                ?>
                             </form>
                         </div>
                         <?php

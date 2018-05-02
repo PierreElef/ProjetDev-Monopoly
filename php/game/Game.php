@@ -1,6 +1,7 @@
 <?php
 session_start();
-
+$ID=$_SESSION["id"];
+$gameID=$_SESSION["idGame"];
 
 class Game
 {
