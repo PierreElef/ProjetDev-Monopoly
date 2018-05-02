@@ -69,7 +69,7 @@
                 $newName=$_POST['newName'];
                 $sql="UPDATE `user` SET `name`='".$newName."' WHERE `ID`=".$id;
                 requetSql($sql);
-             }
+            }
             if (isset($_POST['newPWD'])){
                 $newPWD=$_POST['newPWD'];
                 $sql="UPDATE `user` SET `password`='".$newPWD."' WHERE `ID`=".$id;

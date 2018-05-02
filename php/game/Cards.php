@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 class Cards{
     private $id;
     private $type; //1- mouvement, 2- ajout/retirer sous, 3-liberer de prison, 4- retirer sous en fonction de maisons/hotels, 5- reculer

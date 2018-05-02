@@ -1,4 +1,7 @@
 <?php
+session_start();
+include ('Box.php');
+include ('Card.php');
 
 class Board{
 

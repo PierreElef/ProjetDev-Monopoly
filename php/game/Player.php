@@ -138,9 +138,9 @@ class Player{
     */
     function action(Box $box)
     {
-        $type = $box->getType($this->pos);
+        $typeBox = $box->getType($this->pos);
         $ownerID= $box->getOwner();
-        switch($type)
+        switch($typeBox)
         {
             case 1:
                 echo "Le joueur est sur une case propriété.<br>";

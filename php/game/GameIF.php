@@ -82,8 +82,24 @@
                             </form>
                         </div>
                         <?php
-                        
-                        
+                        if (isset($_POST['diceButton'])){
+                            //faire rouler le dé
+                        }
+                        if (isset($_POST['buyButton'])){
+                            //faire acheter
+                        }
+                        if (isset($_POST['passButton'])){
+                            //faire passer le tour
+                        }
+                        if (isset($_POST['buildButton'])){
+                            //faire rajouter une maison
+                        }
+                        if (isset($_POST['sellButton'])){
+                            //faire vendre la case $_POST['boxIDtoSell']
+                        }
+                        if (isset($_POST['cardJailButton'])){
+                            //faire utiliser la carte sortie de prison
+                        }
                         ?>
                     </div>
                 </div>
