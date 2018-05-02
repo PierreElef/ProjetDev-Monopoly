@@ -38,12 +38,13 @@
                                 foreach($IDplayers as $IDplayer){
                                     $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$gameID.' AND `IDuser`='.$IDplayer.'');
                                     $positionPlayer=getSql('SELECT `position` FROM `player` WHERE `IDgame`='.$gameID.' AND `IDuser`='.$IDplayer.'');
+                                    $positionName=getSql('SELECT `name` FROM `box` WHERE `ID`='.$positionPlayer.'');
                                     $namePlayer=getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer.'');
                                     $colorPlayer=getSql('SELECT `color` FROM `player` WHERE `IDgame`='.$gameID.' AND `IDuser`='.$IDplayer.'');
                                     echo '<tr>';
                                     echo '<td style="color:'.$colorPlayer.'"><b>'.$namePlayer.'</b></td>';
                                     echo '<td>'.$moneyPlayer.'</td>';
-                                    echo '<td>'.$positionPlayer.'</td>';
+                                    echo '<td>'.$positionPlayer.' : '.utf8_encode ($positionName).'</td>';
                                     echo '</tr>';
                                 }
                             ?>
