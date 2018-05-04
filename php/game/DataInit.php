@@ -101,9 +101,6 @@ function initBoard(){
     $board->addChanceCard(new ChanceCard(16, "Vous avez gagné le prix de mots croisés de 1 000 000€"));
 
     $_SESSION['board']=serialize($board);
-
-    
-
 }
 
 ?>

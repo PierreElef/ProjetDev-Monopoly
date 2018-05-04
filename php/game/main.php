@@ -26,33 +26,31 @@ $board = unserialize($_SESSION['board']);
 
 
 //Début de la partie
-$game->start();
-    //Tant que nbr_joueur > 1
-    while($nbr_player > 1){
-        //Tour
-            //DiceSum            
-            //Check Prison
-            //Si jailStatus=1
-            if ($player->getJailStatus()==true){
-                //Case carte Sortie de Prison
-                                        //joueur : plus de carte Sortie de Prison
-                                        //jailStatus=0
+//$game->start();
+//Tant que nbr_joueur > 1
+while($nbr_player > 1){
+    //Tour        
+        //Check Prison
+        //Si jailStatus=1
+        if ($player->getJailStatus()==true){
+            //Case carte Sortie de Prison
+                //joueur : plus de carte Sortie de Prison
+                //jailStatus=0
                                         
-                                    //Case Lancer de dé
-                                        //Lancer de dé
-                                        
-                                            //return DiceSum
-                                        //Si double
-                                            //jailStatus=0
-                                    //Case Payer amende
-                                        //payer
-                                        //jailStatus=0
-                                    //Case Acheter carte Sortie de Prison
-                                        //donne argent
-                                        //autre joueur : plus de carte Sortie de Prison
-                                        //jailStatus=0
-                                //Select Case
-                switch(){
+                //Case Lancer de dé
+                    //Lancer de dé     
+                    //return DiceSum
+                    //Si double
+                        //jailStatus=0
+                    //Case Payer amende
+                        //payer
+                        //jailStatus=0
+                    //Case Acheter carte Sortie de Prison
+                        //donne argent
+                        //autre joueur : plus de carte Sortie de Prison
+                        //jailStatus=0
+                    //Select Case
+                switch (){
                     if($player->getDice()->isDouble())){ //on regarde si les dés sont des doubles
                         $player->leaveJail();
                         return true;
@@ -98,41 +96,7 @@ $game->start();
                     }
                 }
 
-            }
-
-            // PARTIE ARTHUR 
-
-
-        
-                    //select case typeCase
-                        //Case caseChoix
-                            //Choisir action
-                                //Acheter
-                                    //OK si argent = OK
-                                //Payer
-                                    //OK si argent = OK
-                                    //NOK alors 
-                                        //Vendre
-                                //Négocier
-                                //Construire
-                                    //OK si argent = OK
-                        //Case caseAction
-                            //select action
-                                //case tirer carte
-                                //case aller en prison
-                                    //jailStatus=1
-                                    //position=10
-                                //case payer
-                                //case récupérer jackpot
-                    //Si dés double
-                        //DoubleCheck=1
-                        //nbrDouble=+1
-                        //si nbrDouble = 3
-                            //action GoToJail
-                            //DoubleCheck=0
-                    //Else
-                        //DoubleCheck=0
-            
+            }         
     }
 
 ?>

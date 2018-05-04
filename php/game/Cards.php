@@ -48,7 +48,6 @@ class Cards{
         return $this->amountHotel;
 
     }
-
 }
 
 ?>
