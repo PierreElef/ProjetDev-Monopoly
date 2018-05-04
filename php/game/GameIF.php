@@ -4,13 +4,13 @@
     $ID=$_SESSION["id"];
     $gameID=$_SESSION["idGame"];
     settype($gameID, "int");
-    $_SESSION["isTurn"]=true;
+    $_SESSION["isTurn"]=false;
     $_SESSION["pulledDice"]=false;
     $_SESSION["onStreet"]=true;
     $_SESSION["onStation"]=false;
     $_SESSION["onEnergie"]=false;
     $_SESSION["isOwner"]=false;
-    $_SESSION["onJail"]=true;
+    $_SESSION["onJail"]=false;
     $_SESSION["cardJail"]=true;
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,10 @@
     <div class="container">
         <div class="row mt-4">
             <div id="board" class="col-xl-7 col-lg-12">
-                <?php include("../../html/monopoly_canvas.html")?>
+                <?php 
+                    //Plateau en canvas à garder pour la v2
+                    //include("../../html/monopoly_canvas.html")
+                ?>
             </div>
             <div class="col-xl-5 row">
                 <div class="col-xl-12 col-lg-6">
