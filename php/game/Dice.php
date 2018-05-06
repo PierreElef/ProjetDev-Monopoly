@@ -13,42 +13,35 @@ class Dice
 
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////// GETTEURS
-    function getDe1()
-    {
+    function getDe1(){
         return $this->de1;
     }
 
-    function getDe2()
-    {
+    function getDe2(){
         return $this->de2;
     }
 
-    function getScore()
-    {
+    function getScore(){
         return $this->score;
     }
 
-    function getDouble()
-    {
+    function getDouble(){
         return $this->isDouble;
     }
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////// FONCTIONS
-    function rollDice()
-    {
+    function rollDice(){
         echo "Les dés sont lancés :</br>";
         $de1 = rand(1, 6);
         $de2 = rand(1, 6);
 
         $score = $de1 + $de2;
-        if($de1 == $de2)
-        {
+        if($de1 == $de2){
             $this->isDouble = true;
             echo "Double ".$de1." !</br>";
         }
-        else
-        {
+        else{
             $this->isDouble = false;
         }
 

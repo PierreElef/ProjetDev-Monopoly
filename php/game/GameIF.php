@@ -134,21 +134,27 @@
                         <?php
                         if (isset($_POST['diceButton'])){
                             //faire rouler le dé
+                            $_SESSION["choise"]=1;
                         }
                         if (isset($_POST['buyButton'])){
                             //faire acheter
+                            $_SESSION["choise"]=2;
                         }
                         if (isset($_POST['passButton'])){
                             //faire passer le tour
+                            $_SESSION["choise"]=3;
                         }
                         if (isset($_POST['buildButton'])){
                             //faire rajouter une maison
+                            $_SESSION["choise"]=4;
                         }
                         if (isset($_POST['sellButton'])){
                             //faire vendre la case $_POST['boxIDtoSell']
+                            $_SESSION["choise"]=5;
                         }
                         if (isset($_POST['cardJailButton'])){
                             //faire utiliser la carte sortie de prison
+                            $_SESSION["choise"]=6;
                         }
                         ?>
                     </div>

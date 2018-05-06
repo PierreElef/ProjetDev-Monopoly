@@ -4,6 +4,7 @@ include 'DataInit.php';
 include 'Game.php';
 include 'Box.php';
 include 'Player.php';
+$ID=$_SESSION["id"];
 
 //initialisation des données sessions
 if (is_null($_SESSION['game'])){	
@@ -24,79 +25,15 @@ if (is_null($_SESSION['board'])){
 $board = unserialize($_SESSION['board']);
 
 
-
-//Début de la partie
-//$game->start();
 //Tant que nbr_joueur > 1
-while($nbr_player > 1){
-    //Tour        
-        //Check Prison
-        //Si jailStatus=1
-        if ($player->getJailStatus()==true){
-            //Case carte Sortie de Prison
-                //joueur : plus de carte Sortie de Prison
-                //jailStatus=0
-                                        
-                //Case Lancer de dé
-                    //Lancer de dé     
-                    //return DiceSum
-                    //Si double
-                        //jailStatus=0
-                    //Case Payer amende
-                        //payer
-                        //jailStatus=0
-                    //Case Acheter carte Sortie de Prison
-                        //donne argent
-                        //autre joueur : plus de carte Sortie de Prison
-                        //jailStatus=0
-                    //Select Case
-                switch (){
-                    if($player->getDice()->isDouble())){ //on regarde si les dés sont des doubles
-                        $player->leaveJail();
-                        return true;
-                    }
+if($game->playerOnGame() > 1){
+    if($game->turnTo()==$ID){
+        
+    } 
+}else{
+    echo "Le gagnant est ".$game->winner()
+}
 
 
-                    if($answer= $player->getAnswer(PlayerAnswer::JAIL)){ //montrera les réponses en fonction des questions montrées au joueur en fonction de sa situation
-                        switch($answer){
-                            case :
-                            case ...:
-                            default:
-
-                        }
-                    }else{
-                        if($player->ask(PlayerAnswer::JAIL)){ // dans cette fonction, mettre des if exemple: if(monnaie > 500){"Voulez-vous payer l'amende de 500€?"}
-                            return true;
-                        }
-                        
-                    }
-                   
-                }
-                else{
-                    function playTurn(Player $player)
-                    {
-                        do
-                            {
-                                $player->move($player->getDice());
-                                if($player->getPosition() > 40){
-                                    $player->addPosition($player->getPosition() - 40);
-                                    $player->addMoney($player->getMoney()+1 000 000);
-                                }
-                                $board->action($board->getBoxbyID()); //le board trouve la case sur laquelle le joueur se trouve et réalise son effet (piocher une case, payer,...)
-                                if($de->getDouble() == true)
-                                {
-                                    $player->isTurn = true;
-                                }
-                                else
-                                {
-                                    $player->isTurn = false;
-                                }
-                            }
-                        }while($player->isTurn == true);    
-                    }
-                }
-
-            }         
-    }
 
 ?>

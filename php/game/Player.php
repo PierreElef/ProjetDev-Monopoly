@@ -110,19 +110,14 @@ class Player{
         echo $this->getName()." est sur la case ".$this->getPos().".<br>";
         $de->rollDice();
         $this->pos += $de->getScore();
-
         // Savoir si on passe par la case départ
-        if($this->pos < 40)
-        {
+        if($this->pos < 40){
             $this->pos = $this->pos;
-        }
-        else if($this->pos >= 40)
-        {
+        }else if($this->pos >= 40){
             $this->pos -= 40;
-            $this->money += 200;
-            echo $this->getName()." passe par la case départ et empoche 200e.<br>";
+            $this->money += 1000000;
+            echo $this->getName()." passe par la case départ et empoche 1000000€.<br>";
         }
-
         echo $this->getName()." se déplace jusqu'à la case ".$this->getPos().".<br><br>";
     }
 
@@ -217,6 +212,7 @@ class Player{
                 break;
             case 5: 
                 echo "Le joueur est sur une case où il pioche une carte.<br>";
+                
                 break;
             case 6:
                 echo "Le joueur est sur une case où il va payer.<br>";

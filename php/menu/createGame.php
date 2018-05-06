@@ -49,12 +49,13 @@
                     $sql='SELECT MAX(`ID`) FROM `game`';
                     $_SESSION["idGame"]=getSql($sql);
                     requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$idPlayer.','.$_SESSION["idGame"].',15000000,1,0,"'.$colorArray[0].'")');
-                $IDplayerIA=1;
-                for ($i=$nbrRealPlayer+1; $i<=$nbrTTPlayer; $i++){
-                    requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$IDplayerIA.','.$_SESSION["idGame"].',15000000,1,0,"'.$colorArray[$i].'")');
-                    requetSql('UPDATE `game` SET `IDplayer'.$i.'`='.$IDplayerIA.' WHERE `ID`='.$_SESSION["idGame"]);
-                    $IDplayerIA=$IDplayerIA+1;
-                }
+                    requetSql('INSERT INTO `owner`(`IDgame`) VALUES ('.$_SESSION["idGame"].')');
+                    $IDplayerIA=1;
+                    for ($i=$nbrRealPlayer+1; $i<=$nbrTTPlayer; $i++){
+                        requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$IDplayerIA.','.$_SESSION["idGame"].',15000000,1,0,"'.$colorArray[$i].'")');
+                        requetSql('UPDATE `game` SET `IDplayer'.$i.'`='.$IDplayerIA.' WHERE `ID`='.$_SESSION["idGame"]);
+                        $IDplayerIA=$IDplayerIA+1;
+                    }
                     header('Location: waitGamev2.php');
                 }
             }
