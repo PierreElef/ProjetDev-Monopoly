@@ -162,8 +162,11 @@ class Player{
 ////////////////////////////////////////////// ACTIONS
 
     function action(Box $box){
+        //recherche type de box
         $typeBox = $box->getType($this->pos);
+        //vérification du propriétaire
         $ownerID= $box->getOwner();
+        //action en fonction du type de box et du choix de bouton
         switch($typeBox){
             case 1:
                 echo "Le joueur est sur une case propriété.<br/>";

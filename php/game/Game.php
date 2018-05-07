@@ -1,7 +1,9 @@
 <?php
 
 $ID=$_SESSION["id"];
+settype($ID, "int");
 $gameID=$_SESSION["idGame"];
+settype($gameID, "int");
 include 'Player.php';
 include 'Dice.php';
 //include '../commun/getSQL.php' ;

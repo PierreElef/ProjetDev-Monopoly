@@ -2,8 +2,10 @@
 include 'DataInit.php';
 include 'Game.php';
 include 'Box.php';
+include 'Board.php';
 include 'Player.php';
 $ID=$_SESSION["id"];
+settype($ID, "int");
 
 //initialisation des données sessions
 if(is_null($_SESSION['game'])){	

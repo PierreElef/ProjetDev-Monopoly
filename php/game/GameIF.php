@@ -2,9 +2,9 @@
     session_start();
     include('../commun/getSQL.php');
     $ID=$_SESSION["id"];
+    settype($ID, "int");
     $gameID=$_SESSION["idGame"];
     settype($gameID, "int");
-    
 ?>
 <!DOCTYPE html>
 <html>
@@ -85,7 +85,7 @@
                             <form>
                                 <input type="hidden" name="passButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true){
+                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true){
                                         echo'<input class="buttonGame" type="submit" value="Passer">';
                                     }else{
                                         echo'<input class="buttonGame" type="submit" value="Passer" disabled>';
@@ -109,7 +109,7 @@
                             <form>
                                 <input type="hidden" name="sellButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND $_SESSION["onStreet"]==true){
+                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true){
                                         echo'<input class="buttonGame" type="number" name="boxIDtoSell" min="1" max="40">';
                                         echo'<input class="buttonGame" type="submit" value="Vendre">';
                                     }else{
