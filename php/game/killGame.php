@@ -39,6 +39,7 @@ if (isset($_POST['yes'])){
     requetSql('DELETE FROM `building` WHERE `IDgame`='.$gameID);
     requetSql('DELETE FROM `owner` WHERE `IDgame`='.$gameID);
     requetSql('DELETE FROM `player` WHERE `IDgame`='.$gameID);
+    requetSql('DELETE FROM `turn` WHERE `IDgame`='.$gameID);
     header('Location: ../menu/PlayGame.php');
 } 
 

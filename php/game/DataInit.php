@@ -1,5 +1,4 @@
 <?php 
-session_start();
 include ('Game.php');
 include ('Box.php');
 
@@ -7,6 +6,14 @@ function initGame(){
     //Création de la partie
     $game = new Game;
     $_SESSION['game']=serialize($game);
+    $_SESSION["isTurn"]=false;
+    $_SESSION["pulledDice"]=false;
+    $_SESSION["onStreet"]=false;
+    $_SESSION["onStation"]=false;
+    $_SESSION["onEnergie"]=false;
+    $_SESSION["isOwner"]=false;
+    $_SESSION["onJail"]=false;
+    $_SESSION["cardJail"]=false;
 }
 
 function initPlayer(){
@@ -75,7 +82,7 @@ function initBoard(){
     $board->addCommunityChestCard(new CommunityChestCard(8, "Amende pour excès de vitesse<br/>-150 000 €"));
     $board->addCommunityChestCard(new CommunityChestCard(9, "Payer les frais de scolarité<br/>-1 500 000 €"));
     $board->addCommunityChestCard(new CommunityChestCard(10, "Reculez de trois cases"));
-    $board->addCommunityChestCard(new CommunityChestCard(11, "Réparation dans vos maisons<br/>-250 000€/maison -1 000 000€/hôtel"
+    $board->addCommunityChestCard(new CommunityChestCard(11, "Réparation dans vos maisons<br/>-250 000€/maison -1 000 000€/hôtel"));
     $board->addCommunityChestCard(new CommunityChestCard(12, "Votre prêt rapporte<br/>+1 500 000€"));
     $board->addCommunityChestCard(new CommunityChestCard(13, "Libéré de prison"));
     $board->addCommunityChestCard(new CommunityChestCard(14, "Rendez-vous Rue Croix Baragnon"));

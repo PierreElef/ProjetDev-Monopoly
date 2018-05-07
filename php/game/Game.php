@@ -1,64 +1,82 @@
 <?php
-session_start();
+
 $ID=$_SESSION["id"];
 $gameID=$_SESSION["idGame"];
 include 'Player.php';
 include 'Dice.php';
-include '../commun/getSQL.php' ;
+//include '../commun/getSQL.php' ;
 
 class Game{
     function __construct(){
 
     }
     
-    function makeTurn(){
+    function choise(){
     switch ($_SESSION["choise"]){
         case 1 :
             //jet de dés
+            $_SESSION["pulledDice"]=true;
             break;
         case 2 :
-            //achat       
+            //achat
+            $_SESSION["pulledDice"]=false;
+            $_SESSION["isTurn"]=false;      
             break;
         case 3 :
             //passe le tour
+            $_SESSION["isTurn"]=false;
             break;
         case 4 :
             //construire
+            $_SESSION["pulledDice"]=false;
+            $_SESSION["isTurn"]=false;
             break;
         case 5 :
             //vendre
+            $_SESSION["pulledDice"]=false;
+            $_SESSION["isTurn"]=false;
             break;
         case 6 :
             //carte prison
+            $_SESSION["pulledDice"]=false;
+            $_SESSION["isTurn"]=false;
             break;
-        
+        }
     }
-}
-     
 
     function playTurn(Player $player, Dice $de){
         do{
             if($player->isJail == true){
-                $de->rollDice();
-                if($de->getDouble() == true){
-                    $player->$isTurn = true;
-                }else{
-                    $player->isTurn = false;
+                if($_SESSION["pulledDice"]=false OR $_SESSION["choise"]==6){
+                    $de->rollDice();
+                    if($de->getDouble() == true){
+                        $player->turnOn();
+                    }else{
+                        $player->turnOff();
+                    }
                 }
+
             }else{
-                $player->move($de);
-                $player->action();
-                if($de->getDouble() == true){
-                    $player->isTurn = true;
+                if($_SESSION["pulledDice"]=false){
+                    $player->move($de);
+                }
+                if ($_SESSION["pulledDice"]==true){
+                    $player->action();
+                }
+                if($de->getDouble() == true OR $_SESSION["actionDone"]==true){
+                    $player->turnOn();
                 }else{
-                    $player->isTurn = false;
+                    $player->turnOff();
                 }
             }
         }while($player->isTurn == true);    
     }
 
     function turnTo(){
-
+        //a qui le tour
+        $IDtoPlay = getSql('SELECT `IDtoPlay` FROM `turn` WHERE `IDgame`='.$gameID);
+        echo "C'est au tour de ".getSql('SELECT `name` FROM `box` WHERE `ID`='.$IDtoPlay)."<br/>";
+        return $IDtoPlay;
     }
 
     function playerOnGame(){
