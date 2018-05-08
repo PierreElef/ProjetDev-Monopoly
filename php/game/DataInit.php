@@ -110,21 +110,20 @@ function initBoard(){
 function initAdmin(){
     //Choix de l'ordre de passage
     $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
+    echo $IDadmin;
     if($_SESSION["id"]==$IDadmin){
         $order=array();
         $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
         foreach($IDplayers as $IDplayer){
-            if($IDplayer==NULL){
-                break;
-            }else{
+            if($IDplayer!==NULL){
                 array_push($order,$IDplayer);
             }
-            shuffle($order);
-            while(sizeof($order)<7){
-                array_push($order,NULL);
-            }
-            requetSql('INSERT INTO `turn`(`IDgame`, `IDtoPlay`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`) VALUES ('.$_SESSION["idGame"].','.$order[0].','.$order[0].','.$order[1].','.$order[2].','.$order[3].','.$order[4].','.$order[5].')');
         }
+        shuffle($order); 
+        while(sizeof($order)<7){
+            array_push($order,"NULL");
+        }
+        requetSql('INSERT INTO `turn`(`IDgame`, `IDtoPlay`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`) VALUES ('.$_SESSION["idGame"].','.$order[0].','.$order[0].','.$order[1].','.$order[2].','.$order[3].','.$order[4].','.$order[5].')');
     }
 }
 

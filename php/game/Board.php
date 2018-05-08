@@ -1,9 +1,8 @@
 <?php
 class Board{
 
-    private $box = [];
-    private $communitychestCard = [];
-    private $chanceCard= [];
+    private $box = array();
+    private $cards = array();
 
     function __construct(){
 
@@ -31,11 +30,11 @@ class Board{
     }
 
     function addCard($card){
-        array_push($this->communitychestCard[],$card);
+        array_push($this->cards,$card);
     }
 
-    function getChanceCardByID($id){
-        foreach($this->$chanceCard as $card){
+    function getCardByID($id){
+        foreach($this->$cards as $card){
             if($card->getID() == $id){
                 return $card;
             }

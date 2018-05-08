@@ -26,7 +26,7 @@ $player = unserialize($_SESSION['player']);
 
 //if(is_null($_SESSION['board']) AND isset($_SESSION['board'])){	
     initBoard();
-    echo'Plateau créé';
+    echo'Plateau créé<br/>';
 //}
 $board = unserialize($_SESSION['board']);
 
