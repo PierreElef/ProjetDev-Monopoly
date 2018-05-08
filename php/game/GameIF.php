@@ -19,6 +19,7 @@
     <div class="container">
         <div class="row mt-4">
             <div id="board" class="col-xl-7 col-lg-12">
+            <h2>Déroulement du jeu</h2>
                 <?php 
                     //Plateau en canvas à garder pour la v2
                     //include("../../html/monopoly_canvas.html")
@@ -51,7 +52,11 @@
                             ?>
                         </table>
                     </div>
+                    <div>
+                        <p>voir <a href="propriété.php" target="_blank">Propriétés</a></p>
+                    </div>
                 </div>
+
                 <div class="col-xl-12 col-lg-6">
                     <div class="row">
                         <div class="col-6">

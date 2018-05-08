@@ -71,6 +71,7 @@ class Game{
                     $player->turnOn();
                 }else{
                     $player->turnOff();
+                    //turnNext();
                 }
             }
         }while($player->getTurnStatu() == true);    
