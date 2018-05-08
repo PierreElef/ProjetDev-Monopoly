@@ -110,4 +110,24 @@ function initBoard(){
     $_SESSION['board']=serialize($board);
 }
 
+function initAdmin(){
+    $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `IDgame`='.$gameID);
+    if($ID==$IDadmin){
+        $order=array();
+        $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$gameID, 1);
+        foreach($IDplayers as $IDplayer){
+            if($IDplayer==NULL){
+                break;
+            }else{
+                array_push($order,$IDplayer);
+            }
+            shuffle($order);
+            while(sizeof($order)<7){
+                array_push($order,NULL);
+            }
+            requetSql('INSERT INTO `turn`(`IDgame`, `IDtoPlay`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`) VALUES ('.$gameID.','.$order[0].','.$order[0].','.$order[1].','.$order[2].','.$order[3].','.$order[4].','.$order[5].')');
+        }
+    }
+}
+
 ?>

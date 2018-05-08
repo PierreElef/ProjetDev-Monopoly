@@ -1,5 +1,4 @@
 <?php
-session_start();
 include ('Box.php');
 include ('Card.php');
 
@@ -42,7 +41,23 @@ class Board{
         $this->chanceCard[]= $card;
     }
 
-    
+    function getCommunityChestCardByID($id){
+        foreach($this->$communitychestCard as $card){
+            if($card->getID() == $id){
+                return $card;
+            }
+        }
+        return false;
+    }
+
+    function getChanceCardByID($id){
+        foreach($this->$chanceCard as $card){
+            if($card->getID() == $id){
+                return $card;
+            }
+        }
+        return false;
+    }
 }
 
 ?>

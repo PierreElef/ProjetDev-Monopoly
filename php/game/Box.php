@@ -1,9 +1,4 @@
 <?php
-session_start();
-$gameID=$_SESSION["idGame"];
-settype($gameID, "int");
-//include('../commun/getSQL.php');
-
 class Box{
     private $id;
     private $name;
@@ -58,19 +53,19 @@ class Box{
         if(nbrHouse()==NULL){
             requetSql('INSERT INTO `building`(`IDgame`, `IDbox`, `nbrHouse`, `nbrHotel`) VALUES ('.$gameID.','.$this->id.',1,0)');
         }else{
-            requetSql('UPDATE `building` SET `nbrHotel`='.$this->nbrHotel()+1.' WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id);
+            //ERREUR requetSql('UPDATE `building` SET `nbrHouse`='.$this->nbrHouse()+1.' WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id);
         }
     }
 
     function buildHotel(){
-        requetSql('UPDATE `building` SET `nbrHouse`='.$this->nbrHotel()+1.' WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id;
+        //ERREUR requetSql('UPDATE `building` SET `nbrHotel`='.$this->nbrHotel()+1.' WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id;
     }
 
     function nbrHouse(){
-        return getSql('SELECT  `nbrHouse` FROM `building` WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id)
+        return getSql('SELECT  `nbrHouse` FROM `building` WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id);
     }
     function nbrHotel(){
-        return getSql('SELECT  `nbrHotel` FROM `building` WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id)
+        return getSql('SELECT  `nbrHotel` FROM `building` WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id);
     }
 
     function getRentStreet(){

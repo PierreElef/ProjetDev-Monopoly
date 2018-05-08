@@ -1,13 +1,16 @@
 <?php
     session_start();
-    include('../commun/getSQL.php');
+    require_once('../commun/getSQL.php');
+    require_once 'DataInit.php';
+    require_once 'Game.php';
+    require_once 'Box.php';
+    require_once 'Board.php';
+    require_once 'Player.php';
+    require_once 'Cards.php';
     $ID=$_SESSION["id"];
+    settype($ID, "int");
     $gameID=$_SESSION["idGame"];
     settype($gameID, "int");
-    settype($ID, "int");
-    //include 'Box.php';
-    //include 'Board.php';
-    //settype($gameID, "int");
 ?>
 <!DOCTYPE html>
 <html>

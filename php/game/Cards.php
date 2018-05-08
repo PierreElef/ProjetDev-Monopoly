@@ -20,7 +20,7 @@ class Cards{
         echo "carte créée";
     }
 
-    function getId(){
+    function getID(){
         return $this->id;
     }
 

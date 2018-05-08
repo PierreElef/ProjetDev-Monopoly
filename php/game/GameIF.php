@@ -25,8 +25,8 @@
             <div id="board" class="col-xl-7 col-lg-12">
                 <?php 
                     //Plateau en canvas à garder pour la v2
-                    include("../../html/monopoly_canvas.html")
-                    //include('main.php');
+                    //include("../../html/monopoly_canvas.html")
+                    include('main.php');
                 ?>
             </div>
             <div class="col-xl-5 row">

@@ -1,11 +1,15 @@
 <?php
-include 'DataInit.php';
-include 'Game.php';
-include 'Box.php';
-include 'Board.php';
-include 'Player.php';
+require_once '../commun/getSQL.php' ;
+require_once 'DataInit.php';
+require_once 'Game.php';
+require_once 'Box.php';
+require_once 'Board.php';
+require_once 'Player.php';
+require_once 'Cards.php';
 $ID=$_SESSION["id"];
 settype($ID, "int");
+$gameID=$_SESSION["idGame"];
+settype($gameID, "int");
 
 //initialisation des données sessions
 if(is_null($_SESSION['game'])){	
@@ -26,7 +30,7 @@ if(is_null($_SESSION['board'])){
 $board = unserialize($_SESSION['board']);
 
 //initilisation administrateur
-
+initAdmin();
 
 //Tant que nbr_joueur > 1
 if($game->playerOnGame() > 1){

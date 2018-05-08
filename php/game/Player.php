@@ -258,7 +258,7 @@ class Player{
                 $_SESSION["onEnergie"]=true;
                 break;
             case 4: 
-                /*echo "Le joueur est sur une case départ ou prison.<br/>";*/
+                echo "Le joueur est sur une case départ ou prison.<br/>";
                 break;
             case 5: 
                 echo "Le joueur pioche une carte.<br/>";
