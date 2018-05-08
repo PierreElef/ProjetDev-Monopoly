@@ -1,5 +1,6 @@
 <?php
-require_once '../commun/getSQL.php' ;
+session_start();
+require_once '../commun/getSQL.php';
 require_once 'DataInit.php';
 require_once 'Game.php';
 require_once 'Box.php';
@@ -11,22 +12,22 @@ $ID=$_SESSION["id"];
 $gameID=$_SESSION["idGame"];
 
 //initialisation des données sessions
-if(is_null($_SESSION['game'])){	
+//if(is_null($_SESSION['game'])){	
     initGame();
-    echo 'Jeu créé';
-}
+    echo 'Jeu créé<br/>';
+//}
 $game = unserialize($_SESSION['game']);
 
-if(is_null($_SESSION['player'])){	
+//if(is_null($_SESSION['player']) AND isset($_SESSION['player'])){	
 	initPlayer();
-    echo 'Joueur créé';
-}
+    echo 'Joueur créé<br/>';
+//}
 $player = unserialize($_SESSION['player']);
 
-if(is_null($_SESSION['board'])){	
+//if(is_null($_SESSION['board']) AND isset($_SESSION['board'])){	
     initBoard();
     echo'Plateau créé';
-}
+//}
 $board = unserialize($_SESSION['board']);
 
 //initilisation administrateur

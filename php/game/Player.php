@@ -1,7 +1,7 @@
 <?php
 /*session_start();
-$gameID=$_SESSION["idGame"];
-settype($gameID, "int");
+$_SESSION["idGame"]=$_SESSION["idGame"];
+settype($_SESSION["idGame"], "int");
 include('../commun/getSQL.php');*/
 
 class Player{
@@ -22,10 +22,15 @@ class Player{
 ////////////////////////////////////////////// CONSTRUCTEUR
     function __construct(){
         $this->id = $_SESSION["id"];
+        echo 'ID='.$this->id;
         $this->name = getSql('SELECT `name` FROM `user` WHERE `ID`='.$this->id);
-        $this->color = getSql('SELECT `color` FROM `player` WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
-        $this->money = getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
-        $this->isJail = getSql('SELECT `jailStatus` FROM `player` WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
+        echo 'name='.$this->name;
+        $this->color = getSql('SELECT `color` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
+        echo 'color';
+        $this->money = getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
+        echo 'money';
+        $this->isJail = getSql('SELECT `jailStatus` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
+        echo 'isJail';
         //$this->nbrHouse;
         //$this->nbrHotel;
     }
@@ -75,24 +80,24 @@ class Player{
 ////////////////////////////////////////////// SETTEURS
     function setPos($pos){
         $this->pos = $pos;
-        requetSql('UPDATE `player` SET `position`='.$this->pos.' WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
+        requetSql('UPDATE `player` SET `position`='.$this->pos.' WHERE `IDuser`='.$this->id.'AND `IDgame`='.$_SESSION["idGame"]);
     }
 
     function setMoney($newMoney){
         $this->money =+ $newMoney;
-        requetSql('UPDATE `player` SET `money`='.$this->money.' WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
+        requetSql('UPDATE `player` SET `money`='.$this->money.' WHERE `IDuser`='.$this->id.'AND `IDgame`='.$_SESSION["idGame"]);
     }
 
     function jailOn(){
         $this->isJail = 1;
         $_SESSION["onJail"]=true;
-        requetSql('UPDATE `player` SET `jailStatus`=1 WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
+        requetSql('UPDATE `player` SET `jailStatus`=1 WHERE `IDuser`='.$this->id.'AND `IDgame`='.$_SESSION["idGame"]);
     }
 
     function jailOff(){
         $this->isJail = 0;
         $_SESSION["onJail"]=false;
-        requetSql('UPDATE `player` SET `jailStatus`=0 WHERE `IDuser`='.$this->id.'AND `IDgame`='.$gameID);
+        requetSql('UPDATE `player` SET `jailStatus`=0 WHERE `IDuser`='.$this->id.'AND `IDgame`='.$_SESSION["idGame"]);
     }
 
     function turnOn(){
@@ -201,8 +206,8 @@ class Player{
                         //si assez argent
                         $newMoney = -$box->getRentStreet();
                         $this->setMoney($newMoney);
-                        $MoneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$gameID);
-                        requetSql('UPDATE `player` SET `money`='.$MoneyOnwer + $box->getRentStreet().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$gameID);
+                        $MoneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
+                        requetSql('UPDATE `player` SET `money`='.$MoneyOnwer + $box->getRentStreet().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
                     }else{
                         //si pas assez argent
                     }
@@ -225,8 +230,8 @@ class Player{
                         //si assez argent
                         $newMoney = -$box->getRentStation();
                         $this->setMoney($newMoney);
-                        $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$gameID);
-                        requetSql('UPDATE `player` SET `money`='.$moneyOnwer + $box->getRentStation().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$gameID);
+                        $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
+                        requetSql('UPDATE `player` SET `money`='.$moneyOnwer + $box->getRentStation().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
                     }else{
                         //si pas assez argent
                     }
@@ -249,8 +254,8 @@ class Player{
                         //si assez argent
                         $newMoney = -$box->getRentEnergie();
                         $this->setMoney($newMoney);
-                        $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$gameID);
-                        requetSql('UPDATE `player` SET `money`='.$moneyOnwer + $box->getRentEnergie().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$gameID);
+                        $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
+                        requetSql('UPDATE `player` SET `money`='.$moneyOnwer + $box->getRentEnergie().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
                     }else{
                         //si pas assez argent
                     }
@@ -268,14 +273,14 @@ class Player{
                 echo "Le joueur est sur une case où il va payer.<br/>";
                 $newMoney = -2000000;
                 $this->setMoney($newMoney);
-                $jackpot = getSql('SELECT `jackpot` FROM `game` WHERE `ID`='.$gameID);
-                requetSql('UPDATE `game` SET `jackpot`='.$jackpot - $newMoney.' WHERE `ID`='.$gameID);
+                $jackpot = getSql('SELECT `jackpot` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
+                requetSql('UPDATE `game` SET `jackpot`='.$jackpot - $newMoney.' WHERE `ID`='.$_SESSION["idGame"]);
                 break;
             case 7:
                 echo "Le joueur est sur le park gratuit.<br/>";
-                $jackpot = getSql('SELECT `jackpot` FROM `game` WHERE `ID`='.$gameID);
+                $jackpot = getSql('SELECT `jackpot` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
                 $this->setMoney($jackpot);
-                requetSql('UPDATE `game` SET `jackpot`= 0 WHERE `ID`='.$gameID);
+                requetSql('UPDATE `game` SET `jackpot`= 0 WHERE `ID`='.$_SESSION["idGame"]);
                 break;
             case 8:
                 echo "Le joueur est sur la case aller en prison.<br/>";
@@ -289,6 +294,7 @@ class Player{
     function goInJail(){
         $this->setPos(11);
         $this->jailOn();
+        echo $this->getName()." est enfermé en Prison.";
     }
 
     function changeCardJail(){
@@ -306,7 +312,7 @@ class Player{
         switch ($type){
             case 1:
                 $this->setPosition($cards->getPosition());
-                echo $player->getName()." est aller à la case".$this->getBoxNameByID($player->getPosition()).".";
+                echo $this->getName()." est allé à la case".$this->getBoxNameByID($this->getPosition()).".";
             break;
             case 2:
                 $this->setMoney($this->money+$cards->getAmount());
@@ -323,11 +329,14 @@ class Player{
             case 4:
                 $amount=$this->nbrHouse*$cards->getAmountHouse()+$this->nbrHotel*$cards->getAmountHotel();
                 $this->setMoney($this->money-$amount);
-                echo $player->getName()." a perdu ".$amount."€";
+                echo $this->getName()." a perdu ".$amount."€";
             break;
             case 5:
-                $player->setPosition($player->getPosition()-3);
-                echo $player->getName()."a reculé de trois cases.";
+                $this->setPosition($this->getPosition()-3);
+                echo $this->getName()." a reculé de trois cases.";
+            break;
+            case 6:
+                $this->goInJail();
             break;
         }
     }

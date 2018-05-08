@@ -30,21 +30,8 @@ class Board{
         }
     }
 
-    function addCommunityChestCard($card){
-        $this->communitychestCard[]= $card;
-    }
-
-    function addChanceCard($card){
-        $this->chanceCard[]= $card;
-    }
-
-    function getCommunityChestCardByID($id){
-        foreach($this->$communitychestCard as $card){
-            if($card->getID() == $id){
-                return $card;
-            }
-        }
-        return false;
+    function addCard($card){
+        array_push($this->communitychestCard[],$card);
     }
 
     function getChanceCardByID($id){

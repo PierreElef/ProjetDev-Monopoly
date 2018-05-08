@@ -10,7 +10,7 @@ function initGame(){
     $_SESSION["onEnergie"]=false;
     $_SESSION["isOwner"]=false;
     $_SESSION["onJail"]=false;
-    $_SESSION["cardJail"]=false;
+    $_SESSION["CardsJail"]=false;
 }
 
 function initPlayer(){
@@ -69,50 +69,50 @@ function initBoard(){
 
     //Création des cartes
     //Création cartes Communauté
-    $board->addCommunityChestCard(new CommunityChestCard(1, "Allez au départ"));
-    $board->addCommunityChestCard(new CommunityChestCard(2, "Allez en prison"));
-    $board->addCommunityChestCard(new CommunityChestCard(3, "Allez Grande Rue Saint-Michel"));
-    $board->addCommunityChestCard(new CommunityChestCard(4, "Amende pour ivresse<br/>-200 000 €"));
-    $board->addCommunityChestCard(new CommunityChestCard(5, "Vous avez gagné le concours de mot-croisés<br/>+1 000 000 €"));
-    $board->addCommunityChestCard(new CommunityChestCard(6, "Allez aux Allées Jean-Jaurés"));
-    $board->addCommunityChestCard(new CommunityChestCard(7, "Allez gare de St-Cyprien"));
-    $board->addCommunityChestCard(new CommunityChestCard(8, "Amende pour excès de vitesse<br/>-150 000 €"));
-    $board->addCommunityChestCard(new CommunityChestCard(9, "Payer les frais de scolarité<br/>-1 500 000 €"));
-    $board->addCommunityChestCard(new CommunityChestCard(10, "Reculez de trois cases"));
-    $board->addCommunityChestCard(new CommunityChestCard(11, "Réparation dans vos maisons<br/>-250 000€/maison -1 000 000€/hôtel"));
-    $board->addCommunityChestCard(new CommunityChestCard(12, "Votre prêt rapporte<br/>+1 500 000€"));
-    $board->addCommunityChestCard(new CommunityChestCard(13, "Libéré de prison"));
-    $board->addCommunityChestCard(new CommunityChestCard(14, "Rendez-vous Rue Croix Baragnon"));
-    $board->addCommunityChestCard(new CommunityChestCard(15, "Voirie <br/>-400 000€/maison -1 000 000€/hôtel"));
-    $board->addCommunityChestCard(new CommunityChestCard(16, "La banque vous verse<br/>+500 000€"));
-
+    $board->addCard(new Cards(1,1, "Allez au départ",1,NULL,NULL,NULL));
+    $board->addCard(new Cards(2,6, "Allez en prison",NULL,NULL,NULL,NULL));
+    $board->addCard(new Cards(3,1, "Allez Grande Rue Saint-Michel",12,NULL,NULL,NULL));
+    $board->addCard(new Cards(4,2, "Amende pour ivresse -200 000 €",NULL,-200000,NULL,NULL));
+    $board->addCard(new Cards(5,2, "Vous avez gagné le concours de mot-croisés +1 000 000 €",NULL,1000000,NULL,NULL));
+    $board->addCard(new Cards(6,1, "Allez aux Allées Jean-Jaurés",25,NULL,NULL,NULL));
+    $board->addCard(new Cards(7,1, "Allez gare de St-Cyprien",16,NULL,NULL,NULL));
+    $board->addCard(new Cards(8,2, "Amende pour excès de vitesse -150 000 €",NULL,-150000,NULL,NULL));
+    $board->addCard(new Cards(9,2, "Payer les frais de scolarité -1 500 000 €",NULL,-1500000,NULL,NULL));
+    $board->addCard(new Cards(10,5, "Reculez de trois cases",NULL,NULL,NULL,NULL));
+    $board->addCard(new Cards(11,4, "Réparation dans vos maisons -250 000€/maison -1 000 000€/hôtel",NULL,NULL,-250000,-1000000));
+    $board->addCard(new Cards(12,2, "Votre prêt rapporte +1 500 000€",NULL,1500000,NULL,NULL));
+    $board->addCard(new Cards(13,3, "Libéré de prison",NULL,NULL,NULL,NULL));
+    $board->addCard(new Cards(14,1, "Rendez-vous Rue Croix Baragnon",40,NULL,NULL,NULL));
+    $board->addCard(new Cards(15,4, "Voirie  -400 000€/maison -1 000 000€/hôtel",NULL,NULL,-400000,-1000000));
+    $board->addCard(new Cards(16,2, "La banque vous verse +500 000€",NULL,500000,NULL,NULL));
+    
     //Création cartes Chance
-    $board->addChanceCard(new ChanceCard(1, "Amende pour excès de vitesse<br/>-100 000€"));
-    $board->addChanceCard(new ChanceCard(2, "La banque vous verse un dividente<br/>+500 000€"));
-    $board->addChanceCard(new ChanceCard(3, "Voirie<br/>-4 000€/maison -1 150 000€/hôtel"));
-    $board->addChanceCard(new ChanceCard(4, "Allez au départ"));
-    $board->addChanceCard(new ChanceCard(5, "Payez frais de scolarité<br/>-1 500 000€"));
-    $board->addChanceCard(new ChanceCard(6, "Allez Rue Croix Baragnon"));
-    $board->addChanceCard(new ChanceCard(7, "Libéré de prison"));
-    $board->addChanceCard(new ChanceCard(8, "Allez aux Allées Jean-Jaurés"));
-    $board->addChanceCard(new ChanceCard(9, "Faites de réparations dans toutes vos maisons<br/>-250 000/maison -1 000 000/hôtel"));
-    $board->addChanceCard(new ChanceCard(10, "Allez Grande Rue Saint-Michel"));
-    $board->addChanceCard(new ChanceCard(11, "Allez gare de St-Cyprien"));
-    $board->addChanceCard(new ChanceCard(12, "Votre immeuble et votre prêt rapportent<br/>+ 1 500 000€"));
-    $board->addChanceCard(new ChanceCard(13, "Allez en prison"));
-    $board->addChanceCard(new ChanceCard(14, "Reculez de trois cases"));
-    $board->addChanceCard(new ChanceCard(15, "Ammende pour ivresse<br/>- 200 000€"));
-    $board->addChanceCard(new ChanceCard(16, "Vous avez gagné le prix de mots croisés de 1 000 000€"));
+    $board->addCard(new Cards(17,2, "Amende pour excès de vitesse -100 000€",NULL,-100000,NULL,NULL));
+    $board->addCard(new Cards(18,2, "La banque vous verse un dividente +500 000€",NULL,500000,NULL,NULL));
+    $board->addCard(new Cards(19,4, "Voirie -400 000€/maison -1 150 000€/hôtel",NULL,NULL,-400000,-1150000));
+    $board->addCard(new Cards(20,1, "Allez au départ",1,NULL,NULL,NULL));
+    $board->addCard(new Cards(21,2, "Payez frais de scolarité -1 500 000€",NULL,-1500000,NULL,NULL));
+    $board->addCard(new Cards(22,1, "Allez Rue Croix Baragnon",40,NULL,NULL,NULL));
+    $board->addCard(new Cards(23,3, "Libéré de prison",NULL,NULL,NULL,NULL));
+    $board->addCard(new Cards(24,1, "Allez aux Allées Jean-Jaurés",25,NULL,NULL,NULL));
+    $board->addCard(new Cards(25,4, "Faites de réparations dans toutes vos maisons -250 000/maison -1 000 000/hôtel",NULL,NULL,-250000,-1000000));
+    $board->addCard(new Cards(26,1, "Allez Grande Rue Saint-Michel",12,NULL,NULL,NULL));
+    $board->addCard(new Cards(27,1, "Allez gare de St-Cyprien",16,NULL,NULL,NULL));
+    $board->addCard(new Cards(28,2, "Votre immeuble et votre prêt rapportent + 1 500 000€",NULL,1500000,NULL,NULL));
+    $board->addCard(new Cards(29,6, "Allez en prison",NULL,NULL,NULL,NULL));
+    $board->addCard(new Cards(30,5, "Reculez de trois cases",NULL,NULL,NULL,NULL));
+    $board->addCard(new Cards(31,2, "Ammende pour ivresse - 200 000€",NULL,-200000,NULL,NULL));
+    $board->addCard(new Cards(32,2, "Vous avez gagné le prix de mots croisés de 1 000 000€",NULL,1000000,NULL,NULL));
 
     $_SESSION['board']=serialize($board);
 }
 
 function initAdmin(){
     //Choix de l'ordre de passage
-    $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `IDgame`='.$gameID);
-    if($ID==$IDadmin){
+    $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
+    if($_SESSION["id"]==$IDadmin){
         $order=array();
-        $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$gameID, 1);
+        $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
         foreach($IDplayers as $IDplayer){
             if($IDplayer==NULL){
                 break;
@@ -123,7 +123,7 @@ function initAdmin(){
             while(sizeof($order)<7){
                 array_push($order,NULL);
             }
-            requetSql('INSERT INTO `turn`(`IDgame`, `IDtoPlay`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`) VALUES ('.$gameID.','.$order[0].','.$order[0].','.$order[1].','.$order[2].','.$order[3].','.$order[4].','.$order[5].')');
+            requetSql('INSERT INTO `turn`(`IDgame`, `IDtoPlay`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`) VALUES ('.$_SESSION["idGame"].','.$order[0].','.$order[0].','.$order[1].','.$order[2].','.$order[3].','.$order[4].','.$order[5].')');
         }
     }
 }

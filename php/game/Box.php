@@ -41,31 +41,31 @@ class Box{
     }
 
     function getOwner(){
-        return getSql('SELECT  `'.$this->id.'` FROM `owner` WHERE `IDgame`='.$gameID);
+        return getSql('SELECT  `'.$this->id.'` FROM `owner` WHERE `IDgame`='.$_SESSION["idGame"]);
     }
 
     function buy($idPlayer){
-        requetSql('UPDATE `owner` SET `'.$this->id.'`='.$idPlayer.' WHERE `IDgame`='.$gameID);
+        requetSql('UPDATE `owner` SET `'.$this->id.'`='.$idPlayer.' WHERE `IDgame`='.$_SESSION["idGame"]);
     }
 
     ////////////////////////////////////////////// Street
     function buildHouse(){
         if(nbrHouse()==NULL){
-            requetSql('INSERT INTO `building`(`IDgame`, `IDbox`, `nbrHouse`, `nbrHotel`) VALUES ('.$gameID.','.$this->id.',1,0)');
+            requetSql('INSERT INTO `building`(`IDgame`, `IDbox`, `nbrHouse`, `nbrHotel`) VALUES ('.$_SESSION["idGame"].','.$this->id.',1,0)');
         }else{
-            //ERREUR requetSql('UPDATE `building` SET `nbrHouse`='.$this->nbrHouse()+1.' WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id);
+            //ERREUR requetSql('UPDATE `building` SET `nbrHouse`='.$this->nbrHouse()+1.' WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDbox`='.$this->id);
         }
     }
 
     function buildHotel(){
-        //ERREUR requetSql('UPDATE `building` SET `nbrHotel`='.$this->nbrHotel()+1.' WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id;
+        //ERREUR requetSql('UPDATE `building` SET `nbrHotel`='.$this->nbrHotel()+1.' WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDbox`='.$this->id;
     }
 
     function nbrHouse(){
-        return getSql('SELECT  `nbrHouse` FROM `building` WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id);
+        return getSql('SELECT  `nbrHouse` FROM `building` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDbox`='.$this->id);
     }
     function nbrHotel(){
-        return getSql('SELECT  `nbrHotel` FROM `building` WHERE `IDgame`='.$gameID.' AND `IDbox`='.$this->id);
+        return getSql('SELECT  `nbrHotel` FROM `building` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDbox`='.$this->id);
     }
 
     function getRentStreet(){

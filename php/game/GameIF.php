@@ -1,10 +1,6 @@
 <?php
     session_start();
     include('../commun/getSQL.php');
-    $ID=$_SESSION["id"];
-    settype($ID, "int");
-    $gameID=$_SESSION["idGame"];
-    settype($gameID, "int");
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,8 +21,8 @@
             <div id="board" class="col-xl-7 col-lg-12">
                 <?php 
                     //Plateau en canvas à garder pour la v2
-                    //include("../../html/monopoly_canvas.html")
-                    include('main.php');
+                    include("../../html/monopoly_canvas.html")
+                    //include('main.php');
                 ?>
             </div>
             <div class="col-xl-5 row">
@@ -39,13 +35,13 @@
                                 <td>Position</td>
                             </tr>
                             <?php
-                                $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$gameID, 1);
+                                $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
                                 foreach($IDplayers as $IDplayer){
-                                    $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$gameID.' AND `IDuser`='.$IDplayer.'');
-                                    $positionPlayer=getSql('SELECT `position` FROM `player` WHERE `IDgame`='.$gameID.' AND `IDuser`='.$IDplayer.'');
+                                    $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$IDplayer.'');
+                                    $positionPlayer=getSql('SELECT `position` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$IDplayer.'');
                                     $positionName=getSql('SELECT `name` FROM `box` WHERE `ID`='.$positionPlayer.'');
                                     $namePlayer=getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer.'');
-                                    $colorPlayer=getSql('SELECT `color` FROM `player` WHERE `IDgame`='.$gameID.' AND `IDuser`='.$IDplayer.'');
+                                    $colorPlayer=getSql('SELECT `color` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$IDplayer.'');
                                     echo '<tr>';
                                     echo '<td style="color:'.$colorPlayer.'"><b>'.$namePlayer.'</b></td>';
                                     echo '<td>'.$moneyPlayer.'</td>';
@@ -157,6 +153,7 @@
                             $_SESSION["choise"]=6;
                         }
                         ?>
+                        <a href="main.php">GotoMain</a>
                     </div>
                 </div>
             </div>

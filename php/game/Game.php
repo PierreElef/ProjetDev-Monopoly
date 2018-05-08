@@ -1,13 +1,4 @@
 <?php
-
-/*$ID=$_SESSION["id"];
-settype($ID, "int");
-$gameID=$_SESSION["idGame"];
-settype($gameID, "int");
-include 'Player.php';
-include 'Dice.php';
-include '../commun/getSQL.php' ;*/
-
 class Game{
     function __construct(){
 
@@ -76,15 +67,15 @@ class Game{
 
     function turnTo(){
         //a qui le tour
-        $IDtoPlay = getSql('SELECT `IDtoPlay` FROM `turn` WHERE `IDgame`='.$gameID);
+        $IDtoPlay = getSql('SELECT `IDtoPlay` FROM `turn` WHERE `IDgame`='.$_SESSION["idGame"]);
         echo "C'est au tour de ".getSql('SELECT `name` FROM `box` WHERE `ID`='.$IDtoPlay)."<br/>";
         return $IDtoPlay;
     }
 
     function playerOnGame(){
-        $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$gameID, 1);
+        $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
         foreach($IDplayers as $IDplayer){
-            $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$gameID.' AND `IDuser`='.$IDplayer.'');
+            $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$IDplayer.'');
             if ($moneyPlayer<=0){
                 $nbrPlayer =+0;
             }else{
@@ -95,9 +86,9 @@ class Game{
     }
 
     function winner(){
-        $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$gameID, 1);
+        $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
         foreach($IDplayers as $IDplayer){
-            $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$gameID.' AND `IDuser`='.$IDplayer.'');
+            $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$IDplayer.'');
             if ($moneyPlayer>0){
                 $IDwinner = $IDplayer;
             }
