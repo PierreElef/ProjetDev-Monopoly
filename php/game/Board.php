@@ -1,7 +1,4 @@
 <?php
-include ('Box.php');
-include ('Card.php');
-
 class Board{
 
     private $box = [];

@@ -42,7 +42,9 @@
                     //si le password correspond
                     if ($_POST['password'] == $passwordDB){
                         //récupération de ID de l'utilisateur de la session
-                        $_SESSION["id"]=getSql('SELECT `ID` FROM `user` WHERE `name`="'.$_POST['username'].'"');
+                        $id=getSql('SELECT `ID` FROM `user` WHERE `name`="'.$_POST['username'].'"');
+                        settype($id, "int");
+                        $_SESSION["id"]=$id;
                         //aller à la page myBibliotheque
                         header('Location: PlayGame.php');
                     }else{

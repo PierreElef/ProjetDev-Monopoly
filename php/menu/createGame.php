@@ -46,8 +46,9 @@
                     echo '<p class="text-center" style="color:red">Il faut au minimum 2 joueurs pour jouer.</p>';
                 }else{
                     requetSql('INSERT INTO `game`(`IDplayer1`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`, `jackpot`) VALUES ('.$idPlayer.','.$nbrTTPlayer.',1,'.$nbrRealPlayer.',0,'.$idPlayer.')');
-                    $sql='SELECT MAX(`ID`) FROM `game`';
-                    $_SESSION["idGame"]=getSql($sql);
+                    $gameID=getSql('SELECT MAX(`ID`) FROM `game`');
+                    settype($gameID, "int");
+                    $_SESSION["idGame"]=$gameID;
                     requetSql('INSERT INTO `player`(`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES ('.$idPlayer.','.$_SESSION["idGame"].',15000000,1,0,"'.$colorArray[0].'")');
                     requetSql('INSERT INTO `owner`(`IDgame`) VALUES ('.$_SESSION["idGame"].')');
                     $IDplayerIA=1;

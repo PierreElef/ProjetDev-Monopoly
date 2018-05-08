@@ -6,26 +6,26 @@ require_once 'Box.php';
 require_once 'Board.php';
 require_once 'Player.php';
 require_once 'Cards.php';
+require_once 'Dice.php';
 $ID=$_SESSION["id"];
-settype($ID, "int");
 $gameID=$_SESSION["idGame"];
-settype($gameID, "int");
 
 //initialisation des données sessions
 if(is_null($_SESSION['game'])){	
     initGame();
-    //Choix de l'ordre de passage
-    $game->getPlayingOrder(); 
+    echo 'Jeu créé';
 }
 $game = unserialize($_SESSION['game']);
 
 if(is_null($_SESSION['player'])){	
 	initPlayer();
+    echo 'Joueur créé';
 }
 $player = unserialize($_SESSION['player']);
 
 if(is_null($_SESSION['board'])){	
-	initBoard();
+    initBoard();
+    echo'Plateau créé';
 }
 $board = unserialize($_SESSION['board']);
 

@@ -1,8 +1,8 @@
 <?php
-//session_start();
+/*session_start();
 $gameID=$_SESSION["idGame"];
 settype($gameID, "int");
-//include('../commun/getSQL.php');
+include('../commun/getSQL.php');*/
 
 class Player{
 ////////////////////////////////////////////// PROPRIETES

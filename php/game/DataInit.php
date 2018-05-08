@@ -1,7 +1,4 @@
 <?php 
-include ('Game.php');
-include ('Box.php');
-
 function initGame(){
     //Création de la partie
     $game = new Game;
@@ -111,6 +108,7 @@ function initBoard(){
 }
 
 function initAdmin(){
+    //Choix de l'ordre de passage
     $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `IDgame`='.$gameID);
     if($ID==$IDadmin){
         $order=array();

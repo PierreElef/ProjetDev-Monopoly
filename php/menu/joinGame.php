@@ -9,6 +9,7 @@ function joinGame($idPlayer, $gameID){
         $canJoin = false;
         foreach ($IDplayers as $IDplayer){
             if ($idPlayer==$IDplayer){
+                settype($gameID, "int");
                 $_SESSION["idGame"]=$gameID;
                 header('Location: waitGamev2.php');
                 break;
@@ -71,6 +72,7 @@ function joinGame($idPlayer, $gameID){
                     }
                 }
             }
+            settype($gameID, "int");
             $_SESSION["idGame"]=$gameID;
         }
         header('Location: waitGamev2.php');
