@@ -45,7 +45,7 @@
                 }elseif ($nbrTTPlayer==1){
                     echo '<p class="text-center" style="color:red">Il faut au minimum 2 joueurs pour jouer.</p>';
                 }else{
-                    requetSql('INSERT INTO `game`(`IDplayer1`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`, `jackpot`) VALUES ('.$idPlayer.','.$nbrTTPlayer.',1,'.$nbrRealPlayer.',0,'.$idPlayer.')');
+                    requetSql('INSERT INTO `game`(`IDplayer1`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`, `jackpot`, `IDadmin`) VALUES ('.$idPlayer.','.$nbrTTPlayer.',1,'.$nbrRealPlayer.',0,'.$idPlayer.')');
                     $gameID=getSql('SELECT MAX(`ID`) FROM `game`');
                     settype($gameID, "int");
                     $_SESSION["idGame"]=$gameID;
@@ -57,6 +57,7 @@
                         requetSql('UPDATE `game` SET `IDplayer'.$i.'`='.$IDplayerIA.' WHERE `ID`='.$_SESSION["idGame"]);
                         $IDplayerIA=$IDplayerIA+1;
                     }
+                    fopen($_SESSION["idGame"].'.txt', 'w+');
                     header('Location: waitGamev2.php');
                 }
             }

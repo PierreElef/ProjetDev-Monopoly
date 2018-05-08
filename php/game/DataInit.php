@@ -64,9 +64,6 @@ function initBoard(){
     $board->addBox(new Box(39, "Taxe de Luxe",6,NULL,NULL,NULL));
     $board->addBox(new Box(40, "Rue Croix-Baragnon",1,8,1500000,300000));
 
-    //Création des dés
-    $dice = new Dice;
-
     //Création des cartes
     //Création cartes Communauté
     $board->addCard(new Cards(1,1, "Allez au départ",1,NULL,NULL,NULL));
@@ -107,10 +104,15 @@ function initBoard(){
     $_SESSION['board']=serialize($board);
 }
 
+function initDice(){
+    //Création des dés
+    $dice = new Dice;
+    $_SESSION['dice']=serialize($dice);
+}
+
 function initAdmin(){
     //Choix de l'ordre de passage
     $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
-    echo $IDadmin;
     if($_SESSION["id"]==$IDadmin){
         $order=array();
         $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
@@ -123,7 +125,9 @@ function initAdmin(){
         while(sizeof($order)<7){
             array_push($order,"NULL");
         }
-        requetSql('INSERT INTO `turn`(`IDgame`, `IDtoPlay`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`) VALUES ('.$_SESSION["idGame"].','.$order[0].','.$order[0].','.$order[1].','.$order[2].','.$order[3].','.$order[4].','.$order[5].')');
+        
+        //requetSql('INSERT INTO `turn`(`IDgame`, `IDtoPlay`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`) VALUES ('.$_SESSION["idGame"].','.$order[0].','.$order[0].','.$order[1].','.$order[2].','.$order[3].','.$order[4].','.$order[5].')');
+        
     }
 }
 

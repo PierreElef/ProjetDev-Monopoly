@@ -16,7 +16,7 @@ class Cards{
         $this->amount = $amount;
         $this->amountHouse = $amountHouse;
         $this->amountHotel = $amountHotel;
-        echo "carte créée<br/>";
+        //echo "carte créée<br/>";
     }
 
     function getID(){

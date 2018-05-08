@@ -22,15 +22,10 @@ class Player{
 ////////////////////////////////////////////// CONSTRUCTEUR
     function __construct(){
         $this->id = $_SESSION["id"];
-        echo 'ID='.$this->id;
         $this->name = getSql('SELECT `name` FROM `user` WHERE `ID`='.$this->id);
-        echo 'name='.$this->name;
         $this->color = getSql('SELECT `color` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
-        echo 'color';
         $this->money = getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
-        echo 'money';
         $this->isJail = getSql('SELECT `jailStatus` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
-        echo 'isJail';
         //$this->nbrHouse;
         //$this->nbrHotel;
     }
@@ -287,6 +282,7 @@ class Player{
                 $this->goInJail();
                 break; 
         }
+        $_SESSION["actionDone"]=false;
         $_SESSION["pulledDice"]=false;
         $_SESSION["isTurn"]=false;
     }
