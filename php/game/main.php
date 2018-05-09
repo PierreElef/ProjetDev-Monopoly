@@ -53,8 +53,7 @@ if($game->playerOnGame() > 1){
     echo "C'est au tour de ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDtoPlay)."<br/>";
     if($IDtoPlay==$ID){
         echo"C'est votre tour<br/>";
-        
-        $_SESSION["isTurn"]=true;
+        $_SESSION["choise"]=7;
         $game->choise();
         $game->playTurn($player, $dice);
     } 
