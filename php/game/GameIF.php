@@ -53,7 +53,7 @@
                         </table>
                     </div>
                     <div>
-                        <p>voir <a href="propriété.php" target="_blank">Propriétés</a></p>
+                        <p>Voir <a href="properties.php" target="_blank">Propriétés</a></p>
                     </div>
                 </div>
 

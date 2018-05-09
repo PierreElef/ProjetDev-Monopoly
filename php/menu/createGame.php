@@ -57,7 +57,7 @@
                         requetSql('UPDATE `game` SET `IDplayer'.$i.'`='.$IDplayerIA.' WHERE `ID`='.$_SESSION["idGame"]);
                         $IDplayerIA=$IDplayerIA+1;
                     }
-                    fopen($_SESSION["idGame"].'.txt', 'w+');
+                    fopen('../../history/'.$_SESSION["idGame"].'.txt', 'w+');
                     header('Location: waitGamev2.php');
                 }
             }
