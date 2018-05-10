@@ -26,6 +26,7 @@ class Player{
         $this->color = getSql('SELECT `color` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
         $this->money = getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
         $this->isJail = getSql('SELECT `jailStatus` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
+        $this->pos = getSql('SELECT `position` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
         //$this->nbrHouse;
         //$this->nbrHotel;
     }
@@ -45,10 +46,12 @@ class Player{
     }
 
     function getPos(){
+        $this->pos = getSql('SELECT `position` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
         return $this->pos;
     }
 
     function getMoney(){
+        $this->money = getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
         return $this->money;
     }
 
@@ -75,24 +78,25 @@ class Player{
 ////////////////////////////////////////////// SETTEURS
     function setPos($pos){
         $this->pos = $pos;
-        requetSql('UPDATE `player` SET `position`='.$this->pos.' WHERE `IDuser`='.$this->id.'AND `IDgame`='.$_SESSION["idGame"]);
+        $sql='UPDATE `player` SET `position`='.$this->pos.' WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"];
+        requetSql($sql);
     }
 
     function setMoney($newMoney){
         $this->money =+ $newMoney;
-        requetSql('UPDATE `player` SET `money`='.$this->money.' WHERE `IDuser`='.$this->id.'AND `IDgame`='.$_SESSION["idGame"]);
+        requetSql('UPDATE `player` SET `money`='.$this->money.' WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
     }
 
     function jailOn(){
         $this->isJail = 1;
         $_SESSION["onJail"]=true;
-        requetSql('UPDATE `player` SET `jailStatus`=1 WHERE `IDuser`='.$this->id.'AND `IDgame`='.$_SESSION["idGame"]);
+        requetSql('UPDATE `player` SET `jailStatus`=1 WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
     }
 
     function jailOff(){
         $this->isJail = 0;
         $_SESSION["onJail"]=false;
-        requetSql('UPDATE `player` SET `jailStatus`=0 WHERE `IDuser`='.$this->id.'AND `IDgame`='.$_SESSION["idGame"]);
+        requetSql('UPDATE `player` SET `jailStatus`=0 WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
     }
 
     function turnOn(){
@@ -106,69 +110,36 @@ class Player{
     } 
 ////////////////////////////////////////////// FONCTIONS COMPLEXES
 ////////////////////////////////////////////// DEPLACEMENT
-    function move(Dice $de){
+    function move(Dice $de, Box $box){
         echo "DEPLACEMENT :<br/>";
         echo $this->getName()." est sur la case ".$this->getPos().".<br/>";
         $de->rollDice();
-        $this->pos += $de->getScore();
+        $newPos=$this->pos + $de->getScore();
+            
         // Savoir si on passe par la case départ
-        if($this->pos < 40){
-            $this->pos = $this->pos;
-        }else if($this->pos >= 40){
-            $this->pos -= 40;
+        if($newPos < 40){
+            $newPos = $newPos;
+        }else if($newPos >= 40){
+            $newPos = $newPos - 40;
             $this->money += 1000000;
             echo $this->getName()." passe par la case départ et empoche 1000000€.<br/>";
         }
+        $this->setPos($newPos);
         echo $this->getName()." se déplace jusqu'à la case ".$this->getPos().".<br/>";
-        $_SESSION["pulledDice"]=true;
-        
-        $typeBox = $box->getType($this->pos);
-        $ownerID= $box->getOwner();
-        switch($typeBox){
-            case 1:
-                //rue
-                $_SESSION["onStreet"]=true;
-                $_SESSION["pulledDice"]=true;
-            case 2:
-                //gare
-                $_SESSION["onStation"]=true;
-                $_SESSION["pulledDice"]=true;
-            case 3:
-                //energie
-                $_SESSION["onEnergie"]=true;
-                $_SESSION["pulledDice"]=true;
-            case 4:
-                //départ/prison
-                $_SESSION["choise"]=0;
-            case 5:
-                //piocher une carte
-                $_SESSION["choise"]=0;
-            case 6:
-                //taxe
-                $_SESSION["choise"]=0;
-            case 7:
-                //parc gratuit
-                $_SESSION["choise"]=0;
-            case 8:
-                //aller en prison
-                $_SESSION["choise"]=0;
-        }
-        if($ownerID==$this->id){
-            $_SESSION["isOwner"]=true;
-        }
-        
     }
 
 ////////////////////////////////////////////// ACTIONS
 
     function action(Box $box){
         //recherche type de box
-        $typeBox = $box->getType($this->pos);
-        //vérification du propriétaire
-        $ownerID= $box->getOwner();
+        $typeBox = $box->getType(); 
+        $this->whereAreWe($typeBox);     
         //action en fonction du type de box et du choix de bouton
+        echo $this->getName()." arrive sur la case ".$box->getName()."<br/>";
+
         switch($typeBox){
             case 1:
+                $ownerID=$this->whoOwner($box);
                 echo "Le joueur est sur une case propriété.<br/>";
                 //s'il n'y a pas de propriétaire
                 if($ownerID==NULL){
@@ -197,7 +168,7 @@ class Player{
                         break;
                     }
                 }else{
-                    if($this->money>$box->getRentStreet()){
+                    if($this->money > $box->getRentStreet()){
                         //si assez argent
                         $newMoney = -$box->getRentStreet();
                         $this->setMoney($newMoney);
@@ -210,6 +181,7 @@ class Player{
                 $_SESSION["onStreet"]=false;
                 break;
             case 2:
+                $ownerID=$this->whoOwner($box);
                 echo "Le joueur est sur une case gare.<br/>";
                 if($ownerID==NULL){
                     if($_SESSION["choise"]==2){
@@ -234,6 +206,7 @@ class Player{
                 $_SESSION["onStation"]=false;
                 break;
             case 3:
+                $ownerID=$this->whoOwner($box);
                 echo "Le joueur est sur une case compagnie.<br/>";
                 if($ownerID==NULL){
                     if($_SESSION["choise"]==2){
@@ -282,7 +255,7 @@ class Player{
                 $this->goInJail();
                 break; 
         }
-        $_SESSION["actionDone"]=false;
+        $_SESSION["actionDone"]=true;
         $_SESSION["pulledDice"]=false;
         $_SESSION["isTurn"]=false;
     }
@@ -337,6 +310,62 @@ class Player{
         }
     }
 
+    function whereAreWe($typeBox){
+        switch($typeBox){
+            case 1:
+                //rue
+                echo "C'est une rue<br/>";
+                $_SESSION["onStreet"]=true;
+                $_SESSION["pulledDice"]=true;
+            break;
+            case 2:
+                //gare
+                echo "C'est une gare<br/>";
+                $_SESSION["onStation"]=true;
+                $_SESSION["pulledDice"]=true;
+            break;
+            case 3:
+                //energie
+                echo "C'est une compagnie d'énergie<br/>";
+                $_SESSION["onEnergie"]=true;
+                $_SESSION["pulledDice"]=true;
+            break;
+            case 4:
+                //départ/prison
+                echo "C'est la case Départ/Prison<br/>";
+                $_SESSION["choise"]=0;
+                break;
+            case 5:
+                //piocher une carte
+                echo "C'est une case tirer une carte<br/>";
+                $_SESSION["choise"]=0;
+                break;
+            case 6:
+                //taxe
+                echo "C'est une case payer taxe<br/>";
+                $_SESSION["choise"]=0;
+                break;
+            case 7:
+                //parc gratuit
+                echo "C'est la case parc gratuit<br/>";
+                $_SESSION["choise"]=0;
+                break;
+            case 8:
+                //aller en prison
+                echo "C'est la case Aller en prison<br/>";
+                $_SESSION["choise"]=0;
+                break;
+        }
+    }
+
+    function whoOwner($box){
+        $ownerID=$box->getOwner();
+        if($ownerID==$this->id){
+            echo $this->getName()." a cette case.<br/>";
+            $_SESSION["isOwner"]=true;
+        }
+        return $ownerID;
+    }
 }
 
 ?>

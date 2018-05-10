@@ -11,6 +11,7 @@
     <title>Monopoly</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--<meta http-equiv="refresh" content="5"/>-->
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/bootstrap.css">
 </head>
@@ -18,8 +19,8 @@
 <body>
     <div class="container">
         <div class="row mt-4">
-            <div id="board" class="col-xl-7 col-lg-12">
-            <h2>Déroulement du jeu</h2>
+        <<div id="board" class="col-xl-7 col-lg-12 pl-5">
+                <h2>Déroulement du jeu</h2>
                 <?php 
                     //Plateau en canvas à garder pour la v2
                     //include("../../html/monopoly_canvas.html")
@@ -46,7 +47,7 @@
                                     echo '<tr>';
                                     echo '<td style="color:'.$colorPlayer.'"><b>'.$namePlayer.'</b></td>';
                                     echo '<td>'.$moneyPlayer.'</td>';
-                                    echo '<td>'.$positionPlayer.' : '.utf8_encode ($positionName).'</td>';
+                                    echo '<td>'.$positionPlayer.' : '.utf8_encode($positionName).'</td>';
                                     echo '</tr>';
                                 }
                             ?>
@@ -61,80 +62,78 @@
                     <div class="row">
                         <div class="col-6">
                             <!--Bouton Lancer le dé--> 
-                            <form>
+                            <form action="#" method="post">
                                 <input type="hidden" name="diceButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==false){
+                                    //if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==false AND $_SESSION["actionDone"]==false){
                                         echo'<input class="buttonGame" type="submit" value="Lancer les dés">';
-                                    }else{
-                                        echo'<input class="buttonGame" type="submit" value="Lancer le dé" disabled>';
-                                    }
+                                    //}else{
+                                    //   echo'<input class="buttonGame" type="submit" value="Lancer le dé" disabled>';
+                                    //}
                                 ?>
                             </form><br/><br/>
                             <!--Bouton Acheter--> 
-                            <form>
+                            <form action="#"  method="post">
                                 <input type="hidden" name="buyButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND ($_SESSION["onStreet"]==true OR $_SESSION["onStation"]==true OR $_SESSION["onEnergie"]==true)){
+                                    //if ($_SESSION["isTurn"]==true AND $_SESSION["actionDone"]==false AND $_SESSION["pulledDice"]==true AND ($_SESSION["onStreet"]==true OR $_SESSION["onStation"]==true OR $_SESSION["onEnergie"]==true)){
                                         echo'<input class="buttonGame" type="submit" value="Acheter">';
-                                    }else{
-                                        echo'<input class="buttonGame" type="submit" value="Acheter" disabled>';
-                                    }
+                                    //}else{
+                                    //    echo'<input class="buttonGame" type="submit" value="Acheter" disabled>';
+                                    //}
                                 ?>
                             </form><br/><br/>
                             <!--Bouton Passer--> 
-                            <form>
+                            <form action="#"  method="post">
                                 <input type="hidden" name="passButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true){
+                                    //if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND $_SESSION["actionDone"]==false){
                                         echo'<input class="buttonGame" type="submit" value="Passer">';
-                                    }else{
-                                        echo'<input class="buttonGame" type="submit" value="Passer" disabled>';
-                                    }
+                                    //}else{
+                                    //    echo'<input class="buttonGame" type="submit" value="Passer" disabled>';
+                                    //}
                                 ?>
                             </form>
                         </div>
                         <div class="col-6">
                             <!--Bouton construire-->
-                            <form>
+                            <form action="#" method="post">
                                 <input type="hidden" name="buildButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND $_SESSION["onStreet"]==true){
+                                   //if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND $_SESSION["onStreet"]==true AND $_SESSION["actionDone"]==false){
                                         echo'<input class="buttonGame" type="submit" value="Construire">';
-                                    }else{
+                                    /*}else{
                                         echo'<input class="buttonGame" type="submit" value="Construire" disabled>';
-                                    }
+                                    }*/
                                 ?>
                             </form><br/>
                             <!--Bouton vendre-->        
-                            <form>
+                            <form action="#" method="post">
                                 <input type="hidden" name="sellButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true){
+                                    //if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND $_SESSION["actionDone"]==false){
                                         echo'<input class="buttonGame" type="number" name="boxIDtoSell" min="1" max="40">';
                                         echo'<input class="buttonGame" type="submit" value="Vendre">';
-                                    }else{
+                                    /*}else{
                                         echo'<input class="buttonGame" type="number" name="boxIDtoSell" min="1" max="40" disabled>';
                                         echo'<input class="buttonGame" type="submit" value="Vendre" disabled>';
-                                    }
+                                    }*/
                                 ?>
                             </form>
                             <!--Bouton carte prison--> 
-                            <form><br/><br/>
+                            <form action="#" method="post"><br/><br/>
                                 <input type="hidden" name="cardJailButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==false AND $_SESSION["onJail"]==true AND $_SESSION["cardJail"]==true){
+                                    //if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==false AND $_SESSION["onJail"]==true AND $_SESSION["cardJail"]==true AND $_SESSION["actionDone"]==false){
                                         echo'<input class="buttonGame" type="submit" value="Carte Prison">';
-                                    }else{
+                                    /*}else{
                                         echo'<input class="buttonGame" type="submit" value="Carte Prison" disabled>';
-                                    }
+                                    }*/
                                 ?>
                             </form>
                         </div>
                         <?php
-                        
                         if (isset($_POST['diceButton'])){
-                            //faire rouler le dé
                             $_SESSION["choise"]=1;
                         }
                         if (isset($_POST['buyButton'])){
@@ -161,6 +160,14 @@
                     </div>
                 </div>
             </div>
+            <!--<div id="board" class="col-xl-7 col-lg-12 pl-5">
+                <h2>Déroulement du jeu</h2>
+                <?php 
+                    //Plateau en canvas à garder pour la v2
+                    //include("../../html/monopoly_canvas.html")
+                    //include('main.php');
+                ?>
+            </div>-->
         </div>
     </div>
 </body>
