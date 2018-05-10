@@ -106,7 +106,7 @@ class Player{
 
     function turnOff(){
         $this->isTurn = False;
-        $_SESSION["isTurn"]=False;
+        //$_SESSION["isTurn"]=false;
     } 
 ////////////////////////////////////////////// FONCTIONS COMPLEXES
 ////////////////////////////////////////////// DEPLACEMENT
@@ -140,46 +140,51 @@ class Player{
 
         switch($typeBox){
             case 1:
-                $ownerID=$this->whoOwner($box);
-                echo "Le joueur est sur une case propriété.<br/>";
-                //s'il n'y a pas de propriétaire
-                if($ownerID==NULL){
-                    if($_SESSION["choise"]==2){
-                        $box->buy($this->id);
-                        setMoney(-1500000);
-                    }elseif($_SESSION["choise"]==3){
-                        break;
-                    }
-                }elseif($ownerID==$this->id){
-                    //construire
-                    if($_SESSION["choise"]==4){
-                        if($box->nbrHouse()>=4){
-                            $box->buildHouse();
-                            $this->nbrHouse =+ 1;
-                            $this->setMoney(-1500000);
-                        }else{
-                            if($box->nbrHotel()!==1){
-                                $box->buildHotel();
-                                $this->nbrHouse =- 4;
-                                $this->nbrHotel =+ 1;
-                                $this->setMoney(-1500000);
-                            }
+            if ($_SESSION["actionDoing"]==true){
+                    $ownerID=$this->whoOwner($box);
+                    echo "Le joueur est sur une case propriété.<br/>";
+                    //s'il n'y a pas de propriétaire
+                    if($ownerID==NULL){
+                        if($_SESSION["choise"]==2){
+                            $box->buy($this->id);
+                            setMoney(-1500000);
+                        }elseif($_SESSION["choise"]==3){
+                            break;
                         }
-                    }elseif($_SESSION["choise"]==3){
-                        break;
-                    }
-                }else{
-                    if($this->money > $box->getRentStreet()){
-                        //si assez argent
-                        $newMoney = -$box->getRentStreet();
-                        $this->setMoney($newMoney);
-                        $MoneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
-                        requetSql('UPDATE `player` SET `money`='.$MoneyOnwer + $box->getRentStreet().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
+                    }elseif($ownerID==$this->id){
+                        //construire
+                        if($_SESSION["choise"]==4){
+                            if($box->nbrHouse()>=4){
+                                $box->buildHouse();
+                                $this->nbrHouse =+ 1;
+                                $this->setMoney(-1500000);
+                            }else{
+                                if($box->nbrHotel()!==1){
+                                    $box->buildHotel();
+                                    $this->nbrHouse =- 4;
+                                    $this->nbrHotel =+ 1;
+                                    $this->setMoney(-1500000);
+                                }
+                            }
+                        }elseif($_SESSION["choise"]==3){
+                            break;
+                        }
                     }else{
-                        //si pas assez argent
+                        if($this->money > $box->getRentStreet()){
+                            //si assez argent
+                            $newMoney = -$box->getRentStreet();
+                            $this->setMoney($newMoney);
+                            $MoneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
+                            requetSql('UPDATE `player` SET `money`='.$MoneyOnwer + $box->getRentStreet().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
+                        }else{
+                            //si pas assez argent
+                            echo"pas assez d'argent";
+                        }
                     }
+                    $_SESSION["onStreet"]=false;
+                    $_SESSION["actionDoing"]=false;
+                    //$_SESSION["actionDone"]=true;
                 }
-                $_SESSION["onStreet"]=false;
                 break;
             case 2:
                 $ownerID=$this->whoOwner($box);
@@ -202,6 +207,7 @@ class Player{
                         requetSql('UPDATE `player` SET `money`='.$moneyOnwer + $box->getRentStation().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
                     }else{
                         //si pas assez argent
+                        echo"pas assez d'argent";
                     }
                 }
                 $_SESSION["onStation"]=false;
@@ -227,6 +233,7 @@ class Player{
                         requetSql('UPDATE `player` SET `money`='.$moneyOnwer + $box->getRentEnergie().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
                     }else{
                         //si pas assez argent
+                        echo"pas assez d'argent";
                     }
                 }
                 $_SESSION["onEnergie"]=true;
@@ -256,9 +263,9 @@ class Player{
                 $this->goInJail();
                 break; 
         }
-        $_SESSION["actionDone"]=true;
+        //$_SESSION["actionDone"]=true;
         $_SESSION["pulledDice"]=false;
-        $_SESSION["isTurn"]=false;
+        //$_SESSION["isTurn"]=false;
     }
 ////////////////////////////////////////////// FONCTIONS SECONDAIRES
     function goInJail(){

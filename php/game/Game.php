@@ -21,8 +21,6 @@ class Game{
                     if ($_SESSION["actionDoing"]==true){
                         echo"faire action<br/>";
                         $player->action($box);
-                        $_SESSION["actionDoing"]=false;
-                        $_SESSION["actionDone"]=true;
                     }else{
                         $player->move($de, $box);
                         $_SESSION["actionDoing"]=true;
@@ -31,7 +29,7 @@ class Game{
                         if($newBoxType==4 OR $newBoxType==5 OR $newBoxType==6 OR $newBoxType==7 OR $newBoxType==8){
                             $player->action($newBox);
                             $_SESSION["actionDoing"]=false;
-                            $_SESSION["actionDone"]=true;
+                            //$_SESSION["actionDone"]=true;
                         }else{
                             $player->whereAreWe($newBoxType);
                         }
@@ -93,27 +91,27 @@ class Game{
                 //achat
                 echo "Le choix fait 2<br/>";
                 $_SESSION["pulledDice"]=false;
-                $_SESSION["isTurn"]=false;      
+                //$_SESSION["isTurn"]=false;      
             break;
             case 3 :
                 //passe le tour
                 echo "Le choix fait 3<br/>";
-                $_SESSION["isTurn"]=false;
+                //$_SESSION["isTurn"]=false;
             break;
             case 4 :
                 //construire
                 $_SESSION["pulledDice"]=false;
-                $_SESSION["isTurn"]=false;
+                //$_SESSION["isTurn"]=false;
             break;
             case 5 :
                 //vendre
                 $_SESSION["pulledDice"]=false;
-                $_SESSION["isTurn"]=false;
+                //$_SESSION["isTurn"]=false;
             break;
             case 6 :
                 //carte prison
                 $_SESSION["pulledDice"]=false;
-                $_SESSION["isTurn"]=false;
+                //$_SESSION["isTurn"]=false;
             break;
             case 7 :
                 echo "Le choix fait 7<br/>";
@@ -123,7 +121,7 @@ class Game{
                 $_SESSION["onStation"]=false;
                 $_SESSION["onEnergie"]=false;
                 $_SESSION["isOwner"]=false;
-                $_SESSION["actionDoing"]=false;
+                $_SESSION["actionDoing"]=true;
                 $_SESSION["actionDone"]=false;
             break;
         }
