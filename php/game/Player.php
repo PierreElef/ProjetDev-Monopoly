@@ -83,7 +83,7 @@ class Player{
     }
 
     function setMoney($newMoney){
-        $this->money =+ $newMoney;
+        $this->money = $this->money + $newMoney;
         requetSql('UPDATE `player` SET `money`='.$this->money.' WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
     }
 
@@ -121,7 +121,8 @@ class Player{
             $newPos = $newPos;
         }else if($newPos >= 40){
             $newPos = $newPos - 40;
-            $this->money += 1000000;
+            $newMoney=1000000;
+            $this->setMoney($newMoney);
             echo $this->getName()." passe par la case départ et empoche 1000000€.<br/>";
         }
         $this->setPos($newPos);
