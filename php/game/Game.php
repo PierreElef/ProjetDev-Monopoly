@@ -5,46 +5,44 @@ class Game{
     }
     
     function playTurn(Player $player, Dice $de,Board $board, Box $box){
-        //do{
-            if($player->getJailStatu() == true){
-                if($_SESSION["pulledDice"]==false OR $_SESSION["choise"]==6){
-                    $de->rollDice();
-                    if($de->getDouble() == true){
-                        $player->turnOn();
-                    }else{
-                        $player->turnOff();
-                    }
-                }
-
-            }else{
-                if ($_SESSION["pulledDice"]==true){
-                    if ($_SESSION["actionDoing"]==true){
-                        echo"faire action<br/>";
-                        $player->action($box);
-                    }else{
-                        $player->move($de, $box);
-                        $_SESSION["actionDoing"]=true;
-                        $newBox=$board->getBoxByID($player->getPos());
-                        $newBoxType=$newBox->getType();
-                        if($newBoxType==4 OR $newBoxType==5 OR $newBoxType==6 OR $newBoxType==7 OR $newBoxType==8){
-                            $player->action($newBox);
-                            $_SESSION["actionDoing"]=false;
-                            //$_SESSION["actionDone"]=true;
-                        }else{
-                            $player->whereAreWe($newBoxType);
-                        }
-                    }
+        if($player->getJailStatu() == true){
+            if($_SESSION["pulledDice"]==false OR $_SESSION["choise"]==6){
+                $de->rollDice();
+                if($de->getDouble() == true){
+                    $player->turnOn();
                 }else{
-                    echo"Il faut lancer le dé<br/>";
-                }
-                if($de->getDouble() == true OR $_SESSION["actionDone"]==true){
-                    //$player->turnOn();
-                }else{
-                    //$player->turnOff();
-                    //turnNext();
+                    $player->turnOff();
                 }
             }
-        //}while($player->getTurnStatu() == true);    
+
+        }else{
+            if ($_SESSION["pulledDice"]==true){
+                if ($_SESSION["actionDoing"]==true){
+                    echo"faire action<br/>";
+                    $player->action($box);
+                }else{
+                    $player->move($de, $box);
+                    $_SESSION["actionDoing"]=true;
+                    $newBox=$board->getBoxByID($player->getPos());
+                    $newBoxType=$newBox->getType();
+                    if($newBoxType==4 OR $newBoxType==5 OR $newBoxType==6 OR $newBoxType==7 OR $newBoxType==8){
+                        $player->action($newBox);
+                        $_SESSION["actionDoing"]=false;
+                        //$_SESSION["actionDone"]=true;
+                    }else{
+                        $player->whereAreWe($newBoxType);
+                    }
+                }
+            }else{
+                echo"Il faut lancer le dé<br/>";
+            }
+            if($de->getDouble() == true OR $_SESSION["actionDone"]==true){
+                //$player->turnOn();
+            }else{
+                //$player->turnOff();
+                //turnNext();
+            }
+        }
     }
 
     function turnTo(){

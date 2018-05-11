@@ -131,6 +131,10 @@
                                     }*/
                                 ?>
                             </form>
+                            <form action="#" method="post"><br/><br/>
+                                <input type="hidden" name="other" value="1">
+                                <input class="buttonGame" type="submit" value="Reboot">
+                            </form>
                         </div>
                         <?php
                         if (isset($_POST['diceButton'])){
@@ -155,6 +159,10 @@
                         if (isset($_POST['cardJailButton'])){
                             //faire utiliser la carte sortie de prison
                             $_SESSION["choise"]=6;
+                        }
+                        if (isset($_POST['other'])){
+                            //faire utiliser la carte sortie de prison
+                            $_SESSION["choise"]=7;
                         }
                         ?>
                     </div>
