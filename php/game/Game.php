@@ -4,7 +4,7 @@ class Game{
 
     }
     
-    function playTurn(Player $player, Dice $de,Board $board, Box $box){
+    function playTurn(Player $player, Dice $de, Board $board, Box $box){
         if($player->getJailStatu() == true){
             if($_SESSION["pulledDice"]==false OR $_SESSION["choise"]==6){
                 $de->rollDice();

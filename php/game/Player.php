@@ -78,6 +78,7 @@ class Player{
     }
 
     function setMoney($newMoney){
+        $this->money = getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
         $this->money = $this->money + $newMoney;
         requetSql('UPDATE `player` SET `money`='.$this->money.' WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
     }
@@ -132,14 +133,15 @@ class Player{
         $this->whereAreWe($typeBox);     
         //action en fonction du type de box et du choix de bouton
         echo $this->getName()." arrive sur la case ".$box->getName()."<br/>";
-
+        
         switch($typeBox){
             case 1:
-            if ($_SESSION["actionDoing"]==true){
+            if ($_SESSION["actionDoing"]==true AND $_SESSION["choise"]!==3){
                     $ownerID=$this->whoOwner($box);
                     echo "Le joueur est sur une case propriété.<br/>";
                     //s'il n'y a pas de propriétaire
                     if($ownerID==NULL){
+                        echo"Il n'y a pas de propriétaire<br/>";
                         if($_SESSION["choise"]==2){
                             $box->buy($this->id);
                             setMoney(-1500000);
@@ -161,16 +163,16 @@ class Player{
                                     $this->setMoney(-1500000);
                                 }
                             }
-                        }elseif($_SESSION["choise"]==3){
-                            break;
                         }
                     }else{
+                        echo"Le propriétaire est ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$ownerID)."<br/>";
                         if($this->money > $box->getRentStreet()){
                             //si assez argent
-                            $newMoney = -$box->getRentStreet();
+                            $newMoney = -($box->getRentStreet());
                             $this->setMoney($newMoney);
-                            $MoneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
-                            requetSql('UPDATE `player` SET `money`='.$MoneyOnwer + $box->getRentStreet().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
+                            $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
+                            $newMoneyOnwer=$moneyOnwer+ $box->getRentStreet();
+                            requetSql('UPDATE `player` SET `money`='.$newMoneyOnwer.' WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
                         }else{
                             //si pas assez argent
                             echo"pas assez d'argent";
@@ -180,67 +182,72 @@ class Player{
                     $_SESSION["actionDoing"]=false;
                     //$_SESSION["actionDone"]=true;
                 }
-                break;
+            break;
             case 2:
-                $ownerID=$this->whoOwner($box);
-                echo "Le joueur est sur une case gare.<br/>";
-                if($ownerID==NULL){
-                    if($_SESSION["choise"]==2){
-                        $box->buy($this->id);
-                        setMoney(-1500000);
-                    }elseif($_SESSION["choise"]==3){
+                if ($_SESSION["actionDoing"]==true AND $_SESSION["choise"]!==3){
+                    $ownerID=$this->whoOwner($box);
+                    echo "Le joueur est sur une case gare.<br/>";
+                    if($ownerID==NULL){
+                        echo"Il n'y a pas de propriétaire";
+                        if($_SESSION["choise"]==2){
+                            $box->buy($this->id);
+                            setMoney(-1500000);
+                        }
+                    }elseif ($ownerID==$this->id){
                         break;
-                    }
-                }elseif ($ownerID==$this->id){
-                    break;
-                }else{
-                    if($this->money>$box->getRentStation()){
-                        //si assez argent
-                        $newMoney = -$box->getRentStation();
-                        $this->setMoney($newMoney);
-                        $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
-                        requetSql('UPDATE `player` SET `money`='.$moneyOnwer + $box->getRentStation().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
                     }else{
-                        //si pas assez argent
-                        echo"pas assez d'argent";
+                        if($this->money>$box->getRentStation()){
+                            //si assez argent
+                            $newMoney = -($box->getRentStreet());
+                            $this->setMoney($newMoney);
+                            $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
+                            $newMoneyOnwer=$moneyOnwer+ $box->getRentStreet();
+                            requetSql('UPDATE `player` SET `money`='.$newMoneyOnwer.' WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
+                        }else{
+                            //si pas assez argent
+                            echo"pas assez d'argent";
+                        }
                     }
+                    $_SESSION["onStation"]=false;
+                    $_SESSION["actionDoing"]=false;
                 }
-                $_SESSION["onStation"]=false;
-                $_SESSION["actionDoing"]=false;
-                break;
+            break;
             case 3:
-                $ownerID=$this->whoOwner($box);
-                echo "Le joueur est sur une case compagnie.<br/>";
-                if($ownerID==NULL){
-                    if($_SESSION["choise"]==2){
-                        $box->buy($this->id);
-                        setMoney(-1500000);
-                    }elseif($_SESSION["choise"]==3){
+                if ($_SESSION["actionDoing"]==true AND $_SESSION["choise"]!==3){
+                    $ownerID=$this->whoOwner($box);
+                    echo "Le joueur est sur une case compagnie.<br/>";
+                    if($ownerID==NULL){
+                        echo"Il n'y a pas de propriétaire";
+                        if($_SESSION["choise"]==2){
+                            $box->buy($this->id);
+                            setMoney(-1500000);
+                        }
+                    }elseif ($ownerID==$this->id){
                         break;
-                    }
-                }elseif ($ownerID==$this->id){
-                    break;
-                }else{
-                    if($this->money>$box->getRentEnergie()){
-                        //si assez argent
-                        $newMoney = -$box->getRentEnergie();
-                        $this->setMoney($newMoney);
-                        $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
-                        requetSql('UPDATE `player` SET `money`='.$moneyOnwer + $box->getRentEnergie().' WHERE `IDuser`='.$ownerID.'AND `IDgame`='.$_SESSION["idGame"]);
                     }else{
-                        //si pas assez argent
-                        echo"pas assez d'argent";
+                        if($this->money>$box->getRentEnergie()){
+                            //si assez argent
+                            $newMoney = -($box->getRentStreet());
+                            $this->setMoney($newMoney);
+                            $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
+                            $newMoneyOnwer=$moneyOnwer+ $box->getRentStreet();
+                            requetSql('UPDATE `player` SET `money`='.$newMoneyOnwer.' WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
+                        }else{
+                            //si pas assez argent
+                            echo"pas assez d'argent";
+                        }
                     }
+                    $_SESSION["onEnergie"]=false;
+                    $_SESSION["actionDoing"]=false;
                 }
-                $_SESSION["onEnergie"]=true;
-                break;
+            break;
             case 4: 
                 echo "Le joueur est sur une case départ ou prison.<br/>";
-                break;
+            break;
             case 5: 
                 echo "Le joueur pioche une carte.<br/>";
                 /* tirer une carte */
-                break;
+            break;
             case 6:
                 echo "Le joueur est sur une case où il va payer.<br/>";
                 $newMoney = -2000000;
@@ -248,17 +255,17 @@ class Player{
                 $jackpot = getSql('SELECT `jackpot` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
                 $newJackpot = $jackpot-$newMoney;
                 requetSql('UPDATE `game` SET `jackpot`='.$newJackpot.' WHERE `ID`='.$_SESSION["idGame"]);
-                break;
+            break;
             case 7:
                 echo "Le joueur est sur le park gratuit.<br/>";
                 $jackpot = getSql('SELECT `jackpot` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
                 $this->setMoney($jackpot);
                 requetSql('UPDATE `game` SET `jackpot`= 0 WHERE `ID`='.$_SESSION["idGame"]);
-                break;
+            break;
             case 8:
                 echo "Le joueur est sur la case aller en prison.<br/>";
                 $this->goInJail();
-                break; 
+            break; 
         }
         //$_SESSION["actionDone"]=true;
         $_SESSION["pulledDice"]=false;

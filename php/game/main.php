@@ -37,7 +37,12 @@ if(is_null($_SESSION['dice'])){
 $dice = unserialize($_SESSION['dice']);
 
 //initilisation administrateur
-//initAdmin();
+
+if(is_null($_SESSION['order'])){	
+    //Création du tour des joueurs
+    initAdmin();
+}
+$order = unserialize($_SESSION['order']);
 
 //Identité
 echo"Je suis ".$player->getName()."<br/>";
@@ -49,7 +54,6 @@ if(is_null($_SESSION['choise'])){
 if($game->playerOnGame() > 1){
     echo"le jeu commence<br/>";
     $IDtoPlay=$game->turnTo();
-    //$_SESSION['choise']=7;
     echo "C'est au tour de ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDtoPlay)."<br/>";
     if($IDtoPlay==$ID){
         $_SESSION["isTurn"]=true;

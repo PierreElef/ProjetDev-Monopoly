@@ -22,7 +22,7 @@
         <<div id="board" class="col-xl-7 col-lg-12 pl-5">
                 <h2>Déroulement du jeu</h2>
                 <?php 
-                    //Plateau en canvas à garder pour la v2
+                    //Plateau en canvas à garder pour la v2, dispo dans Lien : Plateau et propriété
                     //include("../../html/monopoly_canvas.html")
                     include('main.php');
                 ?>
@@ -168,14 +168,6 @@
                     </div>
                 </div>
             </div>
-            <!--<div id="board" class="col-xl-7 col-lg-12 pl-5">
-                <h2>Déroulement du jeu</h2>
-                <?php 
-                    //Plateau en canvas à garder pour la v2
-                    //include("../../html/monopoly_canvas.html")
-                    //include('main.php');
-                ?>
-            </div>-->
         </div>
     </div>
 </body>
