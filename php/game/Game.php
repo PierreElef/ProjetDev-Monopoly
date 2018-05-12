@@ -119,7 +119,7 @@ class Game{
                 $_SESSION["onStation"]=false;
                 $_SESSION["onEnergie"]=false;
                 $_SESSION["isOwner"]=false;
-                $_SESSION["actionDoing"]=true;
+                $_SESSION["actionDoing"]=false;
                 $_SESSION["actionDone"]=false;
             break;
         }

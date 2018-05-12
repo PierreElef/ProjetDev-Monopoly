@@ -120,7 +120,7 @@ class Player{
         if($newPos < 40){
             $newPos = $newPos;
         }else if($newPos >= 40){
-            $newPos = $newPos - 40;
+            $newPos = $newPos - 39;
             $newMoney=1000000;
             $this->setMoney($newMoney);
             echo $this->getName()." passe par la case départ et empoche 1000000€.<br/>";
@@ -211,6 +211,7 @@ class Player{
                     }
                 }
                 $_SESSION["onStation"]=false;
+                $_SESSION["actionDoing"]=false;
                 break;
             case 3:
                 $ownerID=$this->whoOwner($box);
@@ -250,7 +251,8 @@ class Player{
                 $newMoney = -2000000;
                 $this->setMoney($newMoney);
                 $jackpot = getSql('SELECT `jackpot` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
-                requetSql('UPDATE `game` SET `jackpot`='.$jackpot - $newMoney.' WHERE `ID`='.$_SESSION["idGame"]);
+                $newJackpot = $jackpot-$newMoney;
+                requetSql('UPDATE `game` SET `jackpot`='.$newJackpot.' WHERE `ID`='.$_SESSION["idGame"]);
                 break;
             case 7:
                 echo "Le joueur est sur le park gratuit.<br/>";
