@@ -50,15 +50,19 @@ class Box{
 
     ////////////////////////////////////////////// Street
     function buildHouse(){
+        $nbrHouse=$this->nbrHouse();
         if(nbrHouse()==NULL){
             requetSql('INSERT INTO `building`(`IDgame`, `IDbox`, `nbrHouse`, `nbrHotel`) VALUES ('.$_SESSION["idGame"].','.$this->id.',1,0)');
         }else{
-            //ERREUR requetSql('UPDATE `building` SET `nbrHouse`='.$this->nbrHouse()+1.' WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDbox`='.$this->id);
+            $nbrHouse=$nbrHouse+1;
+            requetSql('UPDATE `building` SET `nbrHouse`='.$nbrHouse.' WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDbox`='.$this->id);
         }
     }
 
     function buildHotel(){
-        //ERREUR requetSql('UPDATE `building` SET `nbrHotel`='.$this->nbrHotel()+1.' WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDbox`='.$this->id;
+        $nbrHotel=$this->nbrHotel()+1;
+        requetSql('UPDATE `building` SET `nbrHotel`='.$nbrHotel.' WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDbox`='.$this->id);
+        requetSql('UPDATE `building` SET `nbrHouse`=0 WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDbox`='.$this->id);
     }
 
     function nbrHouse(){

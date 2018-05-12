@@ -1,9 +1,4 @@
 <?php
-/*session_start();
-$_SESSION["idGame"]=$_SESSION["idGame"];
-settype($_SESSION["idGame"], "int");
-include('../commun/getSQL.php');*/
-
 class Player{
 ////////////////////////////////////////////// PROPRIETES
 ////////////////////////////////////////////// CONSTANTE

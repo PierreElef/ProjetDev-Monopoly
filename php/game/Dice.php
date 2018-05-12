@@ -1,5 +1,4 @@
 <?php
-
 class Dice
 {
     private $de1;
