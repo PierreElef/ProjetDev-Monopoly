@@ -11,7 +11,7 @@
     <title>Monopoly</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--<meta http-equiv="refresh" content="5"/>-->
+    <!--<meta http-equiv="refresh" content="1"/>-->
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/bootstrap.css">
 </head>
