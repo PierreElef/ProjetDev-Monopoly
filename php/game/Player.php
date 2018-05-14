@@ -128,7 +128,7 @@ class Player{
 
 ////////////////////////////////////////////// ACTIONS
 
-    function action(Box $box){
+    function action(Board $board, Box $box){
         //recherche type de case
         $typeBox = $box->getType(); 
         $this->whereAreWe($typeBox);     
@@ -151,14 +151,16 @@ class Player{
                             $box->buy($this->id);
                             $this->setMoney(-1500000);
                             echo "Le joueur achète la case".$box->getName()."<br/>";
+                            $_SESSION["onStreet"]=false;
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
                         //si le joueur veut passer son tour
                         }elseif($_SESSION["choise"]==3){
+                            $_SESSION["onStreet"]=false;
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
-                        //si le joueur a jeté les dés
-                        }elseif($_SESSION["choise"]==1){
+                        //autres
+                        }else{
                             $_SESSION["onStreet"]=true;
                             $_SESSION["actionDoing"]=true;
                             $_SESSION["actionDone"]=false;
@@ -180,11 +182,19 @@ class Player{
                                     $this->setMoney(-1500000);
                                 }
                             }
+                            $_SESSION["onStreet"]=false;
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
+                        //si le joueur veut passer son tour
                         }elseif($_SESSION["choise"]==3){
+                            $_SESSION["onStreet"]=false;
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
+                        //autres
+                        }else{
+                            $_SESSION["onStreet"]=true;
+                            $_SESSION["actionDoing"]=true;
+                            $_SESSION["actionDone"]=false;
                         }
                     //si le propriétaire est un autre joueur
                     }else{
@@ -201,6 +211,7 @@ class Player{
                             //si pas assez argent
                             echo"pas assez d'argent";
                         }
+                        $_SESSION["onStreet"]=false;
                         $_SESSION["actionDoing"]=false;
                         $_SESSION["actionDone"]=true;
                     }
@@ -217,13 +228,17 @@ class Player{
                             $box->buy($this->id);
                             $this->setMoney(-1500000);
                             echo "Le joueur achète la case ".$box->getName()."<br/>";
+                            $_SESSION["onStation"]=false;
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
+                        //si le joueur veut passer son tour
                         }elseif($_SESSION["choise"]==3){
+                            $_SESSION["onStation"]=false;
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
-                        }elseif($_SESSION["choise"]==1){
-                            $_SESSION["onStreet"]=true;
+                        //autres
+                        }else{
+                            $_SESSION["onStation"]=true;
                             $_SESSION["actionDoing"]=true;
                             $_SESSION["actionDone"]=false;
                         }
@@ -241,9 +256,10 @@ class Player{
                             //si pas assez argent
                             echo"pas assez d'argent";
                         }
+                        $_SESSION["onStation"]=false;
+                        $_SESSION["actionDoing"]=false;
+                        $_SESSION["actionDone"]=true;
                     }
-                    $_SESSION["onStation"]=false;
-                    $_SESSION["actionDoing"]=false;
                 }
             break;
             //energie
@@ -257,13 +273,17 @@ class Player{
                             $box->buy($this->id);
                             $this->setMoney(-1500000);
                             echo "Le joueur achète la case".$box->getName()."<br/>";
+                            $_SESSION["onEnergie"]=false;
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
+                        //si le joueur veut passer son tour
                         }elseif($_SESSION["choise"]==3){
+                            $_SESSION["onEnergie"]=false;
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
-                        }elseif($_SESSION["choise"]==1){
-                            $_SESSION["onStreet"]=true;
+                        //autres
+                        }else{
+                            $_SESSION["onEnergie"]=true;
                             $_SESSION["actionDoing"]=true;
                             $_SESSION["actionDone"]=false;
                         }
@@ -281,18 +301,21 @@ class Player{
                             //si pas assez argent
                             echo"pas assez d'argent";
                         }
-                    }
                     $_SESSION["onEnergie"]=false;
                     $_SESSION["actionDoing"]=false;
+                    $_SESSION["actionDone"]=true;
+                    }
                 }
             break;
             case 4: 
                 echo "Le joueur est sur une case départ ou prison.<br/>";
+                $_SESSION["isTurn"]=false;
             break;
             case 5: 
                 echo "Le joueur pioche une carte.<br/>";
-                /* tirer une carte */
-
+                //$pickedCard=$board->getCardByID($this->pickCard());
+                //$this->actionCard($pickedCard);
+                $_SESSION["isTurn"]=false;
             break;
             case 6:
                 echo "Le joueur est sur une case où il va payer.<br/>";
@@ -301,19 +324,21 @@ class Player{
                 $jackpot = getSql('SELECT `jackpot` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
                 $newJackpot = $jackpot-$newMoney;
                 requetSql('UPDATE `game` SET `jackpot`='.$newJackpot.' WHERE `ID`='.$_SESSION["idGame"]);
+                $_SESSION["isTurn"]=false;
             break;
             case 7:
                 echo "Le joueur est sur le park gratuit.<br/>";
                 $jackpot = getSql('SELECT `jackpot` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
                 $this->setMoney($jackpot);
                 requetSql('UPDATE `game` SET `jackpot`= 0 WHERE `ID`='.$_SESSION["idGame"]);
+                $_SESSION["isTurn"]=false;
             break;
             case 8:
                 echo "Le joueur est sur la case aller en prison.<br/>";
                 $this->goInJail();
+                $_SESSION["isTurn"]=false;
             break; 
         }
-        $_SESSION["isTurn"]=false;
     }
 ////////////////////////////////////////////// FONCTIONS SECONDAIRES
     function goInJail(){
@@ -333,6 +358,7 @@ class Player{
     }
 
     function actionCard(Cards $card){
+        echo'Le joueur a tiré la carte "'.$card->getMessage().'"<br/>';
         $type = $cards->getType($card);
         switch ($type){
             case 1:
@@ -341,7 +367,6 @@ class Player{
             break;
             case 2:
                 $this->setMoney($this->money+$cards->getAmount());
-                echo $this->name." a ".$this->money."€.";
             break;
             case 3:
                 if($this->cardJail==false){
@@ -386,27 +411,22 @@ class Player{
             case 4:
                 //départ/prison
                 echo "C'est la case Départ/Prison<br/>";
-                $_SESSION["choise"]=0;
                 break;
             case 5:
                 //piocher une carte
                 echo "C'est une case tirer une carte<br/>";
-                $_SESSION["choise"]=0;
                 break;
             case 6:
                 //taxe
                 echo "C'est une case payer taxe<br/>";
-                $_SESSION["choise"]=0;
                 break;
             case 7:
                 //parc gratuit
                 echo "C'est la case parc gratuit<br/>";
-                $_SESSION["choise"]=0;
                 break;
             case 8:
                 //aller en prison
                 echo "C'est la case Aller en prison<br/>";
-                $_SESSION["choise"]=0;
                 break;
         }
     }
@@ -418,6 +438,28 @@ class Player{
             $_SESSION["isOwner"]=true;
         }
         return $ownerID;
+    }
+
+    function pickCard(){
+        $IDcard=getSql('SELECT `cardToPick` FROM `cards` WHERE `IDgame`='.$_SESSION["idGame"]);
+        $this->nextCard($IDcard);
+        return $IDcard;
+    }
+
+    function nextCard($IDcard){
+        $orderCard=$_SESSION['orderCard'];
+        $nextCard=NULL;
+        for($i=0;$i<16;$i++){
+            if($orderCard[$i]==$IDcard){
+                $j=$i+1;
+                if($j==17){
+                    $nextCard=$orderCard[0];
+                }else{
+                    $nextCard=$orderCard[$j];
+                }
+            }
+        }
+        requetSql('UPDATE `cards` SET `cardToPick`='.$nextCard.' WHERE `IDgame`='.$_SESSION["idGame"]);
     }
 }
 

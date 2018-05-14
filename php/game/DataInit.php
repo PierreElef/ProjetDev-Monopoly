@@ -163,7 +163,7 @@ function initOrderCard(){
             requetSql($sql);
         }else{
             $orderCard=array();
-            for($i=1;$i<16;$i++){
+            for($i=1;$i<17;$i++){
                 $card=getSql('SELECT `order'.$i.'` FROM `cards` WHERE `IDgame`='.$_SESSION["idGame"]);
                 array_push($orderCard,$card);
             }
@@ -171,7 +171,7 @@ function initOrderCard(){
         }
     }else{
         $orderCard=array();
-        for($i=1;$i<16;$i++){
+        for($i=1;$i<17;$i++){
             $card=getSql('SELECT `order'.$i.'` FROM `cards` WHERE `IDgame`='.$_SESSION["idGame"]);
             array_push($orderCard,$card);
         }

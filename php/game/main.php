@@ -67,11 +67,8 @@ if($game->playerOnGame() > 1){
     if($IDtoPlay==$ID){
         $_SESSION["isTurn"]=true;
         echo"C'est votre tour<br/>";
-        echo"choix ".$_SESSION['choise']."<br/>";
-        $player->jailOff();
         $game->choise();
-        $game->playTurn($player, $dice, $board, $board->getBoxByID($player->getPos())); 
-        //etat();
+        $game->playTurn($player, $dice, $board, $board->getBoxByID($player->getPos()));
     } 
 }else{
     echo "Le gagnant est ".$game->winner();

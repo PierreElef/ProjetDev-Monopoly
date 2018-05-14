@@ -8,9 +8,9 @@ class Game{
         //si le joueur est en prison
         if($player->getJailStatu() == true){
             if($_SESSION["pulledDice"]==false){
-                if($_SESSION["choise"]==1 OR $_SESSION["choise"]==6){
+                if($_SESSION["choise"]==1){
                     $de->rollDice();
-                    if($de->getDouble() == true){
+                    if($de->getDouble() == true OR $_SESSION["choise"]==6){
                         $player->turnOn();
                     }else{
                         $player->turnOff();
@@ -20,14 +20,14 @@ class Game{
         //si le joueur n'est pas en prison
         }else{
             //si le joueur a lancé les dés
-            if ($_SESSION["pulledDice"]==true){
+            if($_SESSION["pulledDice"]==true){
                 //si l'action est en cours
                 if ($_SESSION["actionDoing"]==true){
                     //faire l'action de la case
                     echo"faire action<br/>";
-                    $player->action($box);
+                    $player->action($board, $box);
                 }
-            }else{
+            }elseif($_SESSION["choise"]==1){
                 echo"le joueur lance les dés<br/>";
                 //le joueur lance le dé
                 $player->move($de, $box);
@@ -37,27 +37,16 @@ class Game{
                 $newBox=$board->getBoxByID($player->getPos());
                 $newBoxType=$newBox->getType();
                 //faire l'action de la case
-                $player->action($newBox);
-                //si la case est une rue/gare/energie
-                if($newBoxType!==4 OR $newBoxType!==5 OR $newBoxType!==6 OR $newBoxType!==7 OR $newBoxType!==8){
-                    //action en cours 
-                    $_SESSION["actionDoing"]=true;
-                    $_SESSION["actionDone"]=false;
-                    $_SESSION["pulledDice"]=true;
-                }else{
-                    //action terminé                    
-                    $_SESSION["actionDoing"]=false;
-                    $_SESSION["actionDone"]=true;
-                    $_SESSION["pulledDice"]=false;
-                }
+                $player->action($board, $newBox);
             }
-        }
-        if($de->getDouble() == true OR $_SESSION["actionDone"]==true){
-            $player->turnOn();
-        }else{
-            $player->turnOff();
-            $this->turnNext();
-        }
+            if($de->getDouble() == true OR $_SESSION["actionDone"]==false){
+                $player->turnOn();
+            }else{
+                $player->turnOff();
+                $_SESSION["pulledDice"]==false;
+                $this->turnNext();
+            }
+        } 
     }
 
     function turnTo(){
@@ -152,7 +141,7 @@ class Game{
                 $_SESSION["isOwner"]=false;
                 $_SESSION["onJail"]=false;
                 $_SESSION["actionDoing"]=false;
-                $_SESSION["actionDone"]=false;
+                $_SESSION["actionDone"]=true;
             break;
         }
     }
