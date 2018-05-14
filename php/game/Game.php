@@ -5,6 +5,7 @@ class Game{
     }
     
     function playTurn(Player $player, Dice $de, Board $board, Box $box){
+        
         if($player->getJailStatu() == true OR $_SESSION["onJail"]==true){
             if($_SESSION["pulledDice"]==false OR $_SESSION["choise"]==6){
                 if($_SESSION["choise"]==1){
@@ -22,6 +23,7 @@ class Game{
                     echo"faire action<br/>";
                     $player->action($box);
                 }else{
+                    echo"le joueur lance les dés<br/>";
                     $player->move($de, $box);
                     $_SESSION["actionDoing"]=true;
                     $newBox=$board->getBoxByID($player->getPos());
@@ -40,7 +42,7 @@ class Game{
                 $player->turnOn();
             }else{
                 $player->turnOff();
-                $this->turnNext();
+                //$this->turnNext();
             }
         }
     }
@@ -53,6 +55,7 @@ class Game{
     function turnNext(){
         //passer au tour suivant
         $order=$_SESSION['order'];
+        $nextPlayer=NULL;
         $nbrPlayer=$this->playerOnGame();
         for($i=0;$i<$nbrPlayer;$i++){
             if($order[$i]==$_SESSION["id"]){

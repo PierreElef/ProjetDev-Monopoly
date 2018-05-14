@@ -50,6 +50,7 @@ echo"Je suis ".$player->getName()."<br/>";
 if(is_null($_SESSION['choise'])){	
     $_SESSION['choise']=7;
 }
+
 echo"le jeu commence<br/>";
 //Tant que nbr_joueur > 1
 if($game->playerOnGame() > 1){
@@ -59,6 +60,7 @@ if($game->playerOnGame() > 1){
         $_SESSION["isTurn"]=true;
         echo"C'est votre tour<br/>";
         echo"choix ".$_SESSION['choise']."<br/>";
+        $player->jailOff();
         $game->choise();
         $game->playTurn($player, $dice, $board, $board->getBoxByID($player->getPos())); 
         etat();

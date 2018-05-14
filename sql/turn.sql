@@ -25,26 +25,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `player`
+-- Structure de la table `turn`
 --
 
-DROP TABLE IF EXISTS `player`;
-CREATE TABLE IF NOT EXISTS `player` (
-  `IDuser` int(11) NOT NULL,
+DROP TABLE IF EXISTS `turn`;
+CREATE TABLE IF NOT EXISTS `turn` (
   `IDgame` int(11) NOT NULL,
-  `money` int(11) NOT NULL,
-  `position` int(11) NOT NULL,
-  `jailStatus` int(1) NOT NULL,
-  `color` text NOT NULL
+  `IDtoPlay` int(11) NOT NULL,
+  `order1` int(11) DEFAULT NULL,
+  `order2` int(11) DEFAULT NULL,
+  `order3` int(11) DEFAULT NULL,
+  `order4` int(11) DEFAULT NULL,
+  `order5` int(11) DEFAULT NULL,
+  `order6` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IDgame`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `player`
+-- Déchargement des données de la table `turn`
 --
 
-INSERT INTO `player` (`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES
-(7, 35, 14800000, 1, 1, '#FF0000'),
-(6, 35, 15300000, 1, 0, '#003AFF');
+INSERT INTO `turn` (`IDgame`, `IDtoPlay`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`) VALUES
+(35, 7, 6, 7, NULL, NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

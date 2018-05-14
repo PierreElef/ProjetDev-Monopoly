@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 02 mai 2018 à 10:29
+-- Généré le :  lun. 14 mai 2018 à 08:25
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` text NOT NULL,
   `password` text NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `user`
@@ -47,7 +47,9 @@ INSERT INTO `user` (`ID`, `name`, `password`) VALUES
 (5, 'WALL-E', '5'),
 (3, 'Jarvis', '3'),
 (6, 'playerOne', 'One'),
-(7, 'Pierre', 'pierre');
+(7, 'Pierre', 'pierre'),
+(8, 'Adel', 'adel'),
+(9, 'Axelle', 'axelle');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
