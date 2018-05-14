@@ -5,16 +5,17 @@ class Game{
     }
     
     function playTurn(Player $player, Dice $de, Board $board, Box $box){
-        if($player->getJailStatu() == true){
+        if($player->getJailStatu() == true OR $_SESSION["onJail"]==true){
             if($_SESSION["pulledDice"]==false OR $_SESSION["choise"]==6){
-                $de->rollDice();
-                if($de->getDouble() == true){
-                    $player->turnOn();
-                }else{
-                    $player->turnOff();
+                if($_SESSION["choise"]==1){
+                    $de->rollDice();
+                    if($de->getDouble() == true){
+                        $player->turnOn();
+                    }else{
+                        $player->turnOff();
+                    }
                 }
             }
-
         }else{
             if ($_SESSION["pulledDice"]==true){
                 if ($_SESSION["actionDoing"]==true){
@@ -25,22 +26,21 @@ class Game{
                     $_SESSION["actionDoing"]=true;
                     $newBox=$board->getBoxByID($player->getPos());
                     $newBoxType=$newBox->getType();
-                    if($newBoxType==4 OR $newBoxType==5 OR $newBoxType==6 OR $newBoxType==7 OR $newBoxType==8){
-                        $player->action($newBox);
-                        $_SESSION["actionDoing"]=false;
-                        //$_SESSION["actionDone"]=true;
+                    $player->action($newBox);
+                    if($newBoxType!==4 OR $newBoxType!==5 OR $newBoxType!==6 OR $newBoxType!==7 OR $newBoxType!==8){
+                        $_SESSION["actionDoing"]=true;
                     }else{
-                        $player->whereAreWe($newBoxType);
+                        $_SESSION["actionDone"]=true;
                     }
                 }
             }else{
                 echo"Il faut lancer le dé<br/>";
             }
             if($de->getDouble() == true OR $_SESSION["actionDone"]==true){
-                //$player->turnOn();
+                $player->turnOn();
             }else{
-                //$player->turnOff();
-                //turnNext();
+                $player->turnOff();
+                $this->turnNext();
             }
         }
     }
@@ -50,9 +50,22 @@ class Game{
         return getSql('SELECT `IDtoPlay` FROM `turn` WHERE `IDgame`='.$_SESSION["idGame"]);
     }
 
-    /*function turnNext(){
-
-    }*/
+    function turnNext(){
+        $order=$_SESSION['order'];
+        $nbrPlayer=$this->playerOnGame();
+        for($i=0;$i<$nbrPlayer;$i++){
+            if($order[$i]==$_SESSION["id"]){
+                $j=$i+1;
+                if($j==$nbrPlayer){
+                    $nextPlayer=$order[0];
+                }else{
+                    $nextPlayer=$order[$j];
+                }
+            }
+        }
+        //echo "ça sera au tour de ".$nextPlayer."<br/>";
+        //requetSql('UPDATE `turn` SET `IDtoPlay`='.$nextPlayer.' WHERE `IDgame`='.$_SESSION["idGame"]);
+    }
 
     function playerOnGame(){
         $nbrPlayer=0;
@@ -119,12 +132,11 @@ class Game{
                 $_SESSION["onStation"]=false;
                 $_SESSION["onEnergie"]=false;
                 $_SESSION["isOwner"]=false;
+                $_SESSION["onJail"]=false;
                 $_SESSION["actionDoing"]=false;
                 $_SESSION["actionDone"]=false;
             break;
         }
     }
-
 }
-
 ?>

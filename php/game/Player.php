@@ -123,6 +123,7 @@ class Player{
         }
         $this->setPos($newPos);
         echo $this->getName()." se déplace jusqu'à la case ".$this->getPos().".<br/>";
+        $_SESSION["pulledDice"]=true;
     }
 
 ////////////////////////////////////////////// ACTIONS
@@ -132,7 +133,7 @@ class Player{
         $typeBox = $box->getType(); 
         $this->whereAreWe($typeBox);     
         //action en fonction du type de box et du choix de bouton
-        echo $this->getName()." arrive sur la case ".$box->getName()."<br/>";
+        echo $this->getName()." est sur la case ".$box->getName()."<br/>";
         
         switch($typeBox){
             case 1:
@@ -145,8 +146,16 @@ class Player{
                         if($_SESSION["choise"]==2){
                             $box->buy($this->id);
                             setMoney(-1500000);
+                            echo "Le joueur achète la case".$box->getName();
+                            $_SESSION["actionDoing"]=false;
+                            $_SESSION["actionDone"]=true;
                         }elseif($_SESSION["choise"]==3){
-                            break;
+                            $_SESSION["actionDoing"]=false;
+                            $_SESSION["actionDone"]=true;
+                        }elseif($_SESSION["choise"]==1){
+                            $_SESSION["pulledDice"]=true;
+                            $_SESSION["actionDoing"]=true;
+                            $_SESSION["actionDone"]=false;
                         }
                     }elseif($ownerID==$this->id){
                         //construire
@@ -163,6 +172,7 @@ class Player{
                                     $this->setMoney(-1500000);
                                 }
                             }
+                            $_SESSION["actionDone"]=true;
                         }
                     }else{
                         echo"Le propriétaire est ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$ownerID)."<br/>";
@@ -173,14 +183,14 @@ class Player{
                             $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
                             $newMoneyOnwer=$moneyOnwer+ $box->getRentStreet();
                             requetSql('UPDATE `player` SET `money`='.$newMoneyOnwer.' WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
+                            $_SESSION["actionDoing"]=false;
+                            $_SESSION["actionDone"]=true;
                         }else{
                             //si pas assez argent
                             echo"pas assez d'argent";
                         }
+                        $_SESSION["actionDone"]=true;
                     }
-                    $_SESSION["onStreet"]=false;
-                    $_SESSION["actionDoing"]=false;
-                    //$_SESSION["actionDone"]=true;
                 }
             break;
             case 2:
@@ -275,7 +285,7 @@ class Player{
     function goInJail(){
         $this->setPos(11);
         $this->jailOn();
-        echo $this->getName()." est enfermé en Prison.";
+        echo $this->getName()." est enfermé en Prison.<br/>";
     }
 
     function changeCardJail(){
@@ -293,7 +303,7 @@ class Player{
         switch ($type){
             case 1:
                 $this->setPosition($cards->getPosition());
-                echo $this->getName()." est allé à la case".$this->getBoxNameByID($this->getPosition()).".";
+                echo $this->getName()." est allé à la case".$this->getBoxNameByID($this->getPosition()).".<br/>";
             break;
             case 2:
                 $this->setMoney($this->money+$cards->getAmount());
@@ -304,7 +314,7 @@ class Player{
                     $this->changeCardJail();
                     break;
                 }else{
-                    echo $this->name.' a déjà une carte "Sortir de Prison"';
+                    echo $this->name.' a déjà une carte "Sortir de Prison"<br/>';
                     break;
                 };
             case 4:
@@ -314,7 +324,7 @@ class Player{
             break;
             case 5:
                 $this->setPosition($this->getPosition()-3);
-                echo $this->getName()." a reculé de trois cases.";
+                echo $this->getName()." a reculé de trois cases.<br/>";
             break;
             case 6:
                 $this->goInJail();
@@ -328,19 +338,16 @@ class Player{
                 //rue
                 echo "C'est une rue<br/>";
                 $_SESSION["onStreet"]=true;
-                $_SESSION["pulledDice"]=true;
             break;
             case 2:
                 //gare
                 echo "C'est une gare<br/>";
                 $_SESSION["onStation"]=true;
-                $_SESSION["pulledDice"]=true;
             break;
             case 3:
                 //energie
                 echo "C'est une compagnie d'énergie<br/>";
                 $_SESSION["onEnergie"]=true;
-                $_SESSION["pulledDice"]=true;
             break;
             case 4:
                 //départ/prison
