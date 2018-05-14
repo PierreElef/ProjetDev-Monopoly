@@ -13,19 +13,19 @@ $gameID=$_SESSION["idGame"];
 //initialisation des données sessions
 if(is_null($_SESSION['game'])){	
     initGame();
-    //echo 'Jeu créé<br/>';
+    echo 'Jeu créé<br/>';
 }
 $game = unserialize($_SESSION['game']);
 
 if(is_null($_SESSION['player'])){	
 	initPlayer();
-    //echo 'Joueur créé<br/>';
+    echo 'Joueur créé<br/>';
 }
 $player = unserialize($_SESSION['player']);
 
 if(is_null($_SESSION['board'])){	
     initBoard();
-    //echo'Plateau créé<br/>';
+    echo'Plateau créé<br/>';
 }
 $board = unserialize($_SESSION['board']);
 
@@ -33,6 +33,7 @@ $board = unserialize($_SESSION['board']);
 if(is_null($_SESSION['dice'])){	
     //Création des dés
     initDice();
+    echo'Dé créé<br/>';
 }
 $dice = unserialize($_SESSION['dice']);
 
@@ -40,9 +41,12 @@ $dice = unserialize($_SESSION['dice']);
 
 if(is_null($_SESSION['order'])){	
     //Création du tour des joueurs
-    initAdmin();
+    initOrderPlayer();
+    initOrderCard();
+    echo'Ordre OK<br/>La Partie commence<br/>';
 }
 $order = unserialize($_SESSION['order']);
+$orderCard = unserialize($_SESSION['orderCard']);
 
 //Identité
 echo"Je suis ".$player->getName()."<br/>";
@@ -51,7 +55,6 @@ if(is_null($_SESSION['choise'])){
     $_SESSION['choise']=7;
 }
 
-echo"le jeu commence<br/>";
 //Tant que nbr_joueur > 1
 if($game->playerOnGame() > 1){
     $IDtoPlay=$game->turnTo();

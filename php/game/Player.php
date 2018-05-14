@@ -136,28 +136,31 @@ class Player{
         echo $this->getName()." est sur la case ".$box->getName()."<br/>";
         
         switch($typeBox){
+            //rue
             case 1:
-            if ($_SESSION["actionDoing"]==true AND $_SESSION["choise"]!==3){
+                if ($_SESSION["actionDoing"]==true){
                     $ownerID=$this->whoOwner($box);
                     echo "Le joueur est sur une case propriété.<br/>";
                     //s'il n'y a pas de propriétaire
                     if($ownerID==NULL){
-                        echo"Il n'y a pas de propriétaire<br/>";
+                        echo"Il n'y a pas de propriétaire.<br/>";
                         if($_SESSION["choise"]==2){
                             $box->buy($this->id);
                             setMoney(-1500000);
-                            echo "Le joueur achète la case".$box->getName();
+                            echo "Le joueur achète la case".$box->getName()."<br/>";
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
                         }elseif($_SESSION["choise"]==3){
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
                         }elseif($_SESSION["choise"]==1){
-                            $_SESSION["pulledDice"]=true;
+                            $_SESSION["onStreet"]=true;
                             $_SESSION["actionDoing"]=true;
                             $_SESSION["actionDone"]=false;
                         }
+                    //si le propriétaire est le joueur
                     }elseif($ownerID==$this->id){
+                        echo "Le joueur a déjà la case ".$box->getName()."<br/>";
                         //construire
                         if($_SESSION["choise"]==4){
                             if($box->nbrHouse()>=4){
@@ -174,6 +177,7 @@ class Player{
                             }
                             $_SESSION["actionDone"]=true;
                         }
+                    //si le propriétaire est un autre joueur
                     }else{
                         echo"Le propriétaire est ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$ownerID)."<br/>";
                         if($this->money > $box->getRentStreet()){
@@ -183,28 +187,39 @@ class Player{
                             $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
                             $newMoneyOnwer=$moneyOnwer+ $box->getRentStreet();
                             requetSql('UPDATE `player` SET `money`='.$newMoneyOnwer.' WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
-                            $_SESSION["actionDoing"]=false;
-                            $_SESSION["actionDone"]=true;
+                            
                         }else{
                             //si pas assez argent
                             echo"pas assez d'argent";
                         }
+                        $_SESSION["actionDoing"]=false;
                         $_SESSION["actionDone"]=true;
                     }
                 }
             break;
+            //gare
             case 2:
-                if ($_SESSION["actionDoing"]==true AND $_SESSION["choise"]!==3){
+                if ($_SESSION["actionDoing"]==true){
                     $ownerID=$this->whoOwner($box);
                     echo "Le joueur est sur une case gare.<br/>";
                     if($ownerID==NULL){
-                        echo"Il n'y a pas de propriétaire";
+                        echo"Il n'y a pas de propriétaire.<br/>";
                         if($_SESSION["choise"]==2){
                             $box->buy($this->id);
                             setMoney(-1500000);
+                            echo "Le joueur achète la case ".$box->getName()."<br/>";
+                            $_SESSION["actionDoing"]=false;
+                            $_SESSION["actionDone"]=true;
+                        }elseif($_SESSION["choise"]==3){
+                            $_SESSION["actionDoing"]=false;
+                            $_SESSION["actionDone"]=true;
+                        }elseif($_SESSION["choise"]==1){
+                            $_SESSION["onStreet"]=true;
+                            $_SESSION["actionDoing"]=true;
+                            $_SESSION["actionDone"]=false;
                         }
                     }elseif ($ownerID==$this->id){
-                        break;
+                        echo "Le joueur a déjà la case".$box->getName()."<br/>";
                     }else{
                         if($this->money>$box->getRentStation()){
                             //si assez argent
@@ -222,18 +237,29 @@ class Player{
                     $_SESSION["actionDoing"]=false;
                 }
             break;
+            //energie
             case 3:
-                if ($_SESSION["actionDoing"]==true AND $_SESSION["choise"]!==3){
+                if ($_SESSION["actionDoing"]==true){
                     $ownerID=$this->whoOwner($box);
                     echo "Le joueur est sur une case compagnie.<br/>";
                     if($ownerID==NULL){
-                        echo"Il n'y a pas de propriétaire";
+                        echo"Il n'y a pas de propriétaire.<br/>";
                         if($_SESSION["choise"]==2){
                             $box->buy($this->id);
                             setMoney(-1500000);
+                            echo "Le joueur achète la case".$box->getName()."<br/>";
+                            $_SESSION["actionDoing"]=false;
+                            $_SESSION["actionDone"]=true;
+                        }elseif($_SESSION["choise"]==3){
+                            $_SESSION["actionDoing"]=false;
+                            $_SESSION["actionDone"]=true;
+                        }elseif($_SESSION["choise"]==1){
+                            $_SESSION["onStreet"]=true;
+                            $_SESSION["actionDoing"]=true;
+                            $_SESSION["actionDone"]=false;
                         }
                     }elseif ($ownerID==$this->id){
-                        break;
+                        echo "Le joueur a déjà la case".$box->getName()."<br/>";
                     }else{
                         if($this->money>$box->getRentEnergie()){
                             //si assez argent
