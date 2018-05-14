@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 02 mai 2018 à 10:37
+-- Généré le :  lun. 14 mai 2018 à 12:13
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -96,13 +96,40 @@ CREATE TABLE IF NOT EXISTS `building` (
   `nbrHotel` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Déchargement des données de la table `building`
+-- Structure de la table `cards`
 --
 
-INSERT INTO `building` (`IDgame`, `IDbox`, `nbrHouse`, `nbrHotel`) VALUES
-(1, 2, 1, 0),
-(1, 4, 0, 1);
+DROP TABLE IF EXISTS `cards`;
+CREATE TABLE IF NOT EXISTS `cards` (
+  `IDgame` int(11) NOT NULL,
+  `order1` int(11) DEFAULT NULL,
+  `order2` int(11) DEFAULT NULL,
+  `order3` int(11) DEFAULT NULL,
+  `order4` int(11) DEFAULT NULL,
+  `order5` int(11) DEFAULT NULL,
+  `order6` int(11) DEFAULT NULL,
+  `order7` int(11) DEFAULT NULL,
+  `order8` int(11) DEFAULT NULL,
+  `order9` int(11) DEFAULT NULL,
+  `order10` int(11) DEFAULT NULL,
+  `order11` int(11) DEFAULT NULL,
+  `order12` int(11) DEFAULT NULL,
+  `order13` int(11) DEFAULT NULL,
+  `order14` int(11) DEFAULT NULL,
+  `order15` int(11) DEFAULT NULL,
+  `order16` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IDgame`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `cards`
+--
+
+INSERT INTO `cards` (`IDgame`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`, `order7`, `order8`, `order9`, `order10`, `order11`, `order12`, `order13`, `order14`, `order15`, `order16`) VALUES
+(35, 1, 12, 13, 10, 2, 7, 4, 15, 5, 16, 6, 8, 3, 9, 11, 14);
 
 -- --------------------------------------------------------
 
@@ -123,15 +150,16 @@ CREATE TABLE IF NOT EXISTS `game` (
   `nbrOnLine` int(11) NOT NULL,
   `nbrNeeded` int(11) NOT NULL,
   `jackpot` int(11) DEFAULT NULL,
+  `IDadmin` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `game`
 --
 
-INSERT INTO `game` (`ID`, `IDplayer1`, `IDplayer2`, `IDplayer3`, `IDplayer4`, `IDplayer5`, `IDplayer6`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`, `jackpot`) VALUES
-(1, 6, 7, NULL, NULL, NULL, NULL, 3, 2, 2, 0);
+INSERT INTO `game` (`ID`, `IDplayer1`, `IDplayer2`, `IDplayer3`, `IDplayer4`, `IDplayer5`, `IDplayer6`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`, `jackpot`, `IDadmin`) VALUES
+(35, 7, 6, NULL, NULL, NULL, NULL, 2, 2, 2, 0, 7);
 
 -- --------------------------------------------------------
 
@@ -178,8 +206,8 @@ CREATE TABLE IF NOT EXISTS `owner` (
 --
 
 INSERT INTO `owner` (`IDgame`, `2`, `4`, `7`, `9`, `10`, `12`, `14`, `15`, `17`, `19`, `20`, `22`, `24`, `25`, `27`, `28`, `30`, `32`, `33`, `35`, `38`, `40`, `6`, `16`, `26`, `36`, `13`, `29`) VALUES
-(1, 7, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(0, 2, 4, 7, 9, 10, 12, 14, 15, 17, 19, 20, 22, 24, 25, 27, 28, 30, 32, 33, 35, 38, 40, 6, 16, 26, 36, 13, 29);
+(0, 2, 4, 7, 9, 10, 12, 14, 15, 17, 19, 20, 22, 24, 25, 27, 28, 30, 32, 33, 35, 38, 40, 6, 16, 26, 36, 13, 29),
+(35, 7, 7, 6, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -193,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `player` (
   `IDgame` int(11) NOT NULL,
   `money` int(11) NOT NULL,
   `position` int(11) NOT NULL,
-  `jailStatus` bit(1) NOT NULL,
+  `jailStatus` int(1) NOT NULL,
   `color` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -202,10 +230,34 @@ CREATE TABLE IF NOT EXISTS `player` (
 --
 
 INSERT INTO `player` (`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES
-(6, 1, 15000000, 1, b'0', '#FF0000'),
-(7, 1, 15000000, 1, b'0', '#003AFF'),
-(1, 1, 15000000, 1, b'0', '#4FAB5B'),
-(2, 1, 15000000, 2, b'0', '#ffac00');
+(7, 35, 17200000, 1, 0, '#FF0000'),
+(6, 35, 15900000, 1, 0, '#003AFF');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `turn`
+--
+
+DROP TABLE IF EXISTS `turn`;
+CREATE TABLE IF NOT EXISTS `turn` (
+  `IDgame` int(11) NOT NULL,
+  `IDtoPlay` int(11) NOT NULL,
+  `order1` int(11) DEFAULT NULL,
+  `order2` int(11) DEFAULT NULL,
+  `order3` int(11) DEFAULT NULL,
+  `order4` int(11) DEFAULT NULL,
+  `order5` int(11) DEFAULT NULL,
+  `order6` int(11) DEFAULT NULL,
+  PRIMARY KEY (`IDgame`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `turn`
+--
+
+INSERT INTO `turn` (`IDgame`, `IDtoPlay`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`) VALUES
+(35, 7, 7, 6, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -219,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` text NOT NULL,
   `password` text NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `user`
@@ -232,7 +284,9 @@ INSERT INTO `user` (`ID`, `name`, `password`) VALUES
 (5, 'WALL-E', '5'),
 (3, 'Jarvis', '3'),
 (6, 'playerOne', 'One'),
-(7, 'Pierre', 'pierre');
+(7, 'Pierre', 'pierre'),
+(8, 'Adel', 'adel'),
+(9, 'Axelle', 'axelle');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -42,13 +42,14 @@
         $nbrPlayerNeed = getSql('SELECT `nbrNeeded` FROM `game` WHERE `ID`='.$IDgame.'');
         $nbrOnLine = getSql('SELECT `nbrOnLine` FROM `game` WHERE `ID`='.$IDgame.'');
         if($nbrPlayerNeed==$nbrOnLine){
-            header('Location: ../game/GameIF.php');
             $_SESSION['game']=NULL;
             $_SESSION['player']=NULL;
             $_SESSION['board']=NULL;
             $_SESSION['dice']=NULL;
             $_SESSION['order']=NULL;
             $_SESSION['choise']=NULL;
+            $_SESSION['orderCard']=NULL;
+            header('Location: ../game/GameIF.php');
         }
         ?>
         <?php include("../../html/footer.html")?>

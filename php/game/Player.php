@@ -102,7 +102,7 @@ class Player{
 
     function turnOff(){
         $this->isTurn = False;
-        //$_SESSION["isTurn"]=false;
+        $_SESSION["isTurn"]=false;
     } 
 ////////////////////////////////////////////// FONCTIONS COMPLEXES
 ////////////////////////////////////////////// DEPLACEMENT
@@ -129,30 +129,35 @@ class Player{
 ////////////////////////////////////////////// ACTIONS
 
     function action(Box $box){
-        //recherche type de box
+        //recherche type de case
         $typeBox = $box->getType(); 
         $this->whereAreWe($typeBox);     
-        //action en fonction du type de box et du choix de bouton
+        //action en fonction du type de case et du choix de bouton
         echo $this->getName()." est sur la case ".$box->getName()."<br/>";
         
         switch($typeBox){
             //rue
             case 1:
+                //si l'action en cours
                 if ($_SESSION["actionDoing"]==true){
+                    //recherche propriétaire de la rue
                     $ownerID=$this->whoOwner($box);
                     echo "Le joueur est sur une case propriété.<br/>";
                     //s'il n'y a pas de propriétaire
                     if($ownerID==NULL){
                         echo"Il n'y a pas de propriétaire.<br/>";
+                        //si le joueur veut acheter
                         if($_SESSION["choise"]==2){
                             $box->buy($this->id);
-                            setMoney(-1500000);
+                            $this->setMoney(-1500000);
                             echo "Le joueur achète la case".$box->getName()."<br/>";
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
+                        //si le joueur veut passer son tour
                         }elseif($_SESSION["choise"]==3){
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
+                        //si le joueur a jeté les dés
                         }elseif($_SESSION["choise"]==1){
                             $_SESSION["onStreet"]=true;
                             $_SESSION["actionDoing"]=true;
@@ -161,7 +166,7 @@ class Player{
                     //si le propriétaire est le joueur
                     }elseif($ownerID==$this->id){
                         echo "Le joueur a déjà la case ".$box->getName()."<br/>";
-                        //construire
+                        //si le joueur veut construire
                         if($_SESSION["choise"]==4){
                             if($box->nbrHouse()>=4){
                                 $box->buildHouse();
@@ -175,6 +180,10 @@ class Player{
                                     $this->setMoney(-1500000);
                                 }
                             }
+                            $_SESSION["actionDoing"]=false;
+                            $_SESSION["actionDone"]=true;
+                        }elseif($_SESSION["choise"]==3){
+                            $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
                         }
                     //si le propriétaire est un autre joueur
@@ -206,7 +215,7 @@ class Player{
                         echo"Il n'y a pas de propriétaire.<br/>";
                         if($_SESSION["choise"]==2){
                             $box->buy($this->id);
-                            setMoney(-1500000);
+                            $this->setMoney(-1500000);
                             echo "Le joueur achète la case ".$box->getName()."<br/>";
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
@@ -246,7 +255,7 @@ class Player{
                         echo"Il n'y a pas de propriétaire.<br/>";
                         if($_SESSION["choise"]==2){
                             $box->buy($this->id);
-                            setMoney(-1500000);
+                            $this->setMoney(-1500000);
                             echo "Le joueur achète la case".$box->getName()."<br/>";
                             $_SESSION["actionDoing"]=false;
                             $_SESSION["actionDone"]=true;
@@ -283,6 +292,7 @@ class Player{
             case 5: 
                 echo "Le joueur pioche une carte.<br/>";
                 /* tirer une carte */
+
             break;
             case 6:
                 echo "Le joueur est sur une case où il va payer.<br/>";
@@ -303,9 +313,7 @@ class Player{
                 $this->goInJail();
             break; 
         }
-        //$_SESSION["actionDone"]=true;
-        $_SESSION["pulledDice"]=false;
-        //$_SESSION["isTurn"]=false;
+        $_SESSION["isTurn"]=false;
     }
 ////////////////////////////////////////////// FONCTIONS SECONDAIRES
     function goInJail(){

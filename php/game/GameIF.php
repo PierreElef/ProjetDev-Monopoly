@@ -65,7 +65,7 @@
                             <form action="#" method="post">
                                 <input type="hidden" name="diceButton" value="1">
                                 <?php 
-                                    //if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==false AND $_SESSION["actionDone"]==false){
+                                    //if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==false){
                                         echo'<input class="buttonGame" type="submit" value="Lancer les dés">';
                                     //}else{
                                     //   echo'<input class="buttonGame" type="submit" value="Lancer le dé" disabled>';

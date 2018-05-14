@@ -5,10 +5,10 @@ class Game{
     }
     
     function playTurn(Player $player, Dice $de, Board $board, Box $box){
-        
-        if($player->getJailStatu() == true OR $_SESSION["onJail"]==true){
-            if($_SESSION["pulledDice"]==false OR $_SESSION["choise"]==6){
-                if($_SESSION["choise"]==1){
+        //si le joueur est en prison
+        if($player->getJailStatu() == true){
+            if($_SESSION["pulledDice"]==false){
+                if($_SESSION["choise"]==1 OR $_SESSION["choise"]==6){
                     $de->rollDice();
                     if($de->getDouble() == true){
                         $player->turnOn();
@@ -17,39 +17,53 @@ class Game{
                     }
                 }
             }
+        //si le joueur n'est pas en prison
         }else{
+            //si le joueur a lancé les dés
             if ($_SESSION["pulledDice"]==true){
+                //si l'action est en cours
                 if ($_SESSION["actionDoing"]==true){
+                    //faire l'action de la case
                     echo"faire action<br/>";
                     $player->action($box);
-                }else{
-                    echo"le joueur lance les dés<br/>";
-                    $player->move($de, $box);
-                    $_SESSION["actionDoing"]=true;
-                    $newBox=$board->getBoxByID($player->getPos());
-                    $newBoxType=$newBox->getType();
-                    $player->action($newBox);
-                    if($newBoxType!==4 OR $newBoxType!==5 OR $newBoxType!==6 OR $newBoxType!==7 OR $newBoxType!==8){
-                        $_SESSION["actionDoing"]=true;
-                    }else{
-                        $_SESSION["actionDone"]=true;
-                    }
                 }
             }else{
-                echo"Il faut lancer le dé<br/>";
+                echo"le joueur lance les dés<br/>";
+                //le joueur lance le dé
+                $player->move($de, $box);
+                //action en cours
+                $_SESSION["actionDoing"]=true;
+                //changement de case
+                $newBox=$board->getBoxByID($player->getPos());
+                $newBoxType=$newBox->getType();
+                //faire l'action de la case
+                $player->action($newBox);
+                //si la case est une rue/gare/energie
+                if($newBoxType!==4 OR $newBoxType!==5 OR $newBoxType!==6 OR $newBoxType!==7 OR $newBoxType!==8){
+                    //action en cours 
+                    $_SESSION["actionDoing"]=true;
+                    $_SESSION["actionDone"]=false;
+                    $_SESSION["pulledDice"]=true;
+                }else{
+                    //action terminé                    
+                    $_SESSION["actionDoing"]=false;
+                    $_SESSION["actionDone"]=true;
+                    $_SESSION["pulledDice"]=false;
+                }
             }
-            if($de->getDouble() == true OR $_SESSION["actionDone"]==true){
-                $player->turnOn();
-            }else{
-                $player->turnOff();
-                //$this->turnNext();
-            }
+        }
+        if($de->getDouble() == true OR $_SESSION["actionDone"]==true){
+            $player->turnOn();
+        }else{
+            $player->turnOff();
+            $this->turnNext();
         }
     }
 
     function turnTo(){
         //a qui le tour
-        return getSql('SELECT `IDtoPlay` FROM `turn` WHERE `IDgame`='.$_SESSION["idGame"]);
+        $IDtoPlay=getSql('SELECT `IDtoPlay` FROM `turn` WHERE `IDgame`='.$_SESSION["idGame"].'');
+        return $IDtoPlay;
     }
 
     function turnNext(){
@@ -67,7 +81,7 @@ class Game{
                 }
             }
         }
-        echo "ça sera au tour de ".$nextPlayer."<br/>";
+        echo "C'est au tour de ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$nextPlayer)."<br/>";
         requetSql('UPDATE `turn` SET `IDtoPlay`='.$nextPlayer.' WHERE `IDgame`='.$_SESSION["idGame"]);
     }
 

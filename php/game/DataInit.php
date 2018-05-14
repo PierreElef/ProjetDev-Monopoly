@@ -114,8 +114,8 @@ function initOrderPlayer(){
     //Choix de l'ordre de passage
     $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
     if($_SESSION["id"]==$IDadmin){
-        $playerPlaying=getSql('SELECT `IDtoplay` FROM `turn` WHERE `ID`='.$_SESSION["idGame"]);
-        if(isset($playerPlaying)){
+        $playerPlaying=getSql('SELECT `IDtoplay` FROM `turn` WHERE `IDgame`='.$_SESSION["idGame"]);
+        if($playerPlaying==NULL){
             $order=array();
             $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
             foreach($IDplayers as $IDplayer){
@@ -124,7 +124,7 @@ function initOrderPlayer(){
                 }
             }
             shuffle($order); 
-            $_SESSION['order']=serialize($order);
+            $_SESSION['order']=$order;
             while(sizeof($order)<7){
                 array_push($order,"NULL");
             }
@@ -137,7 +137,7 @@ function initOrderPlayer(){
                     array_push($order,$player);
                 }
             }
-            $_SESSION['order']=serialize($order);
+            $_SESSION['order']=$order;
         }
     }else{
         $order=array();
@@ -147,44 +147,35 @@ function initOrderPlayer(){
                 array_push($order,$player);
             }
         }
-        $_SESSION['order']=serialize($order);
+        $_SESSION['order']=$order;
     }
 }
 function initOrderCard(){
     //Choix de l'ordre de passage
     $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
     if($_SESSION["id"]==$IDadmin){
-        $card1=getSql('SELECT `order1` FROM `card` WHERE `ID`='.$_SESSION["idGame"]);
-        if(isset($card1)){
+        $card1=getSql('SELECT `order1` FROM `cards` WHERE `IDgame`='.$_SESSION["idGame"]);
+        if($card1==NULL){
             $orderCard=array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
             shuffle($orderCard); 
-            $_SESSION['orderCard']=serialize($orderCard);
-            $sql='INSERT INTO `card`(`IDgame`';
-            for($i=0;$i<17;$i++){
-                $j=$i+1;
-                $sql=$sql.', `order'.$j.'`';
-            }
-            $sql=$sql.') VALUES ('.$_SESSION["idGame"];
-            for($i=0;$i<16;$i++){
-                $sql=$sql.', '.$orderCard[$i];
-            }
-            $sql=$sql.')';
+            $_SESSION['orderCard']=$orderCard;
+            $sql='INSERT INTO `cards`(`IDgame`, `cardToPick`,`order1`, `order2`, `order3`, `order4`, `order5`, `order6`, `order7`, `order8`, `order9`, `order10`, `order11`, `order12`, `order13`, `order14`, `order15`, `order16`) VALUES ('.$_SESSION["idGame"].','.$orderCard[0].','.$orderCard[0].','.$orderCard[1].','.$orderCard[2].','.$orderCard[3].','.$orderCard[4].','.$orderCard[5].','.$orderCard[6].','.$orderCard[7].','.$orderCard[8].','.$orderCard[9].','.$orderCard[10].','.$orderCard[11].','.$orderCard[12].','.$orderCard[13].','.$orderCard[14].','.$orderCard[15].')';
             requetSql($sql);
         }else{
             $orderCard=array();
             for($i=1;$i<16;$i++){
-                $card=getSql('SELECT `order'.$i.'` FROM `card` WHERE `IDgame`='.$_SESSION["idGame"]);
+                $card=getSql('SELECT `order'.$i.'` FROM `cards` WHERE `IDgame`='.$_SESSION["idGame"]);
                 array_push($orderCard,$card);
             }
-            $_SESSION['orderCard']=serialize($orderCard);
+            $_SESSION['orderCard']=$orderCard;
         }
     }else{
         $orderCard=array();
         for($i=1;$i<16;$i++){
-            $card=getSql('SELECT `order'.$i.'` FROM `card` WHERE `IDgame`='.$_SESSION["idGame"]);
+            $card=getSql('SELECT `order'.$i.'` FROM `cards` WHERE `IDgame`='.$_SESSION["idGame"]);
             array_push($orderCard,$card);
         }
-        $_SESSION['orderCard']=serialize($orderCard);
+        $_SESSION['orderCard']=$orderCard;
     }
 }
 ?>

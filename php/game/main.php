@@ -42,11 +42,16 @@ $dice = unserialize($_SESSION['dice']);
 if(is_null($_SESSION['order'])){	
     //Création du tour des joueurs
     initOrderPlayer();
-    initOrderCard();
-    echo'Ordre OK<br/>La Partie commence<br/>';
+    echo'Ordre OK<br/>';
 }
-$order = unserialize($_SESSION['order']);
-$orderCard = unserialize($_SESSION['orderCard']);
+$order = $_SESSION['order'];
+
+if(is_null($_SESSION['orderCard'])){	
+    //Création de l'ordre des cartes
+    initOrderCard();
+    echo'Ordre cartes OK<br/>La Partie commence<br/>';
+}
+$orderCard = $_SESSION['orderCard'];
 
 //Identité
 echo"Je suis ".$player->getName()."<br/>";
@@ -66,7 +71,7 @@ if($game->playerOnGame() > 1){
         $player->jailOff();
         $game->choise();
         $game->playTurn($player, $dice, $board, $board->getBoxByID($player->getPos())); 
-        etat();
+        //etat();
     } 
 }else{
     echo "Le gagnant est ".$game->winner();
