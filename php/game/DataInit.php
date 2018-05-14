@@ -115,19 +115,30 @@ function initAdmin(){
     $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
     if($_SESSION["id"]==$IDadmin){
         $playerPlaying=getSql('SELECT `IDtoplay` FROM `turn` WHERE `ID`='.$_SESSION["idGame"]);
-        $order=array();
-        $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
-        foreach($IDplayers as $IDplayer){
-            if($IDplayer!==NULL){
-                array_push($order,$IDplayer);
+        if(isset($playerPlaying){
+            $order=array();
+            $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
+            foreach($IDplayers as $IDplayer){
+                if($IDplayer!==NULL){
+                    array_push($order,$IDplayer);
+                }
+            }
+            shuffle($order); 
+            $_SESSION['order']=serialize($order);
+            while(sizeof($order)<7){
+                array_push($order,"NULL");
+            }
+            requetSql('INSERT INTO `turn`(`IDgame`, `IDtoPlay`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`) VALUES ('.$_SESSION["idGame"].','.$order[0].','.$order[0].','.$order[1].','.$order[2].','.$order[3].','.$order[4].','.$order[5].')');
+        }else{
+            $order=array();
+        for($i=1;$i<7;$i++){
+            $player=getSql('SELECT `order'.$i.'` FROM `turn` WHERE `IDgame`=35');
+            if($player!==NULL){
+                array_push($order,$player);
             }
         }
-        shuffle($order); 
         $_SESSION['order']=serialize($order);
-        while(sizeof($order)<7){
-            array_push($order,"NULL");
         }
-        requetSql('INSERT INTO `turn`(`IDgame`, `IDtoPlay`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`) VALUES ('.$_SESSION["idGame"].','.$order[0].','.$order[0].','.$order[1].','.$order[2].','.$order[3].','.$order[4].','.$order[5].')');
     }else{
         $order=array();
         for($i=1;$i<7;$i++){

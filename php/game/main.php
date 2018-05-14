@@ -50,9 +50,9 @@ echo"Je suis ".$player->getName()."<br/>";
 if(is_null($_SESSION['choise'])){	
     $_SESSION['choise']=7;
 }
+echo"le jeu commence<br/>";
 //Tant que nbr_joueur > 1
 if($game->playerOnGame() > 1){
-    echo"le jeu commence<br/>";
     $IDtoPlay=$game->turnTo();
     echo "C'est au tour de ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDtoPlay)."<br/>";
     if($IDtoPlay==$ID){
