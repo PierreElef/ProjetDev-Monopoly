@@ -51,6 +51,7 @@ class Game{
     }
 
     function turnNext(){
+        //passer au tour suivant
         $order=$_SESSION['order'];
         $nbrPlayer=$this->playerOnGame();
         for($i=0;$i<$nbrPlayer;$i++){

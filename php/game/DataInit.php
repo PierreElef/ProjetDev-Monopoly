@@ -114,6 +114,7 @@ function initAdmin(){
     //Choix de l'ordre de passage
     $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
     if($_SESSION["id"]==$IDadmin){
+        $playerPlaying=getSql('SELECT `IDtoplay` FROM `turn` WHERE `ID`='.$_SESSION["idGame"]);
         $order=array();
         $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
         foreach($IDplayers as $IDplayer){
