@@ -180,6 +180,15 @@
                         if (isset($_POST['other'])){
                             //faire utiliser la carte sortie de prison
                             $_SESSION["choise"]=7;
+                            $_SESSION["isTurn"]=false;
+                            $_SESSION["pulledDice"]=false;
+                            $_SESSION["onStreet"]=false;
+                            $_SESSION["onStation"]=false;
+                            $_SESSION["onEnergie"]=false;
+                            $_SESSION["isOwner"]=false;
+                            $_SESSION["onJail"]=false;
+                            $_SESSION["actionDoing"]=false;
+                            $_SESSION["actionDone"]=true;
                         }
                         ?>
                     </div>

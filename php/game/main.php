@@ -57,7 +57,15 @@ $orderCard = $_SESSION['orderCard'];
 echo"Je suis ".$player->getName()."<br/>";
 
 if(is_null($_SESSION['choise'])){	
-    $_SESSION['choise']=7;
+    $_SESSION["isTurn"]=false;
+    $_SESSION["pulledDice"]=false;
+    $_SESSION["onStreet"]=false;
+    $_SESSION["onStation"]=false;
+    $_SESSION["onEnergie"]=false;
+    $_SESSION["isOwner"]=false;
+    $_SESSION["onJail"]=false;
+    $_SESSION["actionDoing"]=false;
+    $_SESSION["actionDone"]=true;
 }
 
 //Tant que nbr_joueur > 1
@@ -66,9 +74,11 @@ if($game->playerOnGame() > 1){
     echo "C'est au tour de ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDtoPlay)."<br/>";
     if($IDtoPlay==$ID){
         $_SESSION["isTurn"]=true;
+        $_SESSION["actionDone"]=false;
         echo"C'est votre tour<br/>";
-        $game->choise();
+        //etat();
         $game->playTurn($player, $dice, $board, $board->getBoxByID($player->getPos()));
+        //etat();
     } 
 }else{
     echo "Le gagnant est ".$game->winner();

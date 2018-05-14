@@ -97,53 +97,5 @@ class Game{
         $nameWinner=getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDwinner);
         return $nameWinner;
     }
-
-    function choise(){
-        switch ($_SESSION["choise"]){
-            case 1 :
-                //jet de dés
-                echo "Le choix fait 1<br/>";
-                $_SESSION["pulledDice"]=true;
-            break;
-            case 2 :
-                //achat
-                echo "Le choix fait 2<br/>";
-                $_SESSION["pulledDice"]=false;
-                //$_SESSION["isTurn"]=false;      
-            break;
-            case 3 :
-                //passe le tour
-                echo "Le choix fait 3<br/>";
-                //$_SESSION["isTurn"]=false;
-            break;
-            case 4 :
-                //construire
-                $_SESSION["pulledDice"]=false;
-                //$_SESSION["isTurn"]=false;
-            break;
-            case 5 :
-                //vendre
-                $_SESSION["pulledDice"]=false;
-                //$_SESSION["isTurn"]=false;
-            break;
-            case 6 :
-                //carte prison
-                $_SESSION["pulledDice"]=false;
-                //$_SESSION["isTurn"]=false;
-            break;
-            case 7 :
-                echo "Le choix fait 7<br/>";
-                $_SESSION["isTurn"]=true;
-                $_SESSION["pulledDice"]=false;
-                $_SESSION["onStreet"]=false;
-                $_SESSION["onStation"]=false;
-                $_SESSION["onEnergie"]=false;
-                $_SESSION["isOwner"]=false;
-                $_SESSION["onJail"]=false;
-                $_SESSION["actionDoing"]=false;
-                $_SESSION["actionDone"]=true;
-            break;
-        }
-    }
 }
 ?>
