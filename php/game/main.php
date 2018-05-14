@@ -67,6 +67,7 @@ if($game->playerOnGame() > 1){
     echo "Le gagnant est ".$game->winner();
 }
 
+//A enlever
 function etat(){
     if($_SESSION["isTurn"]==true){
         echo "isTurn<br/>";

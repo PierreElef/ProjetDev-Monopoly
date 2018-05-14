@@ -63,8 +63,8 @@ class Game{
                 }
             }
         }
-        //echo "ça sera au tour de ".$nextPlayer."<br/>";
-        //requetSql('UPDATE `turn` SET `IDtoPlay`='.$nextPlayer.' WHERE `IDgame`='.$_SESSION["idGame"]);
+        echo "ça sera au tour de ".$nextPlayer."<br/>";
+        requetSql('UPDATE `turn` SET `IDtoPlay`='.$nextPlayer.' WHERE `IDgame`='.$_SESSION["idGame"]);
     }
 
     function playerOnGame(){
