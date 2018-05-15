@@ -150,7 +150,7 @@
                             </form>
                             <form action="#" method="post"><br/><br/>
                                 <input type="hidden" name="other" value="1">
-                                <input class="buttonGame" type="submit" value="Reboot">
+                                <input class="buttonGame" type="submit" value="Refresh">
                             </form>
                         </div>
                         <?php
