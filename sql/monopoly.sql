@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 14 mai 2018 à 12:13
+-- Généré le :  mar. 15 mai 2018 à 09:04
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -41,22 +41,22 @@ CREATE TABLE IF NOT EXISTS `box` (
 --
 
 INSERT INTO `box` (`ID`, `name`, `color`) VALUES
-(1, 'Départ', 'NULL'),
+(1, 'Départ', NULL),
 (2, 'Rue Saint-Rome', '#934828'),
 (3, 'Caisse de communauté', 'NULL'),
 (4, 'Rue de la Colombette', '#934828'),
 (5, 'Impot sur le revenu', 'NULL'),
-(6, 'Gare St-Agne', '#000000'),
+(6, 'Gare St-Agne', '#DCDCDC'),
 (7, 'Avenue des Minimes', '#BBE4F8'),
 (8, 'Chance', 'NULL'),
 (9, 'Rue du Faubourg Bonnefoy', '#BBE4F8'),
 (10, 'Avenue de Muret', '#BBE4F8'),
 (11, 'Prison', 'NULL'),
 (12, 'Grande rue St-Michel', '#DA2D86'),
-(13, 'Compagnie de distribution d\'électricité', '#000000'),
+(13, 'Compagnie de distribution d\'électricité', '#DCDCDC'),
 (14, 'Rue de la République', '#DA2D86'),
 (15, 'Rue Bayard', '#DA2D86'),
-(16, 'Gare St-Cyprien', '#000000'),
+(16, 'Gare St-Cyprien', '#DCDCDC'),
 (17, 'Avenue de Grande Bretagne', '#F59002'),
 (18, 'Caisse de communauté', 'NULL'),
 (19, 'Avenue de St-Exupéry', '#F59002'),
@@ -66,17 +66,17 @@ INSERT INTO `box` (`ID`, `name`, `color`) VALUES
 (23, 'Chance', 'NULL'),
 (24, 'Rue des Chalets', '#E3010F'),
 (25, 'Allées Jean Jaurès', '#E3010F'),
-(26, 'Gare Toulouse Matabiau', '#000000'),
+(26, 'Gare Toulouse Matabiau', '#DCDCDC'),
 (27, 'Rue du Languedoc', '#FDED01'),
 (28, 'Place St-Etienne', '#FDED01'),
-(29, 'Compagnie de distribution des eaux', '#000000'),
+(29, 'Compagnie de distribution des eaux', '#DCDCDC'),
 (30, 'Rue Ozenne', '#FDED01'),
 (31, 'Allez en prison', 'NULL'),
 (32, 'Rue St-Antoine du T', '#1DA64A'),
 (33, 'Rue du Metz', '#1DA64A'),
 (34, 'Caisse de communauté', 'NULL'),
 (35, 'Rue Alsace-Lorraire', '#1DA64A'),
-(36, 'Aeroport Toulouse-Blagnac', '#000000'),
+(36, 'Aeroport Toulouse-Blagnac', '#DCDCDC'),
 (37, 'Chance', 'NULL'),
 (38, 'Place du Capitole', '#0168B3'),
 (39, 'Taxe de Luxe', 'NULL'),
@@ -105,6 +105,7 @@ CREATE TABLE IF NOT EXISTS `building` (
 DROP TABLE IF EXISTS `cards`;
 CREATE TABLE IF NOT EXISTS `cards` (
   `IDgame` int(11) NOT NULL,
+  `cardToPick` int(11) DEFAULT NULL,
   `order1` int(11) DEFAULT NULL,
   `order2` int(11) DEFAULT NULL,
   `order3` int(11) DEFAULT NULL,
@@ -128,8 +129,8 @@ CREATE TABLE IF NOT EXISTS `cards` (
 -- Déchargement des données de la table `cards`
 --
 
-INSERT INTO `cards` (`IDgame`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`, `order7`, `order8`, `order9`, `order10`, `order11`, `order12`, `order13`, `order14`, `order15`, `order16`) VALUES
-(35, 1, 12, 13, 10, 2, 7, 4, 15, 5, 16, 6, 8, 3, 9, 11, 14);
+INSERT INTO `cards` (`IDgame`, `cardToPick`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`, `order7`, `order8`, `order9`, `order10`, `order11`, `order12`, `order13`, `order14`, `order15`, `order16`) VALUES
+(35, 3, 1, 12, 13, 10, 2, 7, 4, 15, 5, 16, 6, 8, 3, 9, 11, 14);
 
 -- --------------------------------------------------------
 
@@ -207,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `owner` (
 
 INSERT INTO `owner` (`IDgame`, `2`, `4`, `7`, `9`, `10`, `12`, `14`, `15`, `17`, `19`, `20`, `22`, `24`, `25`, `27`, `28`, `30`, `32`, `33`, `35`, `38`, `40`, `6`, `16`, `26`, `36`, `13`, `29`) VALUES
 (0, 2, 4, 7, 9, 10, 12, 14, 15, 17, 19, 20, 22, 24, 25, 27, 28, 30, 32, 33, 35, 38, 40, 6, 16, 26, 36, 13, 29),
-(35, 7, 7, 6, 6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(35, 7, 7, 6, 6, NULL, 6, NULL, 6, NULL, 7, 7, NULL, 7, NULL, NULL, 7, 7, NULL, 7, 7, NULL, NULL, NULL, NULL, 6, 6, 7, 7);
 
 -- --------------------------------------------------------
 
@@ -230,8 +231,8 @@ CREATE TABLE IF NOT EXISTS `player` (
 --
 
 INSERT INTO `player` (`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES
-(7, 35, 17200000, 1, 0, '#FF0000'),
-(6, 35, 15900000, 1, 0, '#003AFF');
+(7, 35, 14500000, 20, 0, '#FF0000'),
+(6, 35, 9600000, 2, 0, '#003AFF');
 
 -- --------------------------------------------------------
 
