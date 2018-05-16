@@ -5,15 +5,24 @@ class Game{
     }
     
     function playTurn(Player $player, Dice $de, Board $board, Box $box){
-        //si le joueur est en prison
-        if($player->getJailStatu() == true){
+        //si joueur est en prison
+        if($player->getJailStatus() == true OR $_SESSION["onJail"]==true){
+            echo $player->getName()." est en prison.<br/>";
+            echo "Tour en prison : ".$_SESSION["turnJail"]."<br/>";
             if($_SESSION["pulledDice"]==false){
                 if($_SESSION["choise"]==1){
                     $de->rollDice();
-                    if($de->getDouble() == true OR $_SESSION["choise"]==6){
+                    if($de->getDouble() == true OR $_SESSION["choise"]==6 OR $_SESSION["turnJail"]==3){
+                        echo $player->getName()." sort de prison.<br/>";
+                        $player->jailOff();
                         $player->turnOn();
+                        $_SESSION["turnJail"]=0;
                     }else{
+                        echo $player->getName()." reste en prison<br/>";
                         $player->turnOff();
+                        $_SESSION["pulledDice"]=false;
+                        $_SESSION["turnJail"]=$_SESSION["turnJail"]+1;
+                        $this->turnNext();
                     }
                 }
             }
@@ -24,17 +33,16 @@ class Game{
                 //si l'action est en cours
                 if ($_SESSION["actionDoing"]==true){
                     //faire l'action de la case
-                    echo"faire action<br/>";
                     $player->action($board, $box);
                 }
             }elseif($_SESSION["choise"]==1){
-                echo"le joueur lance les dés<br/>";
+                echo $player->getName()." lance les dés<br/>";
                 //le joueur lance le dé
                 $player->move($de, $box);
                 //action en cours
                 $_SESSION["actionDoing"]=true;
                 //changement de case
-                $newBox=$board->getBoxByID($player->getPos());
+                $newBox=$board->getBoxByID($player->getPosition());
                 $newBoxType=$newBox->getType();
                 //faire l'action de la case
                 $player->action($board, $newBox);
@@ -43,7 +51,7 @@ class Game{
                 $player->turnOn();
             }else{
                 $player->turnOff();
-                $_SESSION["pulledDice"]==false;
+                $_SESSION["pulledDice"]=false;
                 $this->turnNext();
             }
         } 

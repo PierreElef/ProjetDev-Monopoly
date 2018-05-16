@@ -51,7 +51,7 @@ class Box{
     ////////////////////////////////////////////// Street
     function buildHouse(){
         $nbrHouse=$this->nbrHouse();
-        if(nbrHouse()==NULL){
+        if($nbrHouse==NULL){
             requetSql('INSERT INTO `building`(`IDgame`, `IDbox`, `nbrHouse`, `nbrHotel`) VALUES ('.$_SESSION["idGame"].','.$this->id.',1,0)');
         }else{
             $nbrHouse=$nbrHouse+1;

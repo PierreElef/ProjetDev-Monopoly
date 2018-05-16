@@ -42,6 +42,33 @@
             <div id="board" class="col-xl-6 col-lg-12 pl-5 pb-5">
                 <h2>Déroulement du jeu</h2>
                 <?php 
+                    if (isset($_POST['diceButton'])){
+                        $_SESSION["choise"]=1;
+                    }
+                    if (isset($_POST['buyButton'])){
+                        //faire acheter
+                        $_SESSION["choise"]=2;
+                    }
+                    if (isset($_POST['passButton'])){
+                        //faire passer le tour
+                        $_SESSION["choise"]=3;
+                    }
+                    if (isset($_POST['buildButton'])){
+                        //faire rajouter une maison
+                        $_SESSION["choise"]=4;
+                    }
+                    if (isset($_POST['sellButton'])){
+                        //faire vendre la case $_POST['boxIDtoSell']
+                        $_SESSION["choise"]=5;
+                    }
+                    if (isset($_POST['cardJailButton'])){
+                        //faire utiliser la carte sortie de prison
+                        $_SESSION["choise"]=6;
+                    }
+                    if (isset($_POST['other'])){
+                        //rafraichir
+                        $_SESSION["choise"]=7;
+                    }
                     include('main.php');
                 ?>
             </div>
@@ -93,7 +120,7 @@
                             <form action="#"  method="post">
                                 <input type="hidden" name="buyButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true AND $_SESSION["actionDone"]==false AND $_SESSION["pulledDice"]==true AND ($_SESSION["onStreet"]==true OR $_SESSION["onStation"]==true OR $_SESSION["onEnergie"]==true)){
+                                    if ($_SESSION["isTurn"]==true AND $_SESSION["actionDone"]==false AND $_SESSION["pulledDice"]==true AND ($_SESSION["onStreet"]==true OR $_SESSION["onStation"]==true OR $_SESSION["onEnergie"]==true) AND $_SESSION["isOwner"]==false){
                                         echo'<input class="buttonGame" type="submit" value="Acheter">';
                                     }else{
                                         echo'<input class="buttonGame" type="submit" value="Acheter" disabled>';
@@ -117,7 +144,7 @@
                             <form action="#" method="post">
                                 <input type="hidden" name="buildButton" value="1">
                                 <?php 
-                                   if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND $_SESSION["onStreet"]==true AND $_SESSION["actionDone"]==false){
+                                   if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND $_SESSION["onStreet"]==true AND $_SESSION["actionDone"]==false AND $_SESSION["isOwner"]==true){
                                         echo'<input class="buttonGame" type="submit" value="Construire">';
                                     }else{
                                         echo'<input class="buttonGame" type="submit" value="Construire" disabled>';
@@ -128,7 +155,7 @@
                             <form action="#" method="post">
                                 <input type="hidden" name="sellButton" value="1">
                                 <?php 
-                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND $_SESSION["actionDone"]==false AND ($_SESSION["onStreet"]==true OR $_SESSION["onStation"]==true OR $_SESSION["onEnergie"]==true)){
+                                    if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND ($_SESSION["onStreet"]==true OR $_SESSION["onStation"]==true OR $_SESSION["onEnergie"]==true) AND $_SESSION["isOwner"]==true){
                                         echo'<input class="buttonGame" type="submit" value="Vendre">';
                                         echo'<input class="buttonGame" type="number" name="boxIDtoSell" min="1" max="40">';
                                     }else{
@@ -153,69 +180,9 @@
                                 <input class="buttonGame" type="submit" value="Refresh">
                             </form>
                         </div>
-                        <?php
-                        if (isset($_POST['diceButton'])){
-                            $_SESSION["choise"]=1;
-                        }
-                        if (isset($_POST['buyButton'])){
-                            //faire acheter
-                            $_SESSION["choise"]=2;
-                        }
-                        if (isset($_POST['passButton'])){
-                            //faire passer le tour
-                            $_SESSION["choise"]=3;
-                        }
-                        if (isset($_POST['buildButton'])){
-                            //faire rajouter une maison
-                            $_SESSION["choise"]=4;
-                        }
-                        if (isset($_POST['sellButton'])){
-                            //faire vendre la case $_POST['boxIDtoSell']
-                            $_SESSION["choise"]=5;
-                        }
-                        if (isset($_POST['cardJailButton'])){
-                            //faire utiliser la carte sortie de prison
-                            $_SESSION["choise"]=6;
-                        }
-                        if (isset($_POST['other'])){
-                            //faire utiliser la carte sortie de prison
-                            $_SESSION["choise"]=7;
-                            $_SESSION["isTurn"]=false;
-                            $_SESSION["pulledDice"]=false;
-                            $_SESSION["onStreet"]=false;
-                            $_SESSION["onStation"]=false;
-                            $_SESSION["onEnergie"]=false;
-                            $_SESSION["isOwner"]=false;
-                            $_SESSION["onJail"]=false;
-                            $_SESSION["actionDoing"]=false;
-                            $_SESSION["actionDone"]=true;
-                        }
-                        ?>
                     </div>
                 </div>
             </div>
-            <!--<div class="col-xl-4 col-lg-6">
-                <?php
-                /*echo "<h1>Propriétaires</h1>";
-                $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
-                foreach($IDplayers as $IDplayer){
-                    $namePlayer=getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer);
-                    echo'<h2>'.$namePlayer.'</h2>';
-                    echo'<table class="table table-bordered"><tr style="font-weight: bold;"><td>Rue</td></tr>';
-                    $properties = [2, 4, 7, 9, 10, 12, 14, 15, 17, 19, 20, 22, 24, 25, 27, 28, 30, 32, 33, 35, 38, 40, 6, 16, 26, 36, 13, 29];
-                    foreach ($properties as $property){
-                        $owner = getSql('SELECT `'.$property.'` FROM `owner` WHERE `IDgame`='.$_SESSION["idGame"], 1);
-                        settype($owner, "int");
-                        if($owner==$IDplayer){
-                            $colorStreet=getSql('SELECT `color` FROM `box` WHERE `ID`='.$property);
-                            $streetName=getSql('SELECT `name` FROM `box` WHERE `ID`='.$property);
-                            echo '<tr><td style="background-color:'.$colorStreet.'">'.utf8_encode ($streetName).'</td></tr>';
-                        }
-                    }
-                    echo'</table>';
-                }*/
-                ?> 
-            </div>-->
         </div>
     </div>
 </body>

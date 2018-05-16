@@ -34,12 +34,12 @@ class Board{
     }
 
     function getCardByID($id){
-        foreach($this->$cards as $card){
+        foreach($this->cards as $card){
             if($card->getID()==$id){
                 return $card;
+                break;
             }
         }
-        //return false;
     }
 }
 

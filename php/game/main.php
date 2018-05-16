@@ -66,8 +66,9 @@ if(is_null($_SESSION['choise'])){
     $_SESSION["onJail"]=false;
     $_SESSION["actionDoing"]=false;
     $_SESSION["actionDone"]=true;
+    $_SESSION["cardJail"]=false;
+    $_SESSION["turnJail"]=0;
 }
-
 //Tant que nbr_joueur > 1
 if($game->playerOnGame() > 1){
     $IDtoPlay=$game->turnTo();
@@ -77,7 +78,7 @@ if($game->playerOnGame() > 1){
         $_SESSION["actionDone"]=false;
         echo"C'est votre tour<br/>";
         //etat();
-        $game->playTurn($player, $dice, $board, $board->getBoxByID($player->getPos()));
+        $game->playTurn($player, $dice, $board, $board->getBoxByID($player->getPosition()));
         //etat();
     } 
 }else{
