@@ -63,8 +63,8 @@
                             $nbrHouse=getSql('SELECT  `nbrHouse` FROM `building` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDbox`='.$property);
                             $nbrHotel=getSql('SELECT  `nbrHotel` FROM `building` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDbox`='.$property);
                             echo '<tr><td style="background-color:'.$colorStreet.'">'.$property." : ".utf8_encode ($streetName).'</td>';
-                            echo '<td style="background-color:'.$colorStreet.'">'.$nbrHouse.'</td>';
-                            echo '<td style="background-color:'.$colorStreet.'">'.$nbrHotel.'</td></tr>';
+                            echo '<td class="text-center" style="background-color:'.$colorStreet.'">'.$nbrHouse.'</td>';
+                            echo '<td class="text-center" style="background-color:'.$colorStreet.'">'.$nbrHotel.'</td></tr>';
                         }
                     }
                     echo'</table>';

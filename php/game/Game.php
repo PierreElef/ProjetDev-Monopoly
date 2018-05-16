@@ -8,7 +8,7 @@ class Game{
         //si joueur est en prison
         if($player->getJailStatus() == true OR $_SESSION["onJail"]==true){
             echo $player->getName()." est en prison.<br/>";
-            echo "Tour en prison : ".$_SESSION["turnJail"]."<br/>";
+            echo "Tour en prison : ".$_SESSION["turnJail"]."/3<br/>";
             if($_SESSION["pulledDice"]==false){
                 if($_SESSION["choise"]==1){
                     $de->rollDice();
@@ -59,7 +59,7 @@ class Game{
 
     function turnTo(){
         //a qui le tour
-        $IDtoPlay=getSql('SELECT `IDtoPlay` FROM `turn` WHERE `IDgame`='.$_SESSION["idGame"].'');
+        $IDtoPlay=getSql('SELECT `IDtoPlay` FROM `turn` WHERE `IDgame`='.$_SESSION["idGame"]);
         return $IDtoPlay;
     }
 
@@ -78,7 +78,7 @@ class Game{
                 }
             }
         }
-        echo "C'est au tour de ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$nextPlayer)."<br/>";
+        echo "C'est au tour de ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$nextPlayer).".<br/>";
         requetSql('UPDATE `turn` SET `IDtoPlay`='.$nextPlayer.' WHERE `IDgame`='.$_SESSION["idGame"]);
     }
 
@@ -86,7 +86,7 @@ class Game{
         $nbrPlayer=0;
         $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
         foreach($IDplayers as $IDplayer){
-            $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$IDplayer.'');
+            $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$IDplayer);
             if ($moneyPlayer>0){
                 $nbrPlayer=$nbrPlayer+1;
             }
@@ -97,13 +97,12 @@ class Game{
     function winner(){
         $IDplayers= getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"], 1);
         foreach($IDplayers as $IDplayer){
-            $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$IDplayer.'');
+            $moneyPlayer=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$IDplayer);
             if ($moneyPlayer>0){
                 $IDwinner = $IDplayer;
             }
         }
-        $nameWinner=getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDwinner);
-        return $nameWinner;
+        return $idWinner;
     }
 }
 ?>

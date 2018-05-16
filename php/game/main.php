@@ -54,7 +54,7 @@ if(is_null($_SESSION['orderCard'])){
 $orderCard = $_SESSION['orderCard'];
 
 //Identité
-echo"Je suis ".$player->getName()."<br/>";
+echo"Je suis ".$player->getName().".<br/>";
 
 if(is_null($_SESSION['choise'])){	
     $_SESSION["isTurn"]=false;
@@ -72,70 +72,22 @@ if(is_null($_SESSION['choise'])){
 //Tant que nbr_joueur > 1
 if($game->playerOnGame() > 1){
     $IDtoPlay=$game->turnTo();
-    echo "C'est au tour de ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDtoPlay)."<br/>";
+    echo "C'est au tour de ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDtoPlay).".<br/>";
     if($IDtoPlay==$ID){
         $_SESSION["isTurn"]=true;
         $_SESSION["actionDone"]=false;
         echo"C'est votre tour<br/>";
-        //etat();
-        $game->playTurn($player, $dice, $board, $board->getBoxByID($player->getPosition()));
-        //etat();
+        $money=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$ID);
+        if($money>0){
+            $game->playTurn($player, $dice, $board, $board->getBoxByID($player->getPosition()));
+        }else{
+            header('Location: youLoose.php');
+        }
     } 
 }else{
-    echo "Le gagnant est ".$game->winner();
-}
-
-//A enlever
-function etat(){
-    if($_SESSION["isTurn"]==true){
-        echo "isTurn<br/>";
-    }else{
-        echo"pas ton tour<br/>";
-    }
-    if($_SESSION["pulledDice"]==true){
-        echo "pulledDice<br/>";
-    }else{
-        echo"dés pas lancées<br/>";
-    }
-    if($_SESSION["onStreet"]==true){
-        echo "onStreet<br/>";
-    }else{
-        echo"pas sur une rue<br/>";
-    }
-    if($_SESSION["onStation"]==true){
-        echo "onStation<br/>";
-    }else{
-        echo"pas sur une gare<br/>";
-    }
-    if($_SESSION["onEnergie"]==true){
-        echo "onEnergie<br/>";
-    }else{
-        echo"pas sur une Energie<br/>";
-    }
-    if($_SESSION["isOwner"]==true){
-        echo "isOwner<br/>";
-    }else{
-        echo"pas propriétaire<br/>";
-    }
-    if($_SESSION["onJail"]==true){
-        echo "onJail<br/>";
-    }else{
-        echo"pas en prison<br/>";
-    }
-    if($_SESSION["CardsJail"]==true){
-        echo "CardsJail<br/>";
-    }else{
-        echo"pas de carte sortie de prison<br/>";
-    }
-    if($_SESSION["actionDoing"]==true){
-        echo "Action En cours<br/>";
-    }else{
-        echo "Action Pas En Cours<br/>";
-    }
-    if($_SESSION["actionDone"]==true){
-        echo "Action Faite<br/>";
-    }else{
-        echo "Action pas Faite<br/>";
+    echo "Le gagnant est ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$game->winner());
+    if($game->winner()==$ID){
+        header('Location: youWin.php');
     }
 }
 ?>
