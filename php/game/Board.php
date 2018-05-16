@@ -35,11 +35,11 @@ class Board{
 
     function getCardByID($id){
         foreach($this->$cards as $card){
-            if($card->getID() == $id){
+            if($card->getID()==$id){
                 return $card;
             }
         }
-        return false;
+        //return false;
     }
 }
 

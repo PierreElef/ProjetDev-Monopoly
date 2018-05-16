@@ -1,15 +1,46 @@
 <?php
-$orderCard=array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
-shuffle($orderCard); 
-$_SESSION['orderCard']=serialize($orderCard);
-$sql='INSERT INTO `cards`(`IDgame`';
-for($i=0;$i<17;$i++){
-    $j=$i+1;
-    $sql=$sql.', `order'.$j.'`';
+session_start();
+include('../commun/getSQL.php');
+require_once '../commun/getSQL.php';
+require_once 'DataInit.php';
+require_once 'Game.php';
+require_once 'Box.php';
+require_once 'Board.php';
+require_once 'Player.php';
+require_once 'Cards.php';
+require_once 'Dice.php';
+$ID=$_SESSION["id"];
+$gameID=$_SESSION["idGame"];
+$board=$_SESSION["board"];
+
+$IDcard=pickCard();
+$pickedCard=$board->getCardByID($IDcard);
+
+echo $pickedCard->getID()."<br/>";
+echo $pickedCard->getType()."<br/>";
+echo $pickedCard->getMessage()."<br/>";
+echo $pickedCard->getPosition()."<br/>";
+echo $pickedCard->getAmount()."<br/>";
+echo $pickedCard->getAmountHouse()."<br/>";
+
+function pickCard(){
+    $IDcard=getSql('SELECT `cardToPick` FROM `cards` WHERE `IDgame`='.$_SESSION["idGame"]);
+    nextCard($IDcard);
+    return $IDcard;
 }
-$sql=$sql.') VALUES ('.$_SESSION["idGame"];
-for($i=0;$i<16;$i++){
-    $sql=$sql.', '.$orderCard[$i];
+
+function nextCard($IDcard){
+    $orderCard=$_SESSION['orderCard'];
+    $nextCard=NULL;
+    for($i=0;$i<16;$i++){
+        if($orderCard[$i]==$IDcard){
+            $j=$i+1;
+            if($j==16){
+                $nextCard=$orderCard[0];
+            }else{
+                $nextCard=$orderCard[$j];
+            }
+        }
+    }
+    requetSql('UPDATE `cards` SET `cardToPick`='.$nextCard.' WHERE `IDgame`='.$_SESSION["idGame"]);
 }
-$sql=$sql.')';
-echo $sql;

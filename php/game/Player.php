@@ -212,7 +212,7 @@ class Player{
                             $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
                             $newMoneyOnwer=$moneyOnwer+ $box->getRentStreet();
                             requetSql('UPDATE `player` SET `money`='.$newMoneyOnwer.' WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
-                            echo "le joueur a payé ".$newMoney." à ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$ownerID)."<br/>";
+                            echo "le joueur a payé ".$newMoney."€ à ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$ownerID)."<br/>";
                         }else{
                             //si pas assez argent
                             echo"pas assez d'argent";
@@ -267,7 +267,7 @@ class Player{
                             $moneyOnwer=getSql('SELECT `money` FROM `player` WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
                             $newMoneyOnwer=$moneyOnwer+ $box->getRentStreet();
                             requetSql('UPDATE `player` SET `money`='.$newMoneyOnwer.' WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
-                            echo "le joueur a payé ".$newMoney." à ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$ownerID)."<br/>";
+                            echo "le joueur a payé ".$newMoney."€ à ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$ownerID)."<br/>";
                         }else{
                             //si pas assez argent
                             echo"pas assez d'argent";
@@ -338,8 +338,9 @@ class Player{
             break;
             case 5: 
                 echo "Le joueur pioche une carte.<br/>";
-                //$pickedCard=$board->getCardByID($this->pickCard());
-                //$this->actionCard($pickedCard);
+                /////////////////////////////////////////////////////////////////////////////////////////////CARTE A TIRER
+                $pickedCard=$board->getCardByID($this->pickCard());
+                $this->actionCard($pickedCard);
                 $_SESSION["isTurn"]=false;
                 $_SESSION["actionDoing"]=false;
                 $_SESSION["actionDone"]=true;
@@ -353,6 +354,9 @@ class Player{
                 $newJackpot = $jackpot-$newMoney;
                 requetSql('UPDATE `game` SET `jackpot`='.$newJackpot.' WHERE `ID`='.$_SESSION["idGame"]);
                 $_SESSION["isTurn"]=false;
+                $_SESSION["actionDoing"]=false;
+                $_SESSION["actionDone"]=true;
+                $_SESSION["pulledDice"]=false;
             break;
             case 7:
                 echo "Le joueur est sur le park gratuit.<br/>";
@@ -360,11 +364,17 @@ class Player{
                 $this->setMoney($jackpot);
                 requetSql('UPDATE `game` SET `jackpot`= 0 WHERE `ID`='.$_SESSION["idGame"]);
                 $_SESSION["isTurn"]=false;
+                $_SESSION["actionDoing"]=false;
+                $_SESSION["actionDone"]=true;
+                $_SESSION["pulledDice"]=false;
             break;
             case 8:
                 echo "Le joueur est sur la case aller en prison.<br/>";
                 $this->goInJail();
                 $_SESSION["isTurn"]=false;
+                $_SESSION["actionDoing"]=false;
+                $_SESSION["actionDone"]=true;
+                $_SESSION["pulledDice"]=false;
             break; 
         }
     }
@@ -480,7 +490,7 @@ class Player{
         for($i=0;$i<16;$i++){
             if($orderCard[$i]==$IDcard){
                 $j=$i+1;
-                if($j==17){
+                if($j==16){
                     $nextCard=$orderCard[0];
                 }else{
                     $nextCard=$orderCard[$j];
