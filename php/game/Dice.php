@@ -39,9 +39,11 @@ class Dice
         if($de1 == $de2){
             $this->isDouble = true;
             echo "Double ".$de1." !</br>";
+            $_SESSION["double"]=true;
         }
         else{
             $this->isDouble = false;
+            $_SESSION["double"]=false;
         }
 
         echo "(".$de1.")(".$de2.")</br>";

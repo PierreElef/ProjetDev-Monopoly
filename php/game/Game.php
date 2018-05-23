@@ -12,7 +12,7 @@ class Game{
             if($_SESSION["pulledDice"]==false){
                 if($_SESSION["choise"]==1){
                     $de->rollDice();
-                    if($de->getDouble() == true OR $_SESSION["choise"]==6 OR $_SESSION["turnJail"]==3){
+                    if($_SESSION["double"]==true OR $_SESSION["choise"]==6 OR $_SESSION["turnJail"]==3){
                         echo $player->getName()." sort de prison.<br/>";
                         $player->jailOff();
                         $player->turnOn();
@@ -38,7 +38,7 @@ class Game{
             }elseif($_SESSION["choise"]==1){
                 echo $player->getName()." lance les dés<br/>";
                 //le joueur lance le dé
-                $player->move($de, $box);
+                $player->move($de);
                 //action en cours
                 $_SESSION["actionDoing"]=true;
                 //changement de case
@@ -47,7 +47,10 @@ class Game{
                 //faire l'action de la case
                 $player->action($board, $newBox);
             }
-            if($de->getDouble() == true OR $_SESSION["actionDone"]==false){
+            if($_SESSION["actionDone"]==false){
+                $player->turnOn();
+            }elseif($_SESSION["double"]==true AND $_SESSION["actionDone"]==true){
+                $_SESSION["pulledDice"]=false;
                 $player->turnOn();
             }else{
                 $player->turnOff();

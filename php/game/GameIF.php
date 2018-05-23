@@ -5,15 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta lan="fr">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Monopoly</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--<meta http-equiv="refresh" content="1"/>-->
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <?php include("../../html/head.html")?>
 </head>
 <html>
 <body>
@@ -22,7 +14,9 @@
             <?php include("../../html/header2.html")?>
             <div class="row justify-content-end">
                 <div class="col-8">
-                    <h1 class="text-center">Partie en cours</h1>
+                    <?php
+                        echo '<h1 class="text-center">Partie en cours - '.getSql('SELECT `name` FROM `user` WHERE `ID`='.$_SESSION["id"]).'</h1>'
+                    ?>
                 </div>
                 <div class="col-2">
                     <form name="quitSession" method="post" action="#" class="p-1">
@@ -156,12 +150,19 @@
                                 <input type="hidden" name="sellButton" value="1">
                                 <?php 
                                     if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND ($_SESSION["onStreet"]==true OR $_SESSION["onStation"]==true OR $_SESSION["onEnergie"]==true) AND $_SESSION["isOwner"]==true){
+                                        echo'<datalist id="boxes">';
+                                        $boxSells=array(2, 4, 6, 7, 9, 10, 12, 13, 14, 15, 16, 17, 19, 20, 22, 24, 25, 26, 27, 28, 29, 30, 32, 33, 35, 36, 38, 40);
+                                        foreach($boxSells as $boxSell){
+                                            echo'<option value='.$boxSell.'>';
+                                        }
+                                        echo'</datalist>';
                                         echo'<input class="buttonGame" type="submit" value="Vendre">';
-                                        echo'<input class="buttonGame" type="number" name="boxIDtoSell" min="1" max="40">';
+                                        echo'<input class="buttonGame" type="list" name="boxIDtoSell" list="boxes">';
                                     }else{
-                                        echo'<input class="buttonGame" type="number" name="boxIDtoSell" min="1" max="40" disabled>';
+                                        echo'<input class="buttonGame" type="list" name="boxIDtoSell" list="boxes" disabled>';
                                         echo'<input class="buttonGame" type="submit" value="Vendre" disabled>';
                                     }
+                                    
                                 ?>
                             </form>
                             <!--Bouton carte prison--> 

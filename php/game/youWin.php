@@ -4,15 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta lan="fr">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Monopoly - You Loose</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!--<meta http-equiv="refresh" content="1"/>-->
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <?php include("../../html/head.html")?>
 </head>
 <html>
 <body>

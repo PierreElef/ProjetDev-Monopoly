@@ -53,9 +53,6 @@ if(is_null($_SESSION['orderCard'])){
 }
 $orderCard = $_SESSION['orderCard'];
 
-//Identité
-echo"Je suis ".$player->getName().".<br/>";
-
 if(is_null($_SESSION['choise'])){	
     $_SESSION["isTurn"]=false;
     $_SESSION["pulledDice"]=false;
@@ -68,6 +65,7 @@ if(is_null($_SESSION['choise'])){
     $_SESSION["actionDone"]=true;
     $_SESSION["cardJail"]=false;
     $_SESSION["turnJail"]=0;
+    $_SESSION["double"]=false;
 }
 //Tant que nbr_joueur > 1
 if($game->playerOnGame() > 1){
