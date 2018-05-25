@@ -1,5 +1,6 @@
 <?php
 require_once '../commun/getSQL.php';
+require_once '../commun/writeLog.php';
 require_once 'DataInit.php';
 require_once 'Game.php';
 require_once 'Box.php';

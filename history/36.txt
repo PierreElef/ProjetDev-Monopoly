@@ -1,0 +1,9 @@
+playerOne se déplace jusqu'à la case 5.
+Adel se déplace jusqu'à la case 18.
+Pierre se déplace jusqu'à la case 4.
+playerOne se déplace jusqu'à la case 11.
+playerOne est sur la case Prison.
+Pierre se déplace jusqu'à la case 16.
+Pierre est sur la case Gare St-Cyprien.
+Pierre se déplace jusqu'à la case 21.
+Pierre est sur la case Parc Gratuit.

@@ -28,3 +28,13 @@
     width: 120px;
     height:35px;
 }
+
+.history{
+    width: 95%;
+    font-size: 12px;
+}
+
+.status-table{
+    background-color: #fff;
+    border-color: black;
+}
