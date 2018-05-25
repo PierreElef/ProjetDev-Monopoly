@@ -6,15 +6,18 @@
 <html>
 <head>
     <?php include("../../html/head.html")?>
+    <title>Monopoly - Propriétés</title>
 </head>
 <html>
-<body>
+<body style="background-color: #dae9d4;">
     <div class="container">
         <header class="header">
             <?php include("../../html/header2.html")?>
             <div class="row justify-content-end">
                 <div class="col-8">
-                    <h1 class="text-center">Partie en cours</h1>
+                    <?php
+                        echo '<h1 class="text-center">Partie en cours - '.getSql('SELECT `name` FROM `user` WHERE `ID`='.$_SESSION["id"]).'</h1>'
+                    ?>
                 </div>
                 <div class="col-2">
                     <form name="quitSession" method="post" action="#" class="p-1">
@@ -44,7 +47,7 @@
                 foreach($IDplayers as $IDplayer){
                     $namePlayer=getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer);
                     echo'<h2>'.$namePlayer.'</h2>';
-                    echo'<table class="table table-bordered"><tr style="font-weight: bold;"><td>Rue</td><td>Maison</td><td>Hotel</td></tr>';
+                    echo'<table class="table table-bordered status-table"><tr style="font-weight: bold;"><td>Rue</td><td>Maison</td><td>Hotel</td></tr>';
                     $properties = [2, 4, 7, 9, 10, 12, 14, 15, 17, 19, 20, 22, 24, 25, 27, 28, 30, 32, 33, 35, 38, 40, 6, 16, 26, 36, 13, 29];
                     foreach ($properties as $property){
                         $owner = getSql('SELECT `'.$property.'` FROM `owner` WHERE `IDgame`='.$_SESSION["idGame"], 1);

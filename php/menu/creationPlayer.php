@@ -3,6 +3,7 @@
 <html>
 <head>
     <?php include("../../html/head.html")?>
+    <title>Monopoly - nouveau joueur</title>
 </head>
 <html>
 <body>

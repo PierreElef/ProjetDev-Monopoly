@@ -8,6 +8,7 @@
 <html>
 <head>
     <?php include("../../html/head.html")?>
+    <title>Monopoly - attente</title>
 </head>
 <html>
 <body>

@@ -6,6 +6,7 @@
 <html>
 <head>
     <?php include("../../html/head.html")?>
+    <title>Monopoly - connexion</title>
 </head>
 <html>
 <body>

@@ -83,6 +83,7 @@ class Game{
         }
         echo "C'est au tour de ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$nextPlayer).".<br/>";
         requetSql('UPDATE `turn` SET `IDtoPlay`='.$nextPlayer.' WHERE `IDgame`='.$_SESSION["idGame"]);
+        writeLogNP("=========== ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$nextPlayer)." ===========\n");
     }
 
     function playerOnGame(){
