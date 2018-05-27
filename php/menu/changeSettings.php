@@ -8,7 +8,7 @@
     <?php include("../../html/head.html")?>
 </head>
 <html>
-<body>
+<body style="background-color: #dae9d4;">
     <div class="container">
         <header class="header">
             <?php include("../../html/header.html")?>

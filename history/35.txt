@@ -59,3 +59,112 @@
 25/05/18 10:00:49 : Pierre est sur la case Avenue des Minimes.
 25/05/18 10:00:50 : Pierre a payé 300000€ à playerOne.
 =========== playerOne ===========
+26/05/18 08:41:53 : playerOne se déplace jusqu'à la case 27.
+26/05/18 08:41:53 : playerOne est sur la case Rue du Languedoc.
+26/05/18 09:25:27 : playerOne est sur la case Rue du Languedoc.
+26/05/18 09:25:27 : playerOne construit une maison sur la case Rue du Languedoc.
+=========== Pierre ===========
+26/05/18 09:25:34 : Pierre se déplace jusqu'à la case 9.
+26/05/18 09:25:34 : Pierre est sur la case Rue du Faubourg Bonnefoy.
+26/05/18 09:25:34 : Pierre a payé 7000000€ à playerOne.
+26/05/18 09:25:38 : Pierre se déplace jusqu'à la case 14.
+26/05/18 09:25:38 : Pierre est sur la case Rue de la République.
+26/05/18 09:25:40 : Pierre est sur la case Rue de la République.
+26/05/18 09:25:40 : Pierre construit une maison sur la case Rue de la République.
+=========== playerOne ===========
+26/05/18 09:25:46 : playerOne se déplace jusqu'à la case 33.
+26/05/18 09:25:46 : playerOne est sur la case Rue du Metz.
+26/05/18 09:25:46 : playerOne a payé 1000000€ à Pierre.
+=========== Pierre ===========
+26/05/18 09:25:51 : Pierre se déplace jusqu'à la case 21.
+26/05/18 09:25:51 : Pierre est sur la case Parc Gratuit.
+=========== playerOne ===========
+26/05/18 09:26:03 : playerOne se déplace jusqu'à la case 2.
+26/05/18 09:26:03 : playerOne est sur la case Rue Saint-Rome.
+26/05/18 09:26:03 : playerOne a payé 300000€ à Pierre.
+26/05/18 09:26:07 : playerOne se déplace jusqu'à la case 13.
+26/05/18 09:26:07 : playerOne est sur la case Compagnie de distribution d'électricité.
+=========== Pierre ===========
+26/05/18 09:26:12 : Pierre se déplace jusqu'à la case 28.
+26/05/18 09:26:12 : Pierre est sur la case Place St-Etienne.
+26/05/18 09:26:14 : Pierre est sur la case Place St-Etienne.
+26/05/18 09:26:14 : Pierre construit une maison sur la case Place St-Etienne.
+=========== playerOne ===========
+26/05/18 09:26:27 : playerOne se déplace jusqu'à la case 21.
+26/05/18 09:26:27 : playerOne est sur la case Parc Gratuit.
+=========== Pierre ===========
+26/05/18 09:26:32 : Pierre se déplace jusqu'à la case 36.
+26/05/18 09:26:32 : Pierre est sur la case Aeroport Toulouse-Blagnac.
+=========== playerOne ===========
+26/05/18 09:26:40 : playerOne se déplace jusqu'à la case 28.
+26/05/18 09:26:40 : playerOne est sur la case Place St-Etienne.
+26/05/18 09:26:40 : playerOne a payé 1000000€ à Pierre.
+=========== Pierre ===========
+26/05/18 09:26:47 : Pierre se déplace jusqu'à la case 2.
+26/05/18 09:26:47 : Pierre est sur la case Rue Saint-Rome.
+26/05/18 09:26:50 : Pierre est sur la case Rue Saint-Rome.
+26/05/18 09:26:50 : Pierre construit une maison sur la case Rue Saint-Rome.
+=========== playerOne ===========
+26/05/18 09:26:54 : playerOne se déplace jusqu'à la case 32.
+26/05/18 09:26:54 : playerOne est sur la case Rue St-Antoine du T.
+26/05/18 09:26:54 : playerOne a payé 300000€ à Pierre.
+=========== Pierre ===========
+26/05/18 09:26:59 : Pierre se déplace jusqu'à la case 9.
+26/05/18 09:26:59 : Pierre est sur la case Rue du Faubourg Bonnefoy.
+26/05/18 09:26:59 : Pierre a payé 7000000€ à playerOne.
+=========== playerOne ===========
+26/05/18 09:27:04 : playerOne se déplace jusqu'à la case 4.
+26/05/18 09:27:04 : playerOne est sur la case Rue de la Colombette.
+26/05/18 09:27:04 : playerOne a payé 300000€ à Pierre.
+=========== Pierre ===========
+26/05/18 09:27:07 : Pierre se déplace jusqu'à la case 20.
+26/05/18 09:27:07 : Pierre est sur la case Avenue Jean Rieux.
+26/05/18 09:27:09 : Pierre est sur la case Avenue Jean Rieux.
+26/05/18 09:27:09 : Pierre construit une maison sur la case Avenue Jean Rieux.
+=========== playerOne ===========
+26/05/18 09:27:12 : playerOne se déplace jusqu'à la case 11.
+26/05/18 09:27:12 : playerOne est sur la case Prison.
+=========== Pierre ===========
+26/05/18 09:27:20 : Pierre se déplace jusqu'à la case 25.
+26/05/18 09:27:20 : Pierre est sur la case Allées Jean Jaurès.
+26/05/18 09:27:20 : Pierre a payé 300000€ à playerOne.
+=========== playerOne ===========
+26/05/18 09:27:23 : playerOne se déplace jusqu'à la case 16.
+26/05/18 09:27:23 : playerOne est sur la case Gare St-Cyprien.
+=========== Pierre ===========
+26/05/18 09:27:27 : Pierre se déplace jusqu'à la case 32.
+26/05/18 09:27:27 : Pierre est sur la case Rue St-Antoine du T.
+26/05/18 09:27:29 : Pierre est sur la case Rue St-Antoine du T.
+26/05/18 09:27:29 : Pierre construit une maison sur la case Rue St-Antoine du T.
+=========== playerOne ===========
+26/05/18 09:27:32 : playerOne se déplace jusqu'à la case 24.
+26/05/18 09:27:32 : playerOne est sur la case Rue des Chalets.
+26/05/18 09:27:32 : playerOne a payé 3000000€ à Pierre.
+=========== Pierre ===========
+26/05/18 09:27:35 : Pierre se déplace jusqu'à la case 2.
+26/05/18 09:27:35 : Pierre est sur la case Rue Saint-Rome.
+26/05/18 09:27:36 : Pierre est sur la case Rue Saint-Rome.
+26/05/18 09:27:36 : Pierre construit une maison sur la case Rue Saint-Rome.
+=========== playerOne ===========
+26/05/18 09:27:48 : playerOne se déplace jusqu'à la case 31.
+26/05/18 09:27:48 : playerOne est sur la case Allez en prison.
+26/05/18 09:27:48 : playerOne est enfermé en Prison.
+=========== Pierre ===========
+26/05/18 09:27:57 : Pierre se déplace jusqu'à la case 12.
+26/05/18 09:27:57 : Pierre est sur la case Grande rue St-Michel.
+26/05/18 09:27:57 : Pierre a payé 300000€ à playerOne.
+=========== playerOne ===========
+=========== Pierre ===========
+26/05/18 09:28:10 : Pierre se déplace jusqu'à la case 18.
+26/05/18 09:28:10 : Pierre est sur la case Caisse de communauté.
+=========== playerOne ===========
+=========== Pierre ===========
+26/05/18 09:29:05 : Pierre se déplace jusqu'à la case 27.
+26/05/18 09:29:05 : Pierre est sur la case Rue du Languedoc.
+26/05/18 09:29:05 : Pierre a payé 3000000€ à playerOne.
+=========== playerOne ===========
+26/05/18 09:29:10 : playerOne se déplace jusqu'à la case 21.
+26/05/18 09:29:10 : playerOne est sur la case Parc Gratuit.
+=========== Pierre ===========
+26/05/18 09:29:24 : Pierre se déplace jusqu'à la case 33.
+26/05/18 09:29:24 : Pierre est sur la case Rue du Metz.

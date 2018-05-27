@@ -6,9 +6,9 @@
     <title>Monopoly - nouveau joueur</title>
 </head>
 <html>
-<body>
+<body style="background-color: #dae9d4;">
     <div class="container text-center">
-        <?php include("../../html/header.html")?>
+        <?php include("../../html/header2.html")?>
         <h1>Création de compte</h1>
         <div class="m-2 p-2">
             <form name="addBook" method="post" action="#">

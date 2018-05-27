@@ -82,6 +82,8 @@ if($game->playerOnGame() > 1){
         }else{
             header('Location: youLoose.php');
         }
+    }elseif($IDtoPlay==1 OR $IDtoPlay==2 OR $IDtoPlay==3 OR $IDtoPlay==4 OR $IDtoPlay==5){
+        
     } 
 }else{
     echo "Le gagnant est ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$game->winner());
@@ -89,4 +91,4 @@ if($game->playerOnGame() > 1){
         header('Location: youWin.php');
     }
 }
-?>
+?> 

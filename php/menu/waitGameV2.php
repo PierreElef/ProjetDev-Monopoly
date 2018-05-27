@@ -11,10 +11,10 @@
     <title>Monopoly - attente</title>
 </head>
 <html>
-<body>
+<body style="background-color: #dae9d4;">
     <div class="container">
         <header class="header">
-            <?php include("../../html/header.html")?>
+            <?php include("../../html/header2.html")?>
             <div class="text-center">
                 <h1 class="text-center">En attente de joueurs</h1>
             </div>

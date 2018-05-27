@@ -3,8 +3,8 @@
     $games=array();
     $games= getSqlArray('SELECT `ID` FROM `game` ORDER BY `ID`', 1);
     if (sizeof($games) > 0){
-        echo '<table class="table table-striped">';
-        echo '<tr style="font-weight: bold;">';
+        echo '<table class="table table-striped status-table">';
+        echo '<tr style="font-weight: bold; background-color: #fff">';
         echo "<td>Numéro de</br>la partie</td>";
         echo "<td>Nombre de</br>joueurs manquants</td>";
         echo "<td>Joueur 1</td>";
@@ -16,7 +16,7 @@
         echo "</tr>";
         //pour chaque valeur du tableau game
         foreach ($games as $IDgame){
-            //récupération des caractéristiques du livre
+            //récupération des caractéristiques du joueur
             $IDplayer1 = getSql('SELECT `IDplayer1` FROM `game` WHERE `ID`='.$IDgame.'');
             if (!($IDplayer1==NULL)){
                 $namePlayer1 = getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer1.'');

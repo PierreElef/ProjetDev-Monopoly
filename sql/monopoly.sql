@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 15 mai 2018 à 09:04
+-- Généré le :  Dim 27 mai 2018 à 09:48
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -96,6 +96,25 @@ CREATE TABLE IF NOT EXISTS `building` (
   `nbrHotel` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `building`
+--
+
+INSERT INTO `building` (`IDgame`, `IDbox`, `nbrHouse`, `nbrHotel`) VALUES
+(35, 9, 3, 0),
+(35, 22, 2, 0),
+(35, 19, 1, 0),
+(35, 24, 2, 0),
+(35, 27, 2, 0),
+(35, 10, 1, 0),
+(35, 20, 3, 0),
+(35, 14, 4, 0),
+(35, 30, 1, 0),
+(35, 33, 1, 0),
+(35, 28, 1, 0),
+(35, 2, 2, 0),
+(35, 32, 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -130,7 +149,8 @@ CREATE TABLE IF NOT EXISTS `cards` (
 --
 
 INSERT INTO `cards` (`IDgame`, `cardToPick`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`, `order7`, `order8`, `order9`, `order10`, `order11`, `order12`, `order13`, `order14`, `order15`, `order16`) VALUES
-(35, 3, 1, 12, 13, 10, 2, 7, 4, 15, 5, 16, 6, 8, 3, 9, 11, 14);
+(35, 6, 1, 12, 13, 10, 2, 7, 4, 15, 5, 16, 6, 8, 3, 9, 11, 14),
+(36, 6, 7, 15, 10, 2, 6, 11, 5, 4, 8, 16, 3, 9, 13, 12, 14, 1);
 
 -- --------------------------------------------------------
 
@@ -153,13 +173,14 @@ CREATE TABLE IF NOT EXISTS `game` (
   `jackpot` int(11) DEFAULT NULL,
   `IDadmin` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `game`
 --
 
 INSERT INTO `game` (`ID`, `IDplayer1`, `IDplayer2`, `IDplayer3`, `IDplayer4`, `IDplayer5`, `IDplayer6`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`, `jackpot`, `IDadmin`) VALUES
+(36, 7, 8, 6, NULL, NULL, NULL, 3, 3, 3, 0, 7),
 (35, 7, 6, NULL, NULL, NULL, NULL, 2, 2, 2, 0, 7);
 
 -- --------------------------------------------------------
@@ -207,8 +228,8 @@ CREATE TABLE IF NOT EXISTS `owner` (
 --
 
 INSERT INTO `owner` (`IDgame`, `2`, `4`, `7`, `9`, `10`, `12`, `14`, `15`, `17`, `19`, `20`, `22`, `24`, `25`, `27`, `28`, `30`, `32`, `33`, `35`, `38`, `40`, `6`, `16`, `26`, `36`, `13`, `29`) VALUES
-(0, 2, 4, 7, 9, 10, 12, 14, 15, 17, 19, 20, 22, 24, 25, 27, 28, 30, 32, 33, 35, 38, 40, 6, 16, 26, 36, 13, 29),
-(35, 7, 7, 6, 6, NULL, 6, NULL, 6, NULL, 7, 7, NULL, 7, NULL, NULL, 7, 7, NULL, 7, 7, NULL, NULL, NULL, NULL, 6, 6, 7, 7);
+(36, NULL, 7, 7, 6, NULL, 8, 8, NULL, NULL, 6, NULL, 8, NULL, NULL, 6, NULL, NULL, 6, NULL, NULL, NULL, NULL, NULL, 6, 7, NULL, NULL, NULL),
+(35, 7, 7, 6, 6, 7, 6, 7, 6, 6, 7, 7, 6, 7, 6, 6, 7, 7, 7, 7, 7, 6, NULL, 6, 7, 6, 6, 7, 7);
 
 -- --------------------------------------------------------
 
@@ -231,8 +252,11 @@ CREATE TABLE IF NOT EXISTS `player` (
 --
 
 INSERT INTO `player` (`IDuser`, `IDgame`, `money`, `position`, `jailStatus`, `color`) VALUES
-(7, 35, 14500000, 20, 0, '#FF0000'),
-(6, 35, 9600000, 2, 0, '#003AFF');
+(7, 35, 86100000, 33, 0, '#FF0000'),
+(6, 35, 428900000, 21, 0, '#003AFF'),
+(7, 36, 14600000, 21, 0, '#FF0000'),
+(8, 36, 27600000, 11, 1, '#003AFF'),
+(6, 36, 5100000, 11, 0, '#4FAB5B');
 
 -- --------------------------------------------------------
 
@@ -258,6 +282,7 @@ CREATE TABLE IF NOT EXISTS `turn` (
 --
 
 INSERT INTO `turn` (`IDgame`, `IDtoPlay`, `order1`, `order2`, `order3`, `order4`, `order5`, `order6`) VALUES
+(36, 6, 6, 8, 7, NULL, NULL, NULL),
 (35, 7, 7, 6, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------

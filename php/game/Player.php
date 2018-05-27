@@ -376,6 +376,7 @@ class Player{
                 $this->setMoney($jackpot);
                 requetSql('UPDATE `game` SET `jackpot`= 0 WHERE `ID`='.$_SESSION["idGame"]);
                 echo $this->getName()." gagne le jackpot de ".$jackpot."€.<br/>";
+                writeLog($this->getName()." gagne le jackpot de ".$jackpot."€.\n");
                 $this->actionDone();
             break;
             case 8:
@@ -388,12 +389,13 @@ class Player{
 
     //action des cartes sur le joueur
     function actionCard(Cards $card){
-        echo'Le joueur a tiré la carte "'.$card->getMessage().'".<br/>';
+        echo $this->getName().' a tiré la carte "'.$card->getMessage().'".<br/>';
+        writeLog($this->getName().' a tiré la carte "'.$card->getMessage().'".\n');
         $type = $card->getType($card);
         switch ($type){
             case 1:
                 $this->setPosition($card->getPosition());
-                echo $this->getName()." est allé à la case ".$this->getPosition().".<br/>";
+                echo $this->getName()." va à la case ".$this->getPosition().".<br/>";
                 $_SESSION["actionDoing"]=true;
                 $_SESSION["actionDone"]=false;
                 $_SESSION["pulledDice"]=true;
@@ -428,6 +430,8 @@ class Player{
             case 5:
                 $this->setPosition($this->getPosition()-3);
                 echo $this->getName()." a reculé de trois cases.<br/>";
+                
+                writeLog($this->getName()." a reculé de trois cases.\n");
                 $_SESSION["actionDoing"]=true;
                 $_SESSION["actionDone"]=false;
                 $_SESSION["pulledDice"]=true;
@@ -460,12 +464,14 @@ class Player{
     function giveCardJail(){
         $this->cardJail = true;
         $_SESSION["cardJail"]=true;
+        writeLog($this->getName()." a obtenu la carte Sortie de prison.\n");
     }
     //utiliser la carte sortie de prison
     function useCardJail(){
         $this->cardJail = false;
         $_SESSION["cardJail"]=false;
         $this->jailOff();
+        writeLog($this->getName()." a utilisé une carte Sortie de prison.\n");
     }
 
     //fonction passer son tour

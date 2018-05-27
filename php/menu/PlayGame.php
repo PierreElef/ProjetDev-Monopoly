@@ -9,10 +9,10 @@
     <title>Monopoly - rejoindre une partie</title>
 </head>
 <html>
-<body>
+<body style="background-color: #dae9d4;">
     <div class="container">
         <header class="header">
-            <?php include("../../html/header.html")?>
+            <?php include("../../html/header2.html")?>
             <div class="row justify-content-end">
                 <div class="col-8">
                     <h1 class="text-center">Jouer au Monopoly</h1>

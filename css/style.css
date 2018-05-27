@@ -34,7 +34,14 @@
     font-size: 12px;
 }
 
-.status-table{
-    background-color: #fff;
-    border-color: black;
+.status-table table{
+    border:1px solid black !important;
+}
+
+.status-table td{
+    border:1px solid black !important;
+}
+
+.status-table tr{
+    border:1px solid black !important;
 }

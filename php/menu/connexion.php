@@ -9,9 +9,9 @@
     <title>Monopoly - connexion</title>
 </head>
 <html>
-<body>
+<body style="background-color: #dae9d4;">
     <div class="container text-center">
-        <?php include("../../html/header.html")?>
+        <?php include("../../html/header2.html")?>
         <h1>Connexion</h1>
         <?php
             if (isset($_POST['username'])){

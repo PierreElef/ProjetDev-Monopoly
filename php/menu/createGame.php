@@ -9,10 +9,10 @@
     <title>Monopoly - nouvelle partie</title>
 </head>
 <html>
-<body>
+<body style="background-color: #dae9d4;">
     <div class="container">
         <header class="header">
-            <?php include("../../html/header.html")?>
+            <?php include("../../html/header2.html")?>
             <div>
                 <h1 class="text-center">Création d'une partie</h1>
             <div>

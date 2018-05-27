@@ -42,7 +42,7 @@
                 ?>
             </div>
         <div id="board" class="col-xl-4 col-lg-5 ml-1 mr-1">
-            <h2 class="text-center">Déroulement du jeu</h2>
+            <h2 class="text-center">Déroulement du tour</h2>
             <?php 
                 if (isset($_POST['diceButton'])){
                     $_SESSION["choise"]=1;
@@ -78,7 +78,7 @@
             <h2>Commande de jeu</h2>
             <div id="playerStats" class="col-xl-12 col-lg-6">
                 <table class="table table-bordered status-table">
-                    <tr style="font-weight: bold;">
+                <tr style="font-weight: bold; background-color: #fff">
                         <td>Joueur</td>
                         <td>Argent</td>
                         <td>Position</td>
@@ -91,7 +91,7 @@
                             $positionName=getSql('SELECT `name` FROM `box` WHERE `ID`='.$positionPlayer.'');
                             $namePlayer=getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDplayer.'');
                             $colorPlayer=getSql('SELECT `color` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$IDplayer.'');
-                            echo '<tr>';
+                            echo '<tr style="background-color: #fff">';
                             echo '<td style="color:'.$colorPlayer.'"><b>'.$namePlayer.'</b></td>';
                             echo '<td>'.$moneyPlayer.'</td>';
                             echo '<td>'.$positionPlayer.' : '.utf8_encode($positionName).'</td>';
@@ -191,7 +191,7 @@
         </div>
     </div>
     <footer>
-    <?php include("../../html/footer.html")?>
+        <?php include("../../html/footer.html")?>
     </footer>
 </body>
 </html>
