@@ -168,3 +168,10 @@
 =========== Pierre ===========
 26/05/18 09:29:24 : Pierre se déplace jusqu'à la case 33.
 26/05/18 09:29:24 : Pierre est sur la case Rue du Metz.
+27/05/18 11:30:40 : Pierre se déplace jusqu'à la case 37.
+27/05/18 11:30:40 : Pierre est sur la case Chance.
+27/05/18 11:30:40 : Pierre a tiré la carte "Allez Rue Croix Baragnon".\n27/05/18 11:30:45 : Pierre est sur la case Rue Croix-Baragnon.
+27/05/18 11:30:48 : Pierre est sur la case Rue Croix-Baragnon.
+27/05/18 11:30:48 : Pierre achète la case Rue Croix-Baragnon.
+27/05/18 11:30:48 : Pierre a passé son tour.
+=========== playerOne ===========

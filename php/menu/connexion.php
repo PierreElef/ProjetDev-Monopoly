@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include('../commun/getSQL.php');
+    include("../commun/getSQL.php");
 ?>
 <!DOCTYPE html>
 <html>
