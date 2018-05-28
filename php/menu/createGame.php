@@ -10,7 +10,7 @@
 </head>
 <html>
 <body style="background-color: #dae9d4;">
-    <div class="container">
+
         <header class="header">
             <?php include("../../html/header2.html")?>
             <div>
@@ -56,7 +56,8 @@
                 }
             }
         ?>
+    <footer>
         <?php include("../../html/footer.html")?>
-    </div>
+    </footer>
 </body>
 </html>
