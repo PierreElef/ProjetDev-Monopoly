@@ -325,7 +325,7 @@ class Player{
                             $newMoneyOnwer=$moneyOnwer+ $box->getRentStreet();
                             requetSql('UPDATE `player` SET `money`='.$newMoneyOnwer.' WHERE `IDuser`='.$ownerID.' AND `IDgame`='.$_SESSION["idGame"]);
                             $newMoney=0-$newMoney;
-                            echo $this->getName()." a payé ".$newMoney." à ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$ownerID).".<br/>";
+                            echo $this->getName()." a payé ".$newMoney."€ à ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$ownerID).".<br/>";
                         }else{
                             //si pas assez argent
                             echo $this->getName()." n'a pas assez d'argent et doit vendre une propriété.<br/>";
@@ -390,7 +390,7 @@ class Player{
     //action des cartes sur le joueur
     function actionCard(Cards $card){
         echo $this->getName().' a tiré la carte "'.$card->getMessage().'".<br/>';
-        writeLog($this->getName().' a tiré la carte "'.$card->getMessage().'".\n');
+        writeLog($this->getName()." a tiré la carte ''".$card->getMessage()."''.\n");
         $type = $card->getType($card);
         switch ($type){
             case 1:

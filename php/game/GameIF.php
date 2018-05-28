@@ -10,30 +10,39 @@
 </head>
 <html>
 <body style="background-color: #dae9d4;">
-    <header class="container header">
+    <header class="header">
         <?php include("../../html/header2.html")?>
         <div class="row justify-content-end">
             <div class="col-8">
-                <?php
+            <?php
                     echo '<h1 class="text-center">Partie en cours - '.getSql('SELECT `name` FROM `user` WHERE `ID`='.$_SESSION["id"]).'</h1>'
                 ?>
             </div>
             <div class="col-2">
-                <form name="quitSession" method="post" action="#" class="p-1">
-                    <input type="hidden" name="quit" value=1>
-                    <input type="image" src="../../images/quit.png" alt="Submit" width="32" height="32">
-                </form>
-                <?php
-                    if (isset($_POST['quit'])){
-                        session_destroy();
-                        header('Location: ../menu/connexion.php');
-                    } 
-                ?>
+                <div class="row m-2">
+                    <form name="changeSettings" method="post" action="#" class="p-1">
+                        <input type="hidden" name="change" value=1>
+                        <input type="image" src="../../images/settings.png" alt="Submit" width="32" height="32">
+                    </form>
+                    <form name="quitSession" method="post" action="#" class="p-1">
+                        <input type="hidden" name="quit" value=1>
+                        <input type="image" src="../../images/quit.png" alt="Submit" width="32" height="32">
+                    </form>
+                </div>
             </div>
         </div>
+        <?php
+            if (isset($_POST['change'])){
+                header('Location: ../menu/changeSettings2.php');
+            }
+            if (isset($_POST['quit'])){
+                session_destroy();
+                header('Location: ../menu/connexion.php');
+            } 
+        ?>
     </header>
-    <div class="row mt-4 mb-4" style="border-top:1px solid black;">
-        <div class="col-xl-4 col-lg-6 ml-1 mr-1 text-center" style="border-right:1px solid black">
+    <div class="row">
+        <div class="col-xl-4 col-lg-6 pt-4 pb-4 ml-1 mr-1 text-center" style="border-right:1px solid black">
                 <h2>Historique</h2>
                 <?php 
                     $file='../../history/'.$_SESSION["idGame"].'.txt'; 
@@ -41,7 +50,7 @@
                     echo '<textarea rows="25" class="history">'.$contenu.'</textarea>';
                 ?>
             </div>
-        <div id="board" class="col-xl-4 col-lg-5 ml-1 mr-1">
+        <div id="board" class="col-xl-4 col-lg-5 pt-4 pb-4 ml-1 mr-1">
             <h2 class="text-center">Déroulement du tour</h2>
             <?php 
                 if (isset($_POST['diceButton'])){
@@ -74,7 +83,7 @@
                 include('main.php');
             ?>
         </div>
-        <div class="col-xl-4 col-lg-12 row text-center" style="border-left:1px solid black">
+        <div class="col-xl-4 col-lg-12 pt-4 pb-4 row text-center" style="border-left:1px solid black">
             <h2>Commande de jeu</h2>
             <div id="playerStats" class="col-xl-12 col-lg-6">
                 <table class="table table-bordered status-table">
@@ -116,7 +125,7 @@
                             ?>
                         </form><br/><br/>
                         <!--Bouton Acheter--> 
-                        <form action="#"  method="post">
+                        <form action="#" method="post">
                             <input type="hidden" name="buyButton" value="1">
                             <?php 
                                 if ($_SESSION["isTurn"]==true AND $_SESSION["actionDone"]==false AND $_SESSION["pulledDice"]==true AND ($_SESSION["onStreet"]==true OR $_SESSION["onStation"]==true OR $_SESSION["onEnergie"]==true) AND $_SESSION["isOwner"]==false){
@@ -127,7 +136,7 @@
                             ?>
                         </form><br/><br/>
                         <!--Bouton Passer--> 
-                        <form action="#"  method="post">
+                        <form action="#" method="post">
                             <input type="hidden" name="passButton" value="1">
                             <?php 
                                 if ($_SESSION["isTurn"]==true AND $_SESSION["pulledDice"]==true AND $_SESSION["actionDone"]==false){

@@ -10,9 +10,11 @@
 </head>
 <html>
 <body style="background-color: #dae9d4;">
-    <div class="container text-center">
+    <header class="text-center">
         <?php include("../../html/header2.html")?>
         <h1>Connexion</h1>
+    </header>
+    <div class="container">
         <?php
             if (isset($_POST['username'])){
                 $username = $_POST['username'];
@@ -49,8 +51,9 @@
             ?>
             </form>
         </div>
-        <?php include("../../html/footer.html")?>
     </div>
-       
+    <footer>
+        <?php include("../../html/footer.html")?>
+    </footer>
     </body>
 </html>

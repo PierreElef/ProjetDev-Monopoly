@@ -83,7 +83,7 @@ if($game->playerOnGame() > 1){
             header('Location: youLoose.php');
         }
     }elseif($IDtoPlay==1 OR $IDtoPlay==2 OR $IDtoPlay==3 OR $IDtoPlay==4 OR $IDtoPlay==5){
-        
+        //Joueur AI  
     } 
 }else{
     echo "Le gagnant est ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$game->winner());

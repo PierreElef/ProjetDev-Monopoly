@@ -58,7 +58,7 @@
             if ($nbrPlayerNeed==$nbrOnLine){
                 echo '<tr style="background:green;">';
             }else{
-                echo "<tr>";
+                echo '<tr style="background-color:#fff">';
             }
             echo "<td>".$IDgame."</td>";
             echo "<td>".($nbrPlayerNeed-$nbrOnLine)."</td>";

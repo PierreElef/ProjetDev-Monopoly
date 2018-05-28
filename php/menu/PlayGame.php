@@ -10,27 +10,27 @@
 </head>
 <html>
 <body style="background-color: #dae9d4;">
-    <div class="container">
-        <header class="header">
-            <?php include("../../html/header2.html")?>
-            <div class="row justify-content-end">
-                <div class="col-8">
-                    <h1 class="text-center">Jouer au Monopoly</h1>
-                </div>
-                <div class="col-2">
-                    <div class="row m-2">
-                        <form name="changeSettings" method="post" action="#" class="p-1">
-                            <input type="hidden" name="change" value=1>
-                            <input type="image" src="../../images/settings.png" alt="Submit" width="32" height="32">
-                        </form>
-                        <form name="quitSession" method="post" action="#" class="p-1">
-                            <input type="hidden" name="quit" value=1>
-                            <input type="image" src="../../images/quit.png" alt="Submit" width="32" height="32">
-                        </form>
-                    </div>
+    <header class="header">
+        <?php include("../../html/header2.html")?>
+        <div class="row justify-content-end">
+            <div class="col-8">
+                <h1 class="text-center">Jouer au Monopoly</h1>
+            </div>
+            <div class="col-2">
+                <div class="row m-2">
+                    <form name="changeSettings" method="post" action="#" class="p-1">
+                        <input type="hidden" name="change" value=1>
+                        <input type="image" src="../../images/settings.png" alt="Submit" width="32" height="32">
+                    </form>
+                    <form name="quitSession" method="post" action="#" class="p-1">
+                        <input type="hidden" name="quit" value=1>
+                        <input type="image" src="../../images/quit.png" alt="Submit" width="32" height="32">
+                    </form>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
+    <div class="container">
         <div class="row justify-content-around m-2 text-center">
             <div class="col-3 p-2">
                 <form name="createGame" method="post" action="#">
@@ -77,7 +77,9 @@
                 include('GameInProgress.php');
             ?>
         </div>
-        <?php include("../../html/footer.html")?>
     </div>
+    <footer>
+        <?php include("../../html/footer.html")?>
+    </footer>
 </body>
 </html>
