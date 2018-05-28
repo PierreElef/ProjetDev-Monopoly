@@ -362,3 +362,31 @@
 28/05/18 08:22:26 : Pierre se déplace jusqu'à la case 36.
 28/05/18 08:22:26 : Pierre est sur la case Aeroport Toulouse-Blagnac.
 =========== playerOne ===========
+28/05/18 09:42:30 : playerOne se déplace jusqu'à la case 3.
+28/05/18 09:42:30 : playerOne est sur la case Caisse de communauté.
+28/05/18 09:42:30 : playerOne a tiré la carte ''Rendez-vous Rue Croix Baragnon''.
+28/05/18 09:42:32 : playerOne est sur la case Rue Croix-Baragnon.
+28/05/18 09:42:32 : playerOne a payé 300000€ à Pierre.
+=========== Pierre ===========
+28/05/18 09:42:38 : Pierre se déplace jusqu'à la case 1.
+28/05/18 09:42:38 : Pierre est sur la case Départ.
+=========== playerOne ===========
+28/05/18 09:42:44 : playerOne se déplace jusqu'à la case 10.
+28/05/18 09:42:44 : playerOne est sur la case Avenue de Muret.
+28/05/18 09:42:44 : playerOne a payé 1000000€ à Pierre.
+=========== Pierre ===========
+28/05/18 09:42:48 : Pierre se déplace jusqu'à la case 11.
+28/05/18 09:42:48 : Pierre est sur la case Prison.
+=========== playerOne ===========
+28/05/18 09:42:56 : playerOne se déplace jusqu'à la case 13.
+28/05/18 09:42:56 : playerOne est sur la case Compagnie de distribution d'électricité.
+=========== Pierre ===========
+28/05/18 09:43:00 : Pierre se déplace jusqu'à la case 16.
+28/05/18 09:43:00 : Pierre est sur la case Gare St-Cyprien.
+=========== playerOne ===========
+28/05/18 09:43:08 : playerOne se déplace jusqu'à la case 16.
+28/05/18 09:43:08 : playerOne est sur la case Gare St-Cyprien.
+=========== Pierre ===========
+28/05/18 09:43:19 : Pierre se déplace jusqu'à la case 28.
+28/05/18 09:43:19 : Pierre est sur la case Place St-Etienne.
+28/05/18 10:15:43 : Pierre est sur la case Place St-Etienne.

@@ -1,6 +1,14 @@
 <?php
     session_start();
     include('../commun/getSQL.php');
+    $idPlayer=$_SESSION["id"];
+    if (isset($_POST['change'])){
+        header('Location: changeSettings.php');
+    }
+    if (isset($_POST['quit'])){
+        session_destroy();
+        header('Location: connexion.php');
+    } 
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,12 +17,11 @@
 </head>
 <html>
 <body style="background-color: #dae9d4;">
-    <div class="container">
         <header class="header">
-            <?php include("../../html/header.html")?>
+            <?php include("../../html/header2.html")?>
             <div class="row justify-content-end">
                 <div class="col-8">
-                    <h1 class="text-center">Changer les paramètres</h1>
+                    <h1 class="text-center">Créer une partie</h1>
                 </div>
                 <div class="col-2">
                     <div class="row m-2">

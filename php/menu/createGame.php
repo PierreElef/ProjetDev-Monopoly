@@ -1,6 +1,14 @@
 <?php
     session_start();
     include('../commun/getSQL.php');
+    $idPlayer=$_SESSION["id"];
+    if (isset($_POST['change'])){
+        header('Location: changeSettings.php');
+    }
+    if (isset($_POST['quit'])){
+        session_destroy();
+        header('Location: connexion.php');
+    } 
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,12 +18,25 @@
 </head>
 <html>
 <body style="background-color: #dae9d4;">
-
         <header class="header">
             <?php include("../../html/header2.html")?>
-            <div>
-                <h1 class="text-center">Création d'une partie</h1>
-            <div>
+            <div class="row justify-content-end">
+                <div class="col-8">
+                    <h1 class="text-center">Créer une partie</h1>
+                </div>
+                <div class="col-2">
+                    <div class="row m-2">
+                        <form name="changeSettings" method="post" action="#" class="p-1">
+                            <input type="hidden" name="change" value=1>
+                            <input type="image" src="../../images/settings.png" alt="Submit" width="32" height="32">
+                        </form>
+                        <form name="quitSession" method="post" action="#" class="p-1">
+                            <input type="hidden" name="quit" value=1>
+                            <input type="image" src="../../images/quit.png" alt="Submit" width="32" height="32">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </header>
         <div>
             <form name="changeName" method="post" action="#" class="m-2 text-center">
@@ -39,7 +60,7 @@
                 }elseif ($nbrTTPlayer==1){
                     echo '<p class="text-center" style="color:red">Il faut au minimum 2 joueurs pour jouer.</p>';
                 }else{
-                    requetSql('INSERT INTO `game`(`IDplayer1`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`, `jackpot`, `IDadmin`) VALUES ('.$idPlayer.','.$nbrTTPlayer.',1,'.$nbrRealPlayer.',0,'.$idPlayer.')');
+                    requetSql('INSERT INTO `game`(`IDplayer1`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`, `jackpot`, `IDadmin`) VALUES ('.$idPlayer.','.$nbrTTPlayer.',1,'.$nbrRealPlayer.',NULL,'.$idPlayer.')');
                     $gameID=getSql('SELECT MAX(`ID`) FROM `game`');
                     settype($gameID, "int");
                     $_SESSION["idGame"]=$gameID;
