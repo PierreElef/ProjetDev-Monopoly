@@ -1,0 +1,51 @@
+29/05/18 10:58:40 : HAL 9000 se déplace jusqu'à la case 7.
+29/05/18 10:58:40 : HAL 9000 est sur la case Avenue des Minimes.
+29/05/18 10:58:40 : HAL 9000 achète la case Avenue des Minimes.
+29/05/18 10:58:40 : HAL 9000 a passé son tour.
+=========== HAL 9000 ===========
+29/05/18 11:14:41 : HAL 9000 se déplace jusqu'à la case 13.
+29/05/18 11:14:41 : HAL 9000 est sur la case Compagnie de distribution d'électricité.
+29/05/18 11:14:41 : HAL 9000 a passé son tour.
+=========== HAL 9000 ===========
+29/05/18 11:21:30 : HAL 9000 se déplace jusqu'à la case 19.
+29/05/18 11:21:30 : HAL 9000 est sur la case Avenue de St-Exupéry.
+29/05/18 11:21:30 : HAL 9000 achète la case Avenue de St-Exupéry.
+29/05/18 11:21:30 : HAL 9000 a passé son tour.
+=========== HAL 9000 ===========
+29/05/18 11:24:43 : HAL 9000 se déplace jusqu'à la case 21.
+29/05/18 11:24:43 : HAL 9000 est sur la case Parc Gratuit.
+29/05/18 11:24:43 : HAL 9000 gagne le jackpot de 0€.
+=========== HAL 9000 ===========
+29/05/18 11:24:47 : HAL 9000 se déplace jusqu'à la case 24.
+29/05/18 11:24:47 : HAL 9000 est sur la case Rue des Chalets.
+29/05/18 11:24:47 : HAL 9000 achète la case Rue des Chalets.
+29/05/18 11:24:47 : HAL 9000 a passé son tour.
+=========== HAL 9000 ===========
+29/05/18 11:24:54 : HAL 9000 se déplace jusqu'à la case 27.
+29/05/18 11:24:54 : HAL 9000 est sur la case Rue du Languedoc.
+29/05/18 11:24:54 : HAL 9000 achète la case Rue du Languedoc.
+29/05/18 11:24:54 : HAL 9000 a passé son tour.
+=========== HAL 9000 ===========
+29/05/18 11:27:07 : HAL 9000 se déplace jusqu'à la case 33.
+29/05/18 11:27:07 : HAL 9000 est sur la case Rue du Metz.
+29/05/18 11:27:07 : HAL 9000 a passé son tour.
+=========== playerOne ===========
+29/05/18 11:27:12 : playerOne se déplace jusqu'à la case 9.
+29/05/18 11:27:12 : playerOne est sur la case Rue du Faubourg Bonnefoy.
+29/05/18 11:27:14 : playerOne est sur la case Rue du Faubourg Bonnefoy.
+29/05/18 11:27:14 : playerOne achète la case Rue du Faubourg Bonnefoy.
+29/05/18 11:27:14 : playerOne a passé son tour.
+=========== Pierre ===========
+29/05/18 11:27:19 : Pierre se déplace jusqu'à la case 8.
+29/05/18 11:27:19 : Pierre est sur la case Chance.
+29/05/18 11:27:19 : Pierre a tiré la carte ''Allez Rue Croix Baragnon''.
+29/05/18 11:27:22 : Pierre est sur la case Rue Croix-Baragnon.
+29/05/18 11:27:24 : Pierre est sur la case Rue Croix-Baragnon.
+29/05/18 11:27:24 : Pierre achète la case Rue Croix-Baragnon.
+29/05/18 11:27:24 : Pierre a passé son tour.
+=========== HAL 9000 ===========
+29/05/18 11:27:27 : HAL 9000 se déplace jusqu'à la case 2.
+29/05/18 11:27:27 : HAL 9000 est sur la case Rue Saint-Rome.
+29/05/18 11:27:27 : HAL 9000 achète la case Rue Saint-Rome.
+29/05/18 11:27:27 : HAL 9000 a passé son tour.
+=========== playerOne ===========

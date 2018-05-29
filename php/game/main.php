@@ -8,8 +8,7 @@ require_once 'Board.php';
 require_once 'Player.php';
 require_once 'Cards.php';
 require_once 'Dice.php';
-$ID=$_SESSION["id"];
-$gameID=$_SESSION["idGame"];
+require_once 'PlayerAI.php';
 
 //initialisation des données sessions
 if(is_null($_SESSION['game'])){	
@@ -54,6 +53,49 @@ if(is_null($_SESSION['orderCard'])){
 }
 $orderCard = $_SESSION['orderCard'];
 
+//création des joueurs AI
+if(is_null($_SESSION['playersAI'])){
+    $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
+    if($IDadmin==$_SESSION["id"]){
+        echo'Prout';
+        $IDplayers=getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"],1);
+        $playerAI1=NULL;
+        $playerAI2=NULL;
+        $playerAI3=NULL;
+        $playerAI4=NULL;
+        $playerAI5=NULL;
+        foreach($IDplayers AS $IDplayer){
+            if($IDplayer==1){
+                $playerAI1=new PlayerAI(1);
+                echo'PlayerAI1<br/>';
+                $_SESSION['playerAI1']=serialize($playerAI1);
+            }elseif($IDplayer==2){
+                $playerAI2=new PlayerAI(2);
+                echo'PlayerAI2';
+                $_SESSION['playerAI2']=serialize($playerAI2);
+            }elseif($IDplayer==3){
+                $playerAI3=new PlayerAI(3);
+                echo'PlayerAI3';
+                $_SESSION['playerAI3']=serialize($playerAI3);
+            }elseif($IDplayer==4){
+                $playerAI4=new PlayerAI(4);
+                echo'PlayerAI4';
+                $_SESSION['playerAI4']=serialize($playerAI4);
+            }elseif($IDplayer==5){
+                $playerAI5=new PlayerAI(5);
+                echo'PlayerAI5';
+                $_SESSION['playerAI5']=serialize($playerAI5);
+            }
+        }
+        $playersAI=array($playerAI1,$playerAI2,$playerAI3,$playerAI4,$playerAI5);
+        $_SESSION['playersAI']=serialize($playersAI);
+        echo'PlayersAI créés';
+    }else{
+        $_SESSION['playersAI']=NULL;
+    }
+    $playersAI = unserialize($_SESSION['playersAI']);
+}
+
 if(is_null($_SESSION['choise'])){	
     $_SESSION["isTurn"]=false;
     $_SESSION["pulledDice"]=false;
@@ -72,22 +114,51 @@ if(is_null($_SESSION['choise'])){
 if($game->playerOnGame() > 1){
     $IDtoPlay=$game->turnTo();
     echo "C'est au tour de ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDtoPlay).".<br/>";
-    if($IDtoPlay==$ID){
+    if($IDtoPlay==$_SESSION["id"]){
         $_SESSION["isTurn"]=true;
         $_SESSION["actionDone"]=false;
         echo"C'est votre tour<br/>";
-        $money=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$ID);
+        $money=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$_SESSION["id"]);
         if($money>0){
             $game->playTurn($player, $dice, $board, $board->getBoxByID($player->getPosition()));
         }else{
             header('Location: youLoose.php');
         }
     }elseif($IDtoPlay==1 OR $IDtoPlay==2 OR $IDtoPlay==3 OR $IDtoPlay==4 OR $IDtoPlay==5){
-        //Joueur AI  
+        //Joueur AI
+        $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
+        if($IDadmin==$_SESSION["id"]){
+            
+            $money=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$IDtoPlay);
+            if($money>0){
+                if($IDtoPlay==1){
+                    $playerAI1 = unserialize($_SESSION['playerAI1']);
+                    $game->playTurnAI($playerAI1, $dice, $board, $board->getBoxByID($player->getPosition()));
+                    $_SESSION['playerAI1']=serialize($playerAI1);
+                }elseif($IDtoPlay==2){
+                    $playerAI2 = unserialize($_SESSION['playerAI2']);
+                    $game->playTurnAI($playerAI2, $dice, $board, $board->getBoxByID($player->getPosition()));
+                    $_SESSION['playerAI2']=serialize($playerAI2);
+                }elseif($IDtoPlay==3){
+                    $playerAI3 = unserialize($_SESSION['playerAI3']);
+                    $game->playTurnAI($playerAI3, $dice, $board, $board->getBoxByID($player->getPosition()));
+                    $_SESSION['playerAI3']=serialize($playerAI3);
+                }elseif($IDtoPlay==4){
+                    $playerAI4 = unserialize($_SESSION['playerAI4']);
+                    $game->playTurnAI($playerAI4, $dice, $board, $board->getBoxByID($player->getPosition()));
+                    $_SESSION['playerAI4']=serialize($playerAI4);
+                }elseif($IDtoPlay==5){
+                    $playerAI5 = unserialize($_SESSION['playerAI5']);
+                    $game->playTurnAI($playerAI5, $dice, $board, $board->getBoxByID($player->getPosition()));
+                    $_SESSION['playerAI5']=serialize($playerAI5);
+                }
+                
+            }
+        }
     } 
 }else{
     echo "Le gagnant est ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$game->winner());
-    if($game->winner()==$ID){
+    if($game->winner()==$_SESSION["id"]){
         header('Location: youWin.php');
     }
 }

@@ -1,0 +1,13 @@
+29/05/18 10:24:20 : Pierre se déplace jusqu'à la case 5.
+29/05/18 10:24:20 : Pierre est sur la case Impot sur le revenu.
+29/05/18 10:24:26 : Pierre se déplace jusqu'à la case 12.
+29/05/18 10:24:26 : Pierre est sur la case Grande rue St-Michel.
+29/05/18 10:24:30 : Pierre est sur la case Grande rue St-Michel.
+29/05/18 10:24:30 : Pierre a passé son tour.
+=========== playerOne ===========
+29/05/18 10:24:34 : playerOne se déplace jusqu'à la case 7.
+29/05/18 10:24:34 : playerOne est sur la case Avenue des Minimes.
+29/05/18 10:24:36 : playerOne est sur la case Avenue des Minimes.
+29/05/18 10:24:36 : playerOne achète la case Avenue des Minimes.
+29/05/18 10:24:36 : playerOne a passé son tour.
+=========== HAL 9000 ===========

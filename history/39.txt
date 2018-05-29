@@ -1,0 +1,6 @@
+29/05/18 10:09:43 : Pierre se déplace jusqu'à la case 7.
+29/05/18 10:09:43 : Pierre est sur la case Avenue des Minimes.
+29/05/18 10:09:46 : Pierre est sur la case Avenue des Minimes.
+29/05/18 10:09:46 : Pierre achète la case Avenue des Minimes.
+29/05/18 10:09:46 : Pierre a passé son tour.
+=========== HAL 9000 ===========

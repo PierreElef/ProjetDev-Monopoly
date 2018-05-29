@@ -97,6 +97,7 @@
                     $_SESSION['order']=NULL;
                     $_SESSION['choise']=NULL;
                     $_SESSION['orderCard']=NULL;
+                    $_SESSION['playersAI']=NULL;
                     if(is_null($_SESSION['game'])){	
                         initGame();
                         echo 'Jeu créé<br/>';
@@ -131,6 +132,7 @@
                         echo'Ordre cartes OK<br/>La Partie commence<br/>';
                     }
                     $orderCard = $_SESSION['orderCard'];
+                    
                     header('Location: ../game/GameIF.php');
                 }     
             }

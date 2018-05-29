@@ -55,7 +55,7 @@ class Game{
             }else{
                 $player->turnOff();
                 $_SESSION["pulledDice"]=false;
-                $this->turnNext();
+                $this->turnNext($_SESSION["id"]);
             }
         } 
     }
@@ -66,13 +66,13 @@ class Game{
         return $IDtoPlay;
     }
 
-    function turnNext(){
+    function turnNext($id){
         //passer au tour suivant
         $order=$_SESSION['order'];
         $nextPlayer=NULL;
         $nbrPlayer=$this->playerOnGame();
         for($i=0;$i<$nbrPlayer;$i++){
-            if($order[$i]==$_SESSION["id"]){
+            if($order[$i]==$id){
                 $j=$i+1;
                 if($j==$nbrPlayer){
                     $nextPlayer=$order[0];
@@ -107,6 +107,29 @@ class Game{
             }
         }
         return $idWinner;
+    }
+
+    function playTurnAI(PlayerAI $playerAI, Dice $de, Board $board, Box $box){
+        //si joueur est en prison
+        if($playerAI->getJailStatus() == true){
+            $de->rollDice();
+            if($de->getDouble()==true){
+                $playerAI->jailOff();
+                $playerAI->turnOn();
+            }else{
+                $playerAI->turnOff();
+                $this->turnNext();
+            }
+        //si le joueur n'est pas en prison
+        }else{
+            $playerAI->move($de);
+            //changement de case
+            $newBox=$board->getBoxByID($playerAI->getPosition());
+            $newBoxType=$newBox->getType();
+            //faire l'action de la case
+            $playerAI->action($board, $newBox);
+            $this->turnNext($playerAI->getId());
+        } 
     }
 }
 ?>
