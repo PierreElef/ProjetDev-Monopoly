@@ -8,6 +8,8 @@ require_once 'Board.php';
 require_once 'Player.php';
 require_once 'Cards.php';
 require_once 'Dice.php';
+$ID=$_SESSION["id"];
+$gameID=$_SESSION["idGame"];
 
 //initialisation des données sessions
 if(is_null($_SESSION['game'])){	
@@ -52,9 +54,6 @@ if(is_null($_SESSION['orderCard'])){
 }
 $orderCard = $_SESSION['orderCard'];
 
-//création des joueurs
-
-
 if(is_null($_SESSION['choise'])){	
     $_SESSION["isTurn"]=false;
     $_SESSION["pulledDice"]=false;
@@ -73,23 +72,22 @@ if(is_null($_SESSION['choise'])){
 if($game->playerOnGame() > 1){
     $IDtoPlay=$game->turnTo();
     echo "C'est au tour de ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$IDtoPlay).".<br/>";
-    if($IDtoPlay==$_SESSION["id"]){
+    if($IDtoPlay==$ID){
         $_SESSION["isTurn"]=true;
         $_SESSION["actionDone"]=false;
         echo"C'est votre tour<br/>";
-        $money=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$_SESSION["id"]);
+        $money=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$ID);
         if($money>0){
             $game->playTurn($player, $dice, $board, $board->getBoxByID($player->getPosition()));
         }else{
             header('Location: youLoose.php');
         }
     }elseif($IDtoPlay==1 OR $IDtoPlay==2 OR $IDtoPlay==3 OR $IDtoPlay==4 OR $IDtoPlay==5){
-        //Joueur AI
-
+        //Joueur AI  
     } 
 }else{
     echo "Le gagnant est ".getSql('SELECT `name` FROM `user` WHERE `ID`='.$game->winner());
-    if($game->winner()==$_SESSION["id"]){
+    if($game->winner()==$ID){
         header('Location: youWin.php');
     }
 }

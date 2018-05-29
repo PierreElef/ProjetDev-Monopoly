@@ -390,3 +390,6 @@
 28/05/18 09:43:19 : Pierre se déplace jusqu'à la case 28.
 28/05/18 09:43:19 : Pierre est sur la case Place St-Etienne.
 28/05/18 10:15:43 : Pierre est sur la case Place St-Etienne.
+29/05/18 09:58:26 : Pierre se déplace jusqu'à la case 36.
+29/05/18 09:58:26 : Pierre est sur la case Aeroport Toulouse-Blagnac.
+=========== playerOne ===========
