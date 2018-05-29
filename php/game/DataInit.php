@@ -14,7 +14,7 @@ function initGame(){
 }
 
 function initPlayer(){
-    //Création de la partie
+    //Création du player
     $player = new Player;
     $_SESSION['player']=serialize($player);
 }

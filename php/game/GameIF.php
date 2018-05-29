@@ -14,7 +14,7 @@
         <?php include("../../html/header2.html")?>
         <div class="row justify-content-end">
             <div class="col-8">
-            <?php
+                <?php
                     echo '<h1 class="text-center">Partie en cours - '.getSql('SELECT `name` FROM `user` WHERE `ID`='.$_SESSION["id"]).'</h1>'
                 ?>
             </div>
