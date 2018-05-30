@@ -16,6 +16,7 @@
 <head>
     <?php include("../../html/head.html")?>
     <title>Monopoly - attente</title>
+    <meta http-equiv="Refresh" content="5">
 </head>
 <html>
 <body style="background-color: #dae9d4;">
