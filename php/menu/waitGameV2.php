@@ -100,39 +100,36 @@
                     $_SESSION['playersAI']=NULL;
                     if(is_null($_SESSION['game'])){	
                         initGame();
-                        echo 'Jeu créé<br/>';
                     }
                     $game = unserialize($_SESSION['game']);
                     if(is_null($_SESSION['player'])){	
                         initPlayer();
-                        echo 'Joueur créé<br/>';
                     }
                     $player = unserialize($_SESSION['player']);
                     if(is_null($_SESSION['board'])){	
                         initBoard();
-                        echo'Plateau créé<br/>';
                     }
                     $board = unserialize($_SESSION['board']);
                     if(is_null($_SESSION['dice'])){	
                         //Création des dés
                         initDice();
-                        echo'Dé créé<br/>';
                     }
                     $dice = unserialize($_SESSION['dice']);
                     //initilisation administrateur
                     if(is_null($_SESSION['order'])){	
                         //Création du tour des joueurs
                         initOrderPlayer();
-                        echo'Ordre OK<br/>';
                     }
                     $order = $_SESSION['order'];
                     if(is_null($_SESSION['orderCard'])){	
                         //Création de l'ordre des cartes
                         initOrderCard();
-                        echo'Ordre cartes OK<br/>La Partie commence<br/>';
                     }
                     $orderCard = $_SESSION['orderCard'];
-                    
+                    //création des joueurs AI
+                    if(is_null($_SESSION['playersAI'])){
+                        initAI();
+                    }
                     header('Location: ../game/GameIF.php');
                 }     
             }

@@ -95,6 +95,7 @@ class Player{
     function jailOff(){
         $this->isJail = 0;
         $_SESSION["onJail"]=false;
+        writeLog($this->getName()." est sorti de prison.\n");
         requetSql('UPDATE `player` SET `jailStatus`=0 WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
     }
 

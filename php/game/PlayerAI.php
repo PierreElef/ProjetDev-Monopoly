@@ -13,6 +13,7 @@ class PlayerAI{
     private $cardJail = false;
     private $nbrHouse;
     private $nbrHotel;
+    private $turnInJail;
 
 ////////////////////////////////////////////// CONSTRUCTEUR
     function __construct($id){
@@ -70,6 +71,10 @@ class PlayerAI{
         return $this->nbrHotel;
     }
 
+    function getTurnInJail(){
+        return $this->turnInJail;
+    }
+
 ////////////////////////////////////////////// SETTEURS
     function setPosition($pos){
         $this->position = $pos;
@@ -88,12 +93,18 @@ class PlayerAI{
 
     function jailOn(){
         $this->isJail = 1;
+        $this->turnInJail = 0;
         requetSql('UPDATE `player` SET `jailStatus`=1 WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
     }
 
     function jailOff(){
         $this->isJail = 0;
         requetSql('UPDATE `player` SET `jailStatus`=0 WHERE `IDuser`='.$this->id.' AND `IDgame`='.$_SESSION["idGame"]);
+    }
+
+    function jailStay(){
+        $turnInJail=$this->turnInJail;
+        $this->turnInJail = $turnInJail+1;
     }
 
     function turnOn(){

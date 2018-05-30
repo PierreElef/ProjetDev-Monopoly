@@ -1,7 +1,5 @@
 <?php
 session_start();
-$gameID=$_SESSION["idGame"];
-settype($gameID, "int");
 include('../commun/getSQL.php');
 ?>
 
@@ -15,7 +13,7 @@ include('../commun/getSQL.php');
     <div class="container text-center">
         <h1>Êtes-vous sûr de vouloir effacer le jeu ?</h1>
         <div class="row justify-content-md-center">
-            <form class="p-2">
+            <form class="p-2" method="post" action="#">
                 <input type="hidden" name="yes" value="1">
                 <input class="buttonGame" type="submit" value="Oui">                      
             </form>
@@ -28,11 +26,12 @@ include('../commun/getSQL.php');
 </html>
 <?php
 if (isset($_POST['yes'])){
-    requetSql('DELETE FROM `game` WHERE `IDgame`='.$gameID);
-    requetSql('DELETE FROM `building` WHERE `IDgame`='.$gameID);
-    requetSql('DELETE FROM `owner` WHERE `IDgame`='.$gameID);
-    requetSql('DELETE FROM `player` WHERE `IDgame`='.$gameID);
-    requetSql('DELETE FROM `turn` WHERE `IDgame`='.$gameID);
+    requetSql('DELETE FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
+    requetSql('DELETE FROM `building` WHERE `IDgame`='.$_SESSION["idGame"]);
+    requetSql('DELETE FROM `owner` WHERE `IDgame`='.$_SESSION["idGame"]);
+    requetSql('DELETE FROM `player` WHERE `IDgame`='.$_SESSION["idGame"]);
+    requetSql('DELETE FROM `turn` WHERE `IDgame`='.$_SESSION["idGame"]);
+    requetSql('DELETE FROM `cards` WHERE `IDgame`='.$_SESSION["idGame"]);
     header('Location: ../menu/PlayGame.php');
 } 
 

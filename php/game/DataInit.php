@@ -178,4 +178,39 @@ function initOrderCard(){
         $_SESSION['orderCard']=$orderCard;
     }
 }
+
+function initAI(){
+    $IDadmin = getSql('SELECT `IDadmin` FROM `game` WHERE `ID`='.$_SESSION["idGame"]);
+    if($IDadmin==$_SESSION["id"]){
+        $IDplayers=getSqlArray('SELECT `IDuser` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"],1);
+        $playerAI1=NULL;
+        $playerAI2=NULL;
+        $playerAI3=NULL;
+        $playerAI4=NULL;
+        $playerAI5=NULL;
+        foreach($IDplayers AS $IDplayer){
+            if($IDplayer==1){
+                $playerAI1=new PlayerAI(1);
+                $_SESSION['playerAI1']=serialize($playerAI1);
+            }elseif($IDplayer==2){
+                $playerAI2=new PlayerAI(2);
+                $_SESSION['playerAI2']=serialize($playerAI2);
+            }elseif($IDplayer==3){
+                $playerAI3=new PlayerAI(3);
+                $_SESSION['playerAI3']=serialize($playerAI3);
+            }elseif($IDplayer==4){
+                $playerAI4=new PlayerAI(4);
+                $_SESSION['playerAI4']=serialize($playerAI4);
+            }elseif($IDplayer==5){
+                $playerAI5=new PlayerAI(5);
+                $_SESSION['playerAI5']=serialize($playerAI5);
+            }
+        }
+        $playersAI=array($playerAI1,$playerAI2,$playerAI3,$playerAI4,$playerAI5);
+        $_SESSION['playersAI']=serialize($playersAI);
+    }else{
+        $_SESSION['playersAI']=NULL;
+    }
+    $playersAI = unserialize($_SESSION['playersAI']);
+}
 ?>

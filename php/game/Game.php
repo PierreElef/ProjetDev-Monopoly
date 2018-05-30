@@ -4,14 +4,14 @@ class Game{
 
     }
     
-    function playTurn(Player $player, Dice $de, Board $board, Box $box){
+    function playTurn(Player $player, Dice $dice, Board $board, Box $box){
         //si joueur est en prison
         if($player->getJailStatus() == true OR $_SESSION["onJail"]==true){
             echo $player->getName()." est en prison.<br/>";
             echo "Tour en prison : ".$_SESSION["turnJail"]."/3<br/>";
             if($_SESSION["pulledDice"]==false){
                 if($_SESSION["choise"]==1){
-                    $de->rollDice();
+                    $dice->rollDice();
                     if($_SESSION["double"]==true OR $_SESSION["choise"]==6 OR $_SESSION["turnJail"]==3){
                         echo $player->getName()." sort de prison.<br/>";
                         $player->jailOff();
@@ -22,7 +22,7 @@ class Game{
                         $player->turnOff();
                         $_SESSION["pulledDice"]=false;
                         $_SESSION["turnJail"]=$_SESSION["turnJail"]+1;
-                        $this->turnNext();
+                        $this->turnNext($_SESSION["id"]);
                     }
                 }
             }
@@ -38,7 +38,7 @@ class Game{
             }elseif($_SESSION["choise"]==1){
                 echo $player->getName()." lance les dés<br/>";
                 //le joueur lance le dé
-                $player->move($de);
+                $player->move($dice);
                 //action en cours
                 $_SESSION["actionDoing"]=true;
                 //changement de case
@@ -109,20 +109,22 @@ class Game{
         return $idWinner;
     }
 
-    function playTurnAI(PlayerAI $playerAI, Dice $de, Board $board, Box $box){
+    function playTurnAI(PlayerAI $playerAI, Dice $dice, Board $board, Box $box){
         //si joueur est en prison
         if($playerAI->getJailStatus() == true){
-            $de->rollDice();
-            if($de->getDouble()==true){
+            $dice->rollDice();
+            $_SESSION['dice']=serialize($dice);
+            if($dice->getDouble()==true OR $playerAI->getTurnInJail()==3){
                 $playerAI->jailOff();
                 $playerAI->turnOn();
             }else{
                 $playerAI->turnOff();
-                $this->turnNext();
+                $playerAI->jailStay();
+                $this->turnNext($playerAI->getId());
             }
         //si le joueur n'est pas en prison
         }else{
-            $playerAI->move($de);
+            $playerAI->move($dice);
             //changement de case
             $newBox=$board->getBoxByID($playerAI->getPosition());
             $newBoxType=$newBox->getType();

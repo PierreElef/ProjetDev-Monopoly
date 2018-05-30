@@ -1,0 +1,220 @@
+30/05/18 15:25:16 : Skynet se déplace jusqu'à la case 6.
+30/05/18 15:25:16 : Skynet est sur la case Gare St-Agne.
+30/05/18 15:25:16 : Skynet achète la case Gare St-Agne.
+30/05/18 15:25:16 : Skynet a passé son tour.
+=========== HAL 9000 ===========
+30/05/18 15:25:37 : HAL 9000 se déplace jusqu'à la case 6.
+30/05/18 15:25:37 : HAL 9000 est sur la case Gare St-Agne.
+30/05/18 15:25:37 : HAL 9000 a payé 300000€ à Skynet.
+=========== Jarvis ===========
+30/05/18 15:25:44 : Jarvis se déplace jusqu'à la case 5.
+30/05/18 15:25:44 : Jarvis est sur la case Impot sur le revenu.
+=========== Pierre ===========
+30/05/18 15:25:47 : Pierre se déplace jusqu'à la case 7.
+30/05/18 15:25:47 : Pierre est sur la case Avenue des Minimes.
+30/05/18 15:26:19 : Pierre est sur la case Avenue des Minimes.
+30/05/18 15:26:19 : Pierre achète la case Avenue des Minimes.
+30/05/18 15:26:19 : Pierre a passé son tour.
+=========== Skynet ===========
+30/05/18 15:26:22 : Skynet se déplace jusqu'à la case 16.
+30/05/18 15:26:22 : Skynet est sur la case Gare St-Cyprien.
+30/05/18 15:26:22 : Skynet a passé son tour.
+=========== HAL 9000 ===========
+30/05/18 15:26:24 : HAL 9000 se déplace jusqu'à la case 14.
+30/05/18 15:26:24 : HAL 9000 est sur la case Rue de la République.
+30/05/18 15:26:24 : HAL 9000 a passé son tour.
+=========== Jarvis ===========
+30/05/18 15:26:25 : Jarvis se déplace jusqu'à la case 14.
+30/05/18 15:26:25 : Jarvis est sur la case Rue de la République.
+30/05/18 15:26:25 : Jarvis achète la case Rue de la République.
+30/05/18 15:26:25 : Jarvis a passé son tour.
+=========== Pierre ===========
+30/05/18 15:26:28 : Pierre se déplace jusqu'à la case 16.
+30/05/18 15:26:28 : Pierre est sur la case Gare St-Cyprien.
+30/05/18 15:26:36 : Pierre est sur la case Gare St-Cyprien.
+30/05/18 15:26:36 : Pierre achète la case Gare St-Cyprien.
+30/05/18 15:26:36 : Pierre a passé son tour.
+=========== Skynet ===========
+30/05/18 15:26:38 : Skynet se déplace jusqu'à la case 23.
+30/05/18 15:26:38 : Skynet est sur la case Chance.
+30/05/18 15:26:38 : Skynet a tiré la carte ''Votre immeuble et votre prêt rapportent + 1 500 000€''.
+=========== HAL 9000 ===========
+30/05/18 15:26:40 : HAL 9000 se déplace jusqu'à la case 23.
+30/05/18 15:26:40 : HAL 9000 est sur la case Chance.
+30/05/18 15:26:40 : HAL 9000 a tiré la carte ''Amende pour excès de vitesse -100 000€''.
+=========== Jarvis ===========
+30/05/18 15:26:42 : Jarvis se déplace jusqu'à la case 21.
+30/05/18 15:26:42 : Jarvis est sur la case Parc Gratuit.
+30/05/18 15:26:42 : Jarvis gagne le jackpot de 2000000€.
+=========== Pierre ===========
+30/05/18 15:26:46 : Pierre se déplace jusqu'à la case 26.
+30/05/18 15:26:46 : Pierre est sur la case Gare Toulouse Matabiau.
+30/05/18 15:27:16 : Pierre est sur la case Gare Toulouse Matabiau.
+30/05/18 15:27:16 : Pierre achète la case Gare Toulouse Matabiau.
+30/05/18 15:27:16 : Pierre a passé son tour.
+=========== Skynet ===========
+30/05/18 15:27:17 : Skynet se déplace jusqu'à la case 26.
+30/05/18 15:27:17 : Skynet est sur la case Gare Toulouse Matabiau.
+30/05/18 15:27:17 : Skynet a payé 300000€ à Pierre.
+=========== HAL 9000 ===========
+30/05/18 15:27:19 : HAL 9000 se déplace jusqu'à la case 32.
+30/05/18 15:27:19 : HAL 9000 est sur la case Rue St-Antoine du T.
+30/05/18 15:27:19 : HAL 9000 a passé son tour.
+=========== Jarvis ===========
+30/05/18 15:27:20 : Jarvis se déplace jusqu'à la case 28.
+30/05/18 15:27:20 : Jarvis est sur la case Place St-Etienne.
+30/05/18 15:27:20 : Jarvis achète la case Place St-Etienne.
+30/05/18 15:27:20 : Jarvis a passé son tour.
+=========== Pierre ===========
+30/05/18 15:27:23 : Pierre se déplace jusqu'à la case 33.
+30/05/18 15:27:23 : Pierre est sur la case Rue du Metz.
+30/05/18 15:27:25 : Pierre est sur la case Rue du Metz.
+30/05/18 15:27:25 : Pierre achète la case Rue du Metz.
+30/05/18 15:27:25 : Pierre a passé son tour.
+=========== Skynet ===========
+30/05/18 15:27:27 : Skynet se déplace jusqu'à la case 30.
+30/05/18 15:27:27 : Skynet est sur la case Rue Ozenne.
+30/05/18 15:27:27 : Skynet a passé son tour.
+=========== HAL 9000 ===========
+30/05/18 15:27:27 : HAL 9000 se déplace jusqu'à la case 39.
+30/05/18 15:27:27 : HAL 9000 est sur la case Taxe de Luxe.
+=========== Jarvis ===========
+30/05/18 15:27:28 : Jarvis se déplace jusqu'à la case 35.
+30/05/18 15:27:28 : Jarvis est sur la case Rue Alsace-Lorraire.
+30/05/18 15:27:28 : Jarvis achète la case Rue Alsace-Lorraire.
+30/05/18 15:27:28 : Jarvis a passé son tour.
+=========== Pierre ===========
+30/05/18 15:27:30 : Pierre se déplace jusqu'à la case 3.
+30/05/18 15:27:30 : Pierre est sur la case Caisse de communauté.
+30/05/18 15:27:30 : Pierre a tiré la carte ''Réparation dans vos maisons -250 000€/maison -1 000 000€/hôtel''.
+=========== Skynet ===========
+30/05/18 15:27:32 : Skynet se déplace jusqu'à la case 36.
+30/05/18 15:27:32 : Skynet est sur la case Aeroport Toulouse-Blagnac.
+30/05/18 15:27:32 : Skynet a passé son tour.
+=========== HAL 9000 ===========
+30/05/18 15:27:33 : HAL 9000 se déplace jusqu'à la case 8.
+30/05/18 15:27:33 : HAL 9000 est sur la case Chance.
+30/05/18 15:27:33 : HAL 9000 a tiré la carte ''Reculez de trois cases''.
+30/05/18 15:27:33 : HAL 9000 a reculé de trois cases.
+=========== Jarvis ===========
+30/05/18 15:27:34 : Jarvis se déplace jusqu'à la case 4.
+30/05/18 15:27:34 : Jarvis est sur la case Rue de la Colombette.
+30/05/18 15:27:34 : Jarvis achète la case Rue de la Colombette.
+30/05/18 15:27:34 : Jarvis a passé son tour.
+=========== Pierre ===========
+30/05/18 15:27:37 : Pierre se déplace jusqu'à la case 13.
+30/05/18 15:27:37 : Pierre est sur la case Compagnie de distribution d'électricité.
+30/05/18 15:27:41 : Pierre est sur la case Compagnie de distribution d'électricité.
+30/05/18 15:27:41 : Pierre achète la case Compagnie de distribution d'électricité.
+30/05/18 15:27:41 : Pierre a passé son tour.
+30/05/18 15:27:44 : Pierre se déplace jusqu'à la case 21.
+30/05/18 15:27:44 : Pierre est sur la case Parc Gratuit.
+30/05/18 15:27:44 : Pierre gagne le jackpot de 2000000€.
+=========== Skynet ===========
+30/05/18 15:27:47 : Skynet se déplace jusqu'à la case 8.
+30/05/18 15:27:47 : Skynet est sur la case Chance.
+30/05/18 15:27:47 : Skynet a tiré la carte ''Ammende pour ivresse - 200 000€''.
+=========== HAL 9000 ===========
+30/05/18 15:27:49 : HAL 9000 se déplace jusqu'à la case 12.
+30/05/18 15:27:49 : HAL 9000 est sur la case Grande rue St-Michel.
+30/05/18 15:27:49 : HAL 9000 a passé son tour.
+=========== Jarvis ===========
+30/05/18 15:27:50 : Jarvis se déplace jusqu'à la case 8.
+30/05/18 15:27:50 : Jarvis est sur la case Chance.
+30/05/18 15:27:50 : Jarvis a tiré la carte ''Allez en prison''.
+30/05/18 15:27:50 : Jarvis est enfermé en Prison.
+=========== Pierre ===========
+30/05/18 15:28:00 : Pierre se déplace jusqu'à la case 23.
+30/05/18 15:28:00 : Pierre est sur la case Chance.
+30/05/18 15:28:00 : Pierre a tiré la carte ''La banque vous verse un dividente +500 000€''.
+30/05/18 15:28:05 : Pierre se déplace jusqu'à la case 30.
+30/05/18 15:28:05 : Pierre est sur la case Rue Ozenne.
+30/05/18 15:28:07 : Pierre est sur la case Rue Ozenne.
+30/05/18 15:28:07 : Pierre achète la case Rue Ozenne.
+30/05/18 15:28:07 : Pierre a passé son tour.
+=========== Skynet ===========
+30/05/18 15:28:08 : Skynet se déplace jusqu'à la case 16.
+30/05/18 15:28:08 : Skynet est sur la case Gare St-Cyprien.
+30/05/18 15:28:08 : Skynet a payé 300000€ à Pierre.
+=========== HAL 9000 ===========
+30/05/18 15:28:09 : HAL 9000 se déplace jusqu'à la case 16.
+30/05/18 15:28:09 : HAL 9000 est sur la case Gare St-Cyprien.
+30/05/18 15:28:09 : HAL 9000 a payé 300000€ à Pierre.
+=========== Jarvis ===========
+=========== Pierre ===========
+30/05/18 15:30:33 : Pierre se déplace jusqu'à la case 37.
+30/05/18 15:30:33 : Pierre est sur la case Chance.
+30/05/18 15:30:33 : Pierre a tiré la carte ''Payez frais de scolarité -1 500 000€''.
+=========== Skynet ===========
+30/05/18 15:30:35 : Skynet se déplace jusqu'à la case 28.
+30/05/18 15:30:35 : Skynet est sur la case Place St-Etienne.
+30/05/18 15:30:35 : Skynet a payé 300000€ à Jarvis.
+=========== HAL 9000 ===========
+30/05/18 15:30:41 : HAL 9000 se déplace jusqu'à la case 21.
+30/05/18 15:30:41 : HAL 9000 est sur la case Parc Gratuit.
+30/05/18 15:30:41 : HAL 9000 gagne le jackpot de 0€.
+=========== Jarvis ===========
+=========== Pierre ===========
+30/05/18 15:32:14 : Pierre se déplace jusqu'à la case 10.
+30/05/18 15:32:14 : Pierre est sur la case Avenue de Muret.
+30/05/18 15:37:56 : Pierre se déplace jusqu'à la case 22.
+30/05/18 15:37:56 : Pierre est sur la case Allée des Demoiselles.
+30/05/18 15:37:58 : Pierre est sur la case Allée des Demoiselles.
+30/05/18 15:37:58 : Pierre achète la case Allée des Demoiselles.
+30/05/18 15:37:58 : Pierre a passé son tour.
+30/05/18 15:37:59 : Pierre se déplace jusqu'à la case 32.
+30/05/18 15:37:59 : Pierre est sur la case Rue St-Antoine du T.
+30/05/18 15:38:00 : Pierre est sur la case Rue St-Antoine du T.
+30/05/18 15:38:00 : Pierre achète la case Rue St-Antoine du T.
+30/05/18 15:38:00 : Pierre a passé son tour.
+=========== Skynet ===========
+30/05/18 15:38:02 : Skynet se déplace jusqu'à la case 32.
+30/05/18 15:38:02 : Skynet est sur la case Rue St-Antoine du T.
+30/05/18 15:38:02 : Skynet a payé 300000€ à Pierre.
+=========== HAL 9000 ===========
+30/05/18 15:38:02 : HAL 9000 se déplace jusqu'à la case 26.
+30/05/18 15:38:02 : HAL 9000 est sur la case Gare Toulouse Matabiau.
+30/05/18 15:38:03 : HAL 9000 a payé 300000€ à Pierre.
+=========== Jarvis ===========
+=========== Pierre ===========
+30/05/18 15:39:07 : Pierre se déplace jusqu'à la case 2.
+30/05/18 15:39:07 : Pierre est sur la case Rue Saint-Rome.
+30/05/18 15:39:09 : Pierre est sur la case Rue Saint-Rome.
+30/05/18 15:39:09 : Pierre achète la case Rue Saint-Rome.
+30/05/18 15:39:09 : Pierre a passé son tour.
+=========== Skynet ===========
+30/05/18 15:39:10 : Skynet se déplace jusqu'à la case 5.
+30/05/18 15:39:10 : Skynet est sur la case Impot sur le revenu.
+=========== HAL 9000 ===========
+30/05/18 15:39:12 : HAL 9000 se déplace jusqu'à la case 33.
+30/05/18 15:39:12 : HAL 9000 est sur la case Rue du Metz.
+30/05/18 15:39:12 : HAL 9000 a payé 300000€ à Pierre.
+=========== Jarvis ===========
+30/05/18 15:39:16 : Jarvis se déplace jusqu'à la case 18.
+30/05/18 15:39:16 : Jarvis est sur la case Caisse de communauté.
+30/05/18 15:39:16 : Jarvis a tiré la carte ''Reculez de trois cases''.
+30/05/18 15:39:16 : Jarvis a reculé de trois cases.
+=========== Pierre ===========
+30/05/18 15:39:18 : Pierre se déplace jusqu'à la case 12.
+30/05/18 15:39:18 : Pierre est sur la case Grande rue St-Michel.
+30/05/18 15:39:20 : Pierre est sur la case Grande rue St-Michel.
+30/05/18 15:39:20 : Pierre achète la case Grande rue St-Michel.
+30/05/18 15:39:20 : Pierre a passé son tour.
+30/05/18 15:39:21 : Pierre se déplace jusqu'à la case 17.
+30/05/18 15:39:21 : Pierre est sur la case Avenue de Grande Bretagne.
+30/05/18 15:41:08 : Pierre est sur la case Avenue de Grande Bretagne.
+30/05/18 15:41:10 : Pierre est sur la case Avenue de Grande Bretagne.
+30/05/18 15:41:10 : Pierre achète la case Avenue de Grande Bretagne.
+30/05/18 15:41:10 : Pierre a passé son tour.
+=========== Skynet ===========
+30/05/18 15:41:14 : Skynet se déplace jusqu'à la case 14.
+30/05/18 15:41:14 : Skynet est sur la case Rue de la République.
+30/05/18 15:41:14 : Skynet a payé 300000€ à Jarvis.
+=========== HAL 9000 ===========
+30/05/18 15:41:15 : HAL 9000 se déplace jusqu'à la case 1.
+30/05/18 15:41:15 : HAL 9000 est sur la case Départ.
+=========== Jarvis ===========
+30/05/18 15:41:17 : Jarvis se déplace jusqu'à la case 24.
+30/05/18 15:41:17 : Jarvis est sur la case Rue des Chalets.
+30/05/18 15:41:17 : Jarvis a passé son tour.
+=========== Pierre ===========
