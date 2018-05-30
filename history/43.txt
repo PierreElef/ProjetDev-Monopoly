@@ -250,3 +250,24 @@
 30/05/18 15:43:12 : Skynet est sur la case Aeroport Toulouse-Blagnac.
 30/05/18 15:43:13 : Skynet a payé 300000€ à Pierre.
 =========== HAL 9000 ===========
+30/05/18 15:53:18 : HAL 9000 se déplace jusqu'à la case 11.
+30/05/18 15:53:18 : HAL 9000 est sur la case Prison.
+=========== Jarvis ===========
+30/05/18 15:53:19 : Jarvis se déplace jusqu'à la case 3.
+30/05/18 15:53:19 : Jarvis est sur la case Caisse de communauté.
+30/05/18 15:53:19 : Jarvis a tiré la carte ''Payer les frais de scolarité -1 500 000 €''.
+=========== Pierre ===========
+30/05/18 15:53:22 : Pierre se déplace jusqu'à la case 11.
+30/05/18 15:53:22 : Pierre est sur la case Prison.
+=========== Skynet ===========
+30/05/18 15:53:23 : Skynet se déplace jusqu'à la case 39.
+30/05/18 15:53:23 : Skynet est sur la case Taxe de Luxe.
+=========== HAL 9000 ===========
+30/05/18 15:53:25 : HAL 9000 se déplace jusqu'à la case 23.
+30/05/18 15:53:25 : HAL 9000 est sur la case Chance.
+30/05/18 15:53:25 : HAL 9000 a tiré la carte ''Allez Rue Croix Baragnon''.
+=========== Jarvis ===========
+30/05/18 15:53:42 : Jarvis se déplace jusqu'à la case 6.
+30/05/18 15:53:42 : Jarvis est sur la case Gare St-Agne.
+30/05/18 15:53:42 : Jarvis a payé 300000€ à Skynet.
+=========== Pierre ===========
