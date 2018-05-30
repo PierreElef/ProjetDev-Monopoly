@@ -57,8 +57,8 @@
                 $colorArray=array("#FF0000","#003AFF","#4FAB5B","#ffac00","#d8789f","#00c8d8");
                 if($nbrTTPlayer>6){
                     echo '<p class="text-center" style="color:red">Trop de joueurs. Limite de 6 au total.</p>';
-                }elseif ($nbrTTPlayer==1){
-                    echo '<p class="text-center" style="color:red">Il faut au minimum 2 joueurs pour jouer.</p>';
+                }elseif ($nbrTTPlayer==4){
+                    echo '<p class="text-center" style="color:red">Il faut au minimum 4 joueurs pour jouer.</p>';
                 }else{
                     requetSql('INSERT INTO `game`(`IDplayer1`, `nbrPlayer`, `nbrOnLine`, `nbrNeeded`, `jackpot`, `IDadmin`) VALUES ('.$idPlayer.','.$nbrTTPlayer.',1,'.$nbrRealPlayer.',NULL,'.$idPlayer.')');
                     $gameID=getSql('SELECT MAX(`ID`) FROM `game`');

@@ -218,3 +218,35 @@
 30/05/18 15:41:17 : Jarvis est sur la case Rue des Chalets.
 30/05/18 15:41:17 : Jarvis a passé son tour.
 =========== Pierre ===========
+30/05/18 15:42:57 : Pierre se déplace jusqu'à la case 24.
+30/05/18 15:42:57 : Pierre est sur la case Rue des Chalets.
+30/05/18 15:42:59 : Pierre est sur la case Rue des Chalets.
+30/05/18 15:42:59 : Pierre achète la case Rue des Chalets.
+30/05/18 15:42:59 : Pierre a passé son tour.
+=========== Skynet ===========
+30/05/18 15:43:00 : Skynet se déplace jusqu'à la case 25.
+30/05/18 15:43:00 : Skynet est sur la case Allées Jean Jaurès.
+30/05/18 15:43:00 : Skynet a passé son tour.
+=========== HAL 9000 ===========
+30/05/18 15:43:01 : HAL 9000 se déplace jusqu'à la case 9.
+30/05/18 15:43:01 : HAL 9000 est sur la case Rue du Faubourg Bonnefoy.
+30/05/18 15:43:01 : HAL 9000 achète la case Rue du Faubourg Bonnefoy.
+30/05/18 15:43:01 : HAL 9000 a passé son tour.
+=========== Jarvis ===========
+30/05/18 15:43:02 : Jarvis se déplace jusqu'à la case 34.
+30/05/18 15:43:02 : Jarvis est sur la case Caisse de communauté.
+30/05/18 15:43:02 : Jarvis a tiré la carte ''Amende pour ivresse -200 000 €''.
+=========== Pierre ===========
+30/05/18 15:43:04 : Pierre se déplace jusqu'à la case 36.
+30/05/18 15:43:04 : Pierre est sur la case Aeroport Toulouse-Blagnac.
+30/05/18 15:43:06 : Pierre est sur la case Aeroport Toulouse-Blagnac.
+30/05/18 15:43:06 : Pierre achète la case Aeroport Toulouse-Blagnac.
+30/05/18 15:43:06 : Pierre a passé son tour.
+30/05/18 15:43:08 : Pierre se déplace jusqu'à la case 4.
+30/05/18 15:43:08 : Pierre est sur la case Rue de la Colombette.
+30/05/18 15:43:08 : Pierre a payé 300000€ à Jarvis.
+=========== Skynet ===========
+30/05/18 15:43:12 : Skynet se déplace jusqu'à la case 36.
+30/05/18 15:43:12 : Skynet est sur la case Aeroport Toulouse-Blagnac.
+30/05/18 15:43:13 : Skynet a payé 300000€ à Pierre.
+=========== HAL 9000 ===========
