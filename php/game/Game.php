@@ -113,7 +113,6 @@ class Game{
         //si joueur est en prison
         if($playerAI->getJailStatus() == true){
             $dice->rollDice();
-            $_SESSION['dice']=serialize($dice);
             if($dice->getDouble()==true OR $playerAI->getTurnInJail()==3){
                 $playerAI->jailOff();
                 $playerAI->turnOn();
@@ -130,7 +129,10 @@ class Game{
             $newBoxType=$newBox->getType();
             //faire l'action de la case
             $playerAI->action($board, $newBox);
-            $this->turnNext($playerAI->getId());
+            if($dice->getDouble()==false){
+                $this->turnNext($playerAI->getId());
+            }
+            
         } 
     }
 }
