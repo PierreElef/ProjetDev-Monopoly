@@ -77,6 +77,7 @@ if($game->playerOnGame() > 1){
         $money=getSql('SELECT `money` FROM `player` WHERE `IDgame`='.$_SESSION["idGame"].' AND `IDuser`='.$_SESSION["id"]);
         if($money>0){
             $game->playTurn($player, $dice, $board, $board->getBoxByID($player->getPosition()));
+            $_SESSION['player']=serialize($player);
         }else{
             header('Location: youLoose.php');
         }
