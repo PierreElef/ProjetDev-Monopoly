@@ -5,8 +5,12 @@ Sujet : Création d'un monopoly en ligne
 
 Le jeu peut s'ouvrir directement en localhost avec le index.php à la racine du dossier.
 
-Pour la partie UML, les diagrammes se trouvent dans le dossier "diagrammes"
+La base de données "monopoly.sql" est nécessaire pour l'ouverture en localhost.
 
-Le dossier de conception et le manuel d'utilisation (Dossier Projet Dev - Groupe1.docx) se trouvent dans le dossier "conception"
+Une version en ligne est disponible à ce lien : http://ynovmonopoly.alwaysdata.net
 
-Les documents décrivant le travail de chacun se trouvent dans le dossier "conception/Travail effectué"
+Pour la partie UML, les diagrammes se trouvent dans le dossier "diagrammes".
+
+Le dossier de conception et le manuel d'utilisation (Dossier Projet Dev - Groupe1.docx) se trouvent dans le dossier "conception".
+
+Les documents décrivant le travail de chacun se trouvent dans le dossier "conception/Travail effectué".
