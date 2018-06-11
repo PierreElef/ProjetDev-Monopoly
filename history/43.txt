@@ -485,3 +485,46 @@
 31/05/18 12:06:39 : Pierre est sur la case Rue du Faubourg Bonnefoy.
 31/05/18 12:06:39 : Pierre a payé 300000€ à HAL 9000.
 =========== Skynet ===========
+03/06/18 20:59:54 : Skynet se déplace jusqu'à la case 20.
+03/06/18 20:59:54 : Skynet est sur la case Avenue Jean Rieux.
+03/06/18 20:59:54 : Skynet a passé son tour.
+=========== HAL 9000 ===========
+03/06/18 21:00:04 : HAL 9000 se déplace jusqu'à la case 17.
+03/06/18 21:00:04 : HAL 9000 est sur la case Avenue de Grande Bretagne.
+03/06/18 21:00:04 : HAL 9000 a payé 300000€ à Pierre.
+03/06/18 21:00:06 : HAL 9000 se déplace jusqu'à la case 20.
+03/06/18 21:00:06 : HAL 9000 est sur la case Avenue Jean Rieux.
+03/06/18 21:00:07 : HAL 9000 a payé 300000€ à Skynet.
+=========== Jarvis ===========
+03/06/18 21:00:07 : Jarvis se déplace jusqu'à la case 36.
+03/06/18 21:00:07 : Jarvis est sur la case Aeroport Toulouse-Blagnac.
+03/06/18 21:00:07 : Jarvis a payé 300000€ à Pierre.
+=========== Pierre ===========
+03/06/18 21:00:11 : Pierre se déplace jusqu'à la case 16.
+03/06/18 21:00:11 : Pierre est sur la case Gare St-Cyprien.
+=========== Skynet ===========
+06/06/18 07:49:35 : Skynet se déplace jusqu'à la case 29.
+06/06/18 07:49:35 : Skynet est sur la case Compagnie de distribution des eaux.
+06/06/18 07:49:35 : Skynet a payé 300000€ à HAL 9000.
+=========== HAL 9000 ===========
+06/06/18 07:49:38 : HAL 9000 se déplace jusqu'à la case 28.
+06/06/18 07:49:38 : HAL 9000 est sur la case Place St-Etienne.
+06/06/18 07:49:38 : HAL 9000 a payé 300000€ à Jarvis.
+=========== Jarvis ===========
+06/06/18 07:49:43 : Jarvis se déplace jusqu'à la case 2.
+06/06/18 07:49:43 : Jarvis est sur la case Rue Saint-Rome.
+06/06/18 07:49:43 : Jarvis a payé 1000000€ à Pierre.
+=========== Pierre ===========
+06/06/18 07:49:57 : Pierre se déplace jusqu'à la case 22.
+06/06/18 07:49:58 : Pierre est sur la case Allée des Demoiselles.
+06/06/18 07:50:15 : Pierre est sur la case Allée des Demoiselles.
+06/06/18 07:50:15 : Pierre construit une maison sur la case Allée des Demoiselles.
+06/06/18 07:51:56 : Pierre se déplace jusqu'à la case 30.
+06/06/18 07:51:56 : Pierre est sur la case Rue Ozenne.
+06/06/18 07:52:09 : Pierre est sur la case Rue Ozenne.
+06/06/18 07:52:09 : Pierre construit une maison sur la case Rue Ozenne.
+=========== Skynet ===========
+06/06/18 07:52:14 : Skynet se déplace jusqu'à la case 36.
+06/06/18 07:52:14 : Skynet est sur la case Aeroport Toulouse-Blagnac.
+06/06/18 07:52:15 : Skynet a payé 300000€ à Pierre.
+=========== HAL 9000 ===========
